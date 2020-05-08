@@ -1,0 +1,127 @@
+<div *ngIf="showdisplay === true">
+
+<div _ngcontent-c6="" class="row">
+  <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style=" padding-right: 1px;padding-left: 1px;">
+    <h3 _ngcontent-c6="" class="adsc">
+      <i class="material-icons ng-star-inserted">business</i> &nbsp; TRIP HISTORY</h3>
+  </div>
+</div>
+
+<div class="card"><Br>
+  <div class="row col-md-12">
+    <div class="col-md-11">
+      <div class="col-md-5">
+        <div class="search input-group">
+          <input style="height:auto!important;border:none;" class="form-control" type="text" placeholder="Search"
+            name="search" [(ngModel)]="filter">
+          <div class="input-group-append">
+            <i class="material-icons pr-2">search</i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <button type="button" class="btn btn-secondary excel" (click)='exportasExcell()'> <i
+          class="material-icons ng-star-inserted" style="color: #fff !important;">get_app</i> Excel</button>
+    </div>
+  </div>
+  <Br>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+
+        <div class="tabl">
+          <form>
+            <table class="table table-bordered table-responsive" style="border-collapse:collapse;" [mfData]="datas | filter:filter"
+              #mf="mfDataTable" [mfRowsOnPage]="25">
+              <thead>
+                <tr>
+                  <th>
+                    #<mfDefaultSorter by="imei"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    Route Name<mfDefaultSorter by="imei"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    No.of Stops(waypoints) <mfDefaultSorter by="imei"> <i class="fa fa-sort"
+                        style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    No.of Stops(completed)<mfDefaultSorter by="adminNo"><i class="fa fa-sort"
+                        style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    Start time<mfDefaultSorter by="make"><i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    Stop time<mfDefaultSorter by="model"><i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                      No of (Students)<mfDefaultSorter by="type"><i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+
+                  <th>
+                    Vehicle Number<mfDefaultSorter by="type"><i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+
+                  <th>
+                    Driver Name<mfDefaultSorter by="type"><i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    Driver Contact Number<mfDefaultSorter by="type"><i class="fa fa-sort"
+                        style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    Route Map
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let item of mf.data; let i = index;">
+                  <tr [ngClass]="{'highlight' : item.isActive == false}" colspan="10" data-toggle="collapse"
+                    [attr.data-target]="item.dispid" class="accordion-toggle">
+                    <td style="width: 60px;">{{i + 1}}</td>
+                    <td>{{item.RouteName}}</td>
+                    <td>{{item.WaypointCount}}</td>
+                    <td>{{item.WaypointsReached}}</td>
+                    <td>{{item.TripStart}}</td>
+                    <td>{{item.TripEnd}}</td>
+                    <td>{{item.noStudents}}</td>
+                    <td>{{item.VehicleID}}</td>
+                    <td style="width: 120px;">{{item.DriverName}}</td>
+                    <td>{{item.Driver.ContactNumber}}</td>
+                    <td><button type="button" mdbBtn class="info" mdbWavesEffect
+                        (click)="goDetailMap($event, item)" style="    height: 35px;border: none; background: #2e75b6; color: white;">View Map</button></td>
+
+                  </tr>
+                </ng-container>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="13">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

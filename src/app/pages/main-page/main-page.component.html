@@ -1,0 +1,73 @@
+<div class="application"
+  [ngClass]="{'closed-nav': isMenuClosed,'small-nav':isMenuCollapsed, 'small-nav-mode':isSmallMenuMode, 'fixed-header': isFixedHeader}"
+  (mouseenter)="onEvent($event)" (mouseleave)="onEvent($event)">
+  <header class="d-flex justify-content-start align-items-center">
+    <div class="menu" (click)="isMenuClosed = !isMenuClosed; onSideNavModeChange()">
+      <i class="material-icons">menu</i>
+    </div>
+
+    <h2 class="text-center">{{title_prod}}</h2>
+
+    <div class="ml-auto d-flex justify-content-start align-items-center">
+
+      <ng-container *ngIf="can_showschooldrop">
+        <select class="form-control selectscholl" id="exampleFormControlSelect1" value="{{selectedschoolid}}"
+          (change)="onChangeschoolselected($event)">
+
+          <ng-container *ngFor="let School of schoollist_t">
+            <option value="{{School.id}}">{{School.schoolID}} - {{School.schoolName}}</option>
+          </ng-container>
+
+        </select>
+      </ng-container>
+      <!-- <i class=" text-lighten-1  material-icons">account_circle</i> -->
+      <i class="text-lighten-1   fa fa-user-circle-o" aria-hidden="true"></i>
+      <div class="user-name d-none d-md-block">{{user_names}}</div>
+      <div ngbDropdown class="dropdown-no-toggle dropdown-bounce" placement="bottom-right">
+        <i class="material-icons px-4" ngbDropdownToggle>keyboard_arrow_down</i>
+        <div ngbDropdownMenu class="dropdown-menu">
+          <!-- <div class="dropdown-header d-flex justify-content-end align-items-center">
+
+            <i class="material-icons pl-4">keyboard_arrow_up</i>
+          </div> -->
+          <a class="dropdown-item" routerLink="/changepassword">Change Password </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item d-flex" (click)="logoutuser()">
+            <span style="cursor: pointer;">Logout</span>
+            <i class="material-icons ml-auto">exit_to_app</i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="main-content">
+    <div [ngClass]="{'container-fluid': !isBoxedLayout, 'container': isBoxedLayout}"
+      [@routerTransition]="getState(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+  </div>
+
+  <div class="side-nav">
+    <div class="user-info-style">
+      <div class="back-btn" (click)="isMenuClosed = !isMenuClosed; onSideNavModeChange()">
+        <i class="material-icons">navigate_before</i>
+      </div>
+      <div class="logo">
+        <!-- <a >{{title_mnu}}</a> -->
+        <img src="../../../assets/images/Students02.png">
+      </div>
+      <!-- <div class="user-info site-logo">
+      <img src="../../../assets/images/Students01.png">
+      <i class=" text-lighten-1 large  material-icons">account_circle</i>
+      <i class="text-lighten-1   fa fa-user-circle-o" aria-hidden="true"></i>
+    <div>
+      <div class="name">{{user_name}}</div>
+    </div>
+  </div> -->
+    </div>
+
+    <px-gdn-multimenu class="menu" [menuModel]="menuModel" [smallMenu]="isSmallMenuMode"
+      (collapse)="isMenuCollapsed = $event"></px-gdn-multimenu>
+
+  </div>
+</div>

@@ -1,0 +1,163 @@
+<!-- Steps form -->
+<div class="card">
+  <div _ngcontent-c6="" class="">
+    <div _ngcontent-c6="" class="row">
+      <div _ngcontent-c6="" class="col">
+        <h3 _ngcontent-c6="" class="adsc">
+          <i class="material-icons ng-star-inserted">business</i>&nbsp;Academic Group</h3>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="card-body mb-4">
+
+    <form class="frms" role="form" action="" method="post" novalidate>
+
+      <!-- First Step -->
+      <div class="col-md-12">
+
+        <div class="row">
+          <div class="col-md-12">
+            <label>Academic Group Name</label>
+            <input required type="text" placeholder="Academic Group Name" class="form-control col-md-12"
+              [(ngModel)]="UpdateAcadamicGroup.academicGrpName" name="academicGrpName" #academicGrpName disabled>
+          </div>
+
+          <div class="col-md-6">
+            <label>Start Class</label>
+            <input required type="text" placeholder="Start Class" class="form-control col-md-12"
+              [(ngModel)]="UpdateAcadamicGroup.startClass" name="startClass" #startClass disabled>
+            <label> Start Time </label>
+            <input required type="text" placeholder="End Class" class="form-control col-md-12"
+              [(ngModel)]="UpdateAcadamicGroup.startTiming" name="startTiming" #startTiming
+              value="{{UpdateAcadamicGroup.startTiming}}" disabled>
+            <label> Academic Start Date</label>
+            <input required type="text" placeholder="academicStartDate" class="form-control col-md-12"
+              value="{{UpdateAcadamicGroup.academicStartDate | date:'dd-MM-yyyy'}}" name="academicStartDate"
+              #academicStartDate disabled>
+            <label>Number of Week Days</label>
+            <input required type="text" placeholder="" class="form-control col-md-12"
+              [(ngModel)]="UpdateAcadamicGroup.numberofWeekDays" name="numberofWeekDays" #numberofWeekDays disabled>
+            <label>Updated by</label>
+            <input required type="text" placeholder="Updated Name" class="form-control col-md-12"
+              value="{{UpdateAcadamicGroup.updateName}}" name="updateName" #updateName disabled>
+
+          </div>
+
+          <div class="col-md-6">
+
+            <label>End Class</label>
+            <input required type="text" placeholder="End Class" class="form-control col-md-12"
+              [(ngModel)]="UpdateAcadamicGroup.endClass" name="endClass" #endClass
+              value="{{UpdateAcadamicGroup.endClass}}" disabled>
+            <label> End Time </label>
+            <input required type="text" placeholder="End Class" class="form-control col-md-12"
+              [(ngModel)]="UpdateAcadamicGroup.endTiming" name="endTiming" #startTiming
+              value="{{UpdateAcadamicGroup.endTiming}}" disabled>
+            <label> Academic End Date</label>
+            <input required type="text" placeholder="academicStartDate" class="form-control col-md-12"
+              value="{{UpdateAcadamicGroup.academicEndDate | date:'dd-MM-yyyy'}}" name="academicEndDate"
+              #academicEndDate disabled>
+            <label>Week Day Start</label>
+            <input required type="text" *ngIf="UpdateAcadamicGroup.weekdayStart == 1" placeholder="academicStartDate"
+              class="form-control col-md-12" value="Sunday" name="weekdayStart" #weekdayStart disabled>
+            <input required type="text" *ngIf="UpdateAcadamicGroup.weekdayStart == 2" placeholder="academicStartDate"
+              class="form-control col-md-12" value="Monday" name="weekdayStart" #weekdayStart disabled>
+            <input required type="text" *ngIf="UpdateAcadamicGroup.weekdayStart == 3" placeholder="academicStartDate"
+              class="form-control col-md-12" value="Tuesday" name="weekdayStart" #weekdayStart disabled>
+            <input required type="text" *ngIf="UpdateAcadamicGroup.weekdayStart == 4" placeholder="academicStartDate"
+              class="form-control col-md-12" value="Wednesday" name="weekdayStart" #weekdayStart disabled>
+            <input required type="text" *ngIf="UpdateAcadamicGroup.weekdayStart == 5" placeholder="academicStartDate"
+              class="form-control col-md-12" value="Thursday" name="weekdayStart" #weekdayStart disabled>
+            <input required type="text" *ngIf="UpdateAcadamicGroup.weekdayStart == 6" placeholder="academicStartDate"
+              class="form-control col-md-12" value="Friday" name="weekdayStart" #weekdayStart disabled>
+            <input required type="text" *ngIf="UpdateAcadamicGroup.weekdayStart == 7" placeholder="academicStartDate"
+              class="form-control col-md-12" value="Saturday" name="weekdayStart" #weekdayStart disabled>
+            <label>Last update date & time</label>
+            <input required type="text" placeholder="academicStartDate" class="form-control col-md-12"
+              value='{{UpdateAcadamicGroup.updateDate | cynosureDateTimeZone:"YYYY-MM-DD HH:mm:ss" }}' name="updateDate"
+              #updateDate disabled>
+
+          </div>
+
+        </div>
+        <!--endrow-->
+
+        <div class="row">
+
+          <div class="form-group service-form-group col-md-12">
+            <div class="row">
+              <div class="col-md-2" style="padding-left: 0px;">
+                <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted" data-toggle="modal"
+                  data-target="#disable" name="singlebutton" type="submit"
+                  *ngIf="UpdateAcadamicGroup.isActive === true">Disable</button>
+                <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted" data-toggle="modal"
+                  data-target="#disable1" name="singlebutton" type="submit"
+                  *ngIf="UpdateAcadamicGroup.isActive === false">Enable</button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!--endrow-->
+      </div>
+      <!-- fourth Step -->
+    </form>
+  </div>
+</div>
+<!-- Steps form -->
+
+<style>
+  .btn-light {
+    background-color: #4685c0 !important;
+  }
+</style>
+
+<div id="disable" class="modal modal4 fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Disbale Data</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+
+      </div>
+      <div class="modal-body">
+        <strong>Are you sure you want to Disbale these Data </strong>
+
+      </div>
+      <div class="modal-footer">
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+          class="btn btn-default" data-dismiss="modal">No</button>
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+          class="btn btn-danger" data-dismiss="modal" (click)="Disable()">Yes</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="disable1" class="modal modal4 fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Enable Data</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+
+      </div>
+      <div class="modal-body">
+        <strong>Are you sure you want to Enable thiese Data </strong>
+
+      </div>
+      <div class="modal-footer">
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+          class="btn btn-default" data-dismiss="modal">No</button>
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+          class="btn btn-danger" data-dismiss="modal" (click)="Disable()">Yes</button>
+
+      </div>
+    </div>
+  </div>
+</div>

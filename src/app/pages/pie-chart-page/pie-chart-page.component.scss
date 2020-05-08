@@ -1,0 +1,96 @@
+app-barchart-page {
+  .trend-bar-chart,
+  .group-bar-chart,
+  .horizontal-bar-chart,
+  .simple-bar-chart,
+  .animated-bar-chart {
+    height: 280px;
+  }
+}
+
+.color1{
+    margin-left: 2px;
+    font-size: 8px;
+    font-weight: 400;
+    color: white;
+    background-color: #28a745;
+    border-radius: 3px;
+    padding: 5px;
+    margin-right: 2px;
+}
+
+.color2{
+  margin-left: 2px;
+  font-size: 8px;
+  font-weight: 400;
+  color: white;
+  background-color: #17a2b8;
+  border-radius: 3px;
+  padding: 5px;
+  margin-right: 2px;
+}
+
+app-line-chart-page {
+  .multi-axis-line-chart,
+  .area-chart,
+  .stacked-area-chart,
+  .gradient-area-chart,
+  .points-line-chart,
+  .trend-line-chart,
+  .simple-line-chart {
+    height: 300px;
+  }
+}
+
+.color3{
+  margin-left: 2px;
+  font-size: 8px;
+  font-weight: 400;
+  color: white;
+  background-color: #dc3545;
+  border-radius: 3px;
+  padding: 5px;
+  margin-right: 2px;
+}
+
+app-pie-chart-page {
+  .polar-chart,
+  .nested-pie-chart,
+  .doughnut-pie-chart,
+  .custom-pie-chart {
+    height: 280px;
+  }
+  .polar-clock-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 210px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+}
+
+app-barchart-page  {
+  .polar-chart,
+  .nested-pie-chart,
+  .doughnut-pie-chart,
+  .custom-pie-chart {
+    height: 280px;
+  }
+  .polar-clock-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 110px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.dash-box-shadow {
+  box-shadow: 0px 3px 8px 0px #d4d4d4 !important;
+  padding-top: 10px !important;
+  border-radius: 8px !important;
+  margin: 0px 0px;
+  border: none;
+}

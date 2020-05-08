@@ -1,0 +1,239 @@
+<div *ngIf="showdisplay === true">
+
+<div class="card">
+  <div class="row">
+    <div _ngcontent-c6="" class="col">
+      <h3 _ngcontent-c6="" class="adsc"><i class="material-icons ng-star-inserted">business</i> &nbsp;Add Route
+        Details</h3>
+    </div>
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="col-mb-12">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+
+              <div class="col-md-6">
+                <label>Route Name</label>
+                <input type="text" placeholder="Route Name" style="margin-bottom: 5px;" class="form-control col-md-12"
+                  [(ngModel)]="addroute.RouteName" name="RouteName" value="" formControlName="routeNames"
+                  [ngClass]="{ 'is-invalid': submitted && f.routeNames.errors }" />
+                <div *ngIf="submitted && f.routeNames.errors" class="invalid-feedback">
+                  <div *ngIf="f.routeNames.errors.required">Route Name is required</div>
+                  <div *ngIf="f.routeNames.errors.pattern">Enter Valid Route Name</div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label>Start Point</label>
+                <input type="text" placeholder="Start Point" style="margin-bottom: 5px;" class="form-control col-md-12"
+                  [(ngModel)]="addroute.StartPoint" name="StartPoint" value="" formControlName="startPoints"
+                  [ngClass]="{ 'is-invalid': submitted && f.startPoints.errors }" />
+                <div *ngIf="submitted && f.startPoints.errors" class="invalid-feedback">
+                  <div *ngIf="f.startPoints.errors.required">Start Point is required</div>
+                  <div *ngIf="f.startPoints.errors.pattern">Enter Valid Start Point</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-6">
+                <label>Areas Covered</label>
+
+                <input type="text" placeholder=" Areas Covered" style="margin-bottom: 5px;" class="form-control col-md-12"
+                  [(ngModel)]="addroute.areasCovered" name="areasCovereds" value="" formControlName="areasCovereds"
+                  [ngClass]="{ 'is-invalid': submitted && f.areasCovereds.errors }" />
+
+                <div *ngIf="submitted && f.areasCovereds.errors" class="invalid-feedback">
+                  <div *ngIf="f.areasCovereds.errors.required"> Areas Covered is required</div>
+                  <div *ngIf="f.areasCovereds.errors.pattern">Enter Areas Covered  list</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label>End Point</label>
+                <input type="text" placeholder="End Point" style="margin-bottom: 5px;" class="form-control col-md-12"
+                  [(ngModel)]="addroute.EndPoint" name="EndPoint" value="" formControlName="endPoints"
+                  [ngClass]="{ 'is-invalid': submitted && f.endPoints.errors }" />
+                <div *ngIf="submitted && f.endPoints.errors" class="invalid-feedback">
+                  <div *ngIf="f.endPoints.errors.required">End Point is required</div>
+                  <div *ngIf="f.endPoints.errors.pattern">Enter Valid End Point</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 route-student">
+            <h3>Select WayPoint</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <agm-map [latitude]="latitude" [longitude]="longitude" [streetViewControl]="false">
+              <agm-marker *ngFor="let sp of markerData" [latitude]="sp.latitude" [longitude]="sp.longitude"
+                [label]="{color: 'white', text: sp.WayPointSeq}">
+                <agm-direction [origin]="origin" [destination]="destination" [waypoints]="waypoints"
+                  [renderOptions]="renderOptions" [markerOptions]="markerOptions">
+                </agm-direction>
+              </agm-marker>
+              <div>
+                <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="icon" [markerDraggable]="true"
+                  (dragEnd)="markerDragEnd($event)">
+                </agm-marker>
+              </div>
+
+            </agm-map>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 rout-waypoint">
+            <div class="row">
+              <div class="col-md-3">
+                <label>WayPoint Id</label>
+                <input type="text" placeholder="WayPoint Id" style="margin-bottom: 5px;" class="form-control col-md-12"
+                  [(ngModel)]="waypoint_data.WayPointId" name="WayPointId" value="" formControlName="WayPointIds"
+                  [ngClass]="{ 'is-invalid': submitted && f.WayPointIds.errors }" />
+                <div *ngIf="submitted && f.WayPointIds.errors" class="invalid-feedback">
+                  <div *ngIf="f.WayPointIds.errors.required">WayPoint Id is required</div>
+                  <div *ngIf="f.WayPointIds.errors.pattern">Enter Valid WayPoint Id</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label>WayPoint Name</label>
+                <input type="text" placeholder="WayPoint Name" style="margin-bottom: 5px;"
+                  class="form-control col-md-12" [(ngModel)]="waypoint_data.WayPointName" name="WayPointName" value=""
+                  formControlName="WayPointNames" [ngClass]="{ 'is-invalid': submitted && f.WayPointNames.errors }" />
+                <div *ngIf="submitted && f.WayPointNames.errors" class="invalid-feedback">
+                  <div *ngIf="f.WayPointNames.errors.required">WayPoint Name is required</div>
+                  <div *ngIf="f.WayPointNames.errors.pattern">Enter Valid WayPoint Name</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label>WayPoint Seq</label>
+
+                <select class="form-control" style="margin-bottom: 5px;" [(ngModel)]="waypoint_data.WayPointSeq"
+                  name="WayPointSeq" value="" formControlName="routeSeqs"
+                  [ngClass]="{ 'is-invalid': submitted && f.routeSeqs.errors }">
+                  <ng-container *ngFor="let data of waypoint_seqs">
+                    <option value="{{data}}">{{data}}</option>
+                  </ng-container>
+                </select>
+
+                <div *ngIf="submitted && f.routeSeqs.errors" class="invalid-feedback">
+                  <div *ngIf="f.routeSeqs.errors.required">WayPoint Seq is required</div>
+                  <div *ngIf="f.routeSeqs.errors.pattern">Enter Valid WayPoint Seq</div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label>GeoPoint Text</label>
+
+                <input type="text" placeholder="GeoPoint Text" style="margin-bottom: 5px;"
+                  class="form-control col-md-12" [(ngModel)]="waypoint_data.GeoPointText" name="GeoPointText" value=""
+                  formControlName="geoTexts" [ngClass]="{ 'is-invalid': submitted && f.geoTexts.errors }" />
+                <div *ngIf="submitted && f.geoTexts.errors" class="invalid-feedback">
+                  <div *ngIf="f.geoTexts.errors.required">GeoPoint Text is required</div>
+                  <div *ngIf="f.geoTexts.errors.pattern">Enter Valid GeoPoint Text</div>
+                </div>
+
+
+              </div>
+              <div class="col-md-12">
+                <button type="button" class="btn px-gdn-btn btn-block mb10 ng-star-inserted"
+                  (click)="addWayPoints()">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="tabl">
+                <form>
+                  <table class="table table-bordered table-responsive" style="border-collapse:collapse;"
+                    [mfData]="pwaypoints" #mf="mfDataTable" [mfRowsOnPage]="10">
+                    <thead>
+                      <tr>
+                        <th>
+                          #<mfDefaultSorter by="id"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+                          </mfDefaultSorter>
+                        </th>
+                        <th>
+                          WayPoint Id<mfDefaultSorter by="waypoint_id"> <i class="fa fa-sort"
+                              style="color:#fff!important;"></i>
+                          </mfDefaultSorter>
+                        </th>
+                        <th>
+                          WayPoint Name <mfDefaultSorter by="waypoint_name"> <i class="fa fa-sort"
+                              style="color:#fff!important;"></i>
+                          </mfDefaultSorter>
+                        </th>
+                        <th>
+                          WayPoint Seq<mfDefaultSorter by="waypoint_seq"><i class="fa fa-sort"
+                              style="color:#fff!important;"></i>
+                          </mfDefaultSorter>
+                        </th>
+                        <th>
+                          GeoPoint Text<mfDefaultSorter by="geo_text"><i class="fa fa-sort"
+                              style="color:#fff!important;"></i>
+                          </mfDefaultSorter>
+                        </th>
+                        <th>
+                          Delete
+                        </th>
+                        <th>Position Up</th>
+                        <th>Position Down</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let item of pwaypoints; let i = index">
+                        <tr [ngClass]="{'highlight' : item.isActive == false}" colspan="10" data-toggle="collapse"
+                          [attr.data-target]="item.id" class="accordion-toggle">
+                          <td>{{ i + 1}}</td>
+                          <td>{{item.WayPointId}}</td>
+                          <td>{{item.WayPointName}}</td>
+                          <td>{{item.WayPointSeq}}</td>
+                          <td>{{item.GeoPointText}}</td>
+                          <td><button type="button" class="updea" (click)="deleteWaypointById($event, item)"><i
+                                class="m-1 icon-close"></i></button></td>
+
+                          <td style="text-align: center;font-size: 24px;"> <button class="updea" [disabled]="i === 0">
+                              <i class="fa m-1 fa-sort-up ng-star-inserted" (click)="onClickUp(i)"></i></button></td>
+                          <td style="text-align: center;font-size: 24px;"> <button class="updea" [disabled]="i === j">
+                              <i class="fa m-1 fa-sort-down ng-star-inserted" (click)="onClickDown(i)"></i></button>
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colspan="12">
+                          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                        </td>
+                      </tr>
+                    </tfoot>
+                  </table>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted" name="singlebutton"
+            style="margin-top: 2em;" type="submit">Add</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

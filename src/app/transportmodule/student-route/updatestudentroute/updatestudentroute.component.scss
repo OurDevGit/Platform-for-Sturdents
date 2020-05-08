@@ -1,0 +1,38 @@
+h3.adsc {
+    margin-left: 0px;
+    background: #75a7d5;
+    padding: 10px;
+    margin-top: 0px !important;
+    color: #fff;
+  }
+  .btn-outline-primary{
+      padding: 0px 11px 0px 10px !important;
+      border: 1px #2e75b6 solid !important;
+      margin-top: 20px;
+      border-radius: 2px;
+  }
+  label {
+    color: rgba(0,0,0,.59);
+    margin-top: 0px;
+    font-weight: 600 !important;
+    margin-bottom: 3px!important;
+  }
+  
+  .frms {
+    padding: 10px;
+    margin-top: 0px;
+  }
+  
+  .card {
+    position: relative;
+    display: inline-table;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0px solid transparent;
+    border-radius: 2px;
+    width: 100%;
+    max-width: 100%;
+  }

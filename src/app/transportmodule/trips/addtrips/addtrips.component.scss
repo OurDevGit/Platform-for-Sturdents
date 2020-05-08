@@ -1,0 +1,212 @@
+h3.adsc 
+{
+    margin-left: 0px;
+    background: #75a7d5;
+    padding: 10px;
+    margin-top: 0px !important;
+    color: #fff;
+    font-size: 18px !important;
+  }
+  .btn-outline-primary
+  {
+      padding: 0px 11px 0px 10px !important;
+      border: 1px #2e75b6 solid !important;
+      margin-top: 20px;
+      border-radius: 2px;
+  }
+  label 
+  {
+    color: rgba(0,0,0,.59);
+    margin-top: 0px;
+    font-weight: 600 !important;
+    margin-bottom: 3px!important;
+  }
+  
+  .frms {
+    padding: 10px;
+    margin-top: 0px;
+  }
+  
+  .card {
+    position: relative;
+    display: inline-table;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0px solid transparent;
+    border-radius: 2px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .mail-option {
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .mail-option .chk-all, .mail-option .btn-group a.btn {
+    background: none repeat scroll 0 0 #fcfcfc;
+    border: 1px solid #e7e7e7;
+    border-radius: 3px !important;
+    color: #afafaf;
+    display: inline-block;
+    padding: 5px 10px;
+  }
+  .btn-group{
+    margin: 1px 5px 0px 4px;
+  }
+  
+  .btn-group, .btn-group-vertical {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .mail-option a {
+    color: #2e75b6;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+  }
+  
+  .dropdown-toggle::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    float: right;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.59);
+    margin-top: 4px;
+  }
+  
+  .bg-primary {
+    border-color: #2e75b6 !important;
+  }
+  
+  .px-gdn-btn {
+    background: linear-gradient(60deg, #2e75b6 0%, #9dc3e6 100%) !important;
+    color: #fff !important;
+  
+  }
+  .px-4{
+    border-radius: 0px !important;
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
+  }
+
+.trip-panel .card-header 
+{
+    background: #e4e4e4;
+    margin-bottom: 10px !important;
+}
+.trip-panel .card-header h4 
+{
+  color: #2b2b2b;
+}
+
+.plus-icon 
+{
+  float: right;
+  width: 100%;
+}
+.plus-icon i 
+{
+  float: right;
+  font-size: 30px;
+  color: #337ab7;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.addtrip-table 
+{
+  margin-top: 30px;
+}
+agm-map {
+  height: 300px;
+}
+
+.addtrip-table td button 
+{
+  margin-right: 12px;
+  min-width: 70px;
+  padding: 8px 4px;
+}
+.addtrip-table .success 
+{
+  background: #00c851;
+  border: 1px solid #00c851;
+  color: #fff;
+  font-size: 14px;
+}
+.addtrip-table .success:hover
+{
+  background:#006228;
+  border: 1px solid #006228;
+}
+.addtrip-table .success:active
+{
+  background:#006228;
+  border: 1px solid #006228;
+}
+
+.addtrip-table .info 
+{
+  background: #33b5e5;
+  border: 1px solid #33b5e5;
+  color: #fff;
+  font-size: 14px;
+}
+.addtrip-table .info:hover
+{
+  background:#14799e;
+  border: 1px solid #14799e;
+}
+.addtrip-table .info:active
+{
+  background:#14799e;
+  border: 1px solid #14799e;
+}
+
+.addtrip-table .warning 
+{
+  background: #fb3;
+  border: 1px solid #fb3;
+  color: #fff;
+  font-size: 14px;
+}
+.addtrip-table .warning:hover
+{
+  background:#c80;
+  border: 1px solid #c80;
+}
+.addtrip-table .warning:active
+{
+  background:#c80;
+  border: 1px solid #c80;
+}
+
+.addtrip-table .danger 
+{
+  background: #ff3547;
+  border: 1px solid #ff3547;
+  color: #fff;
+  font-size: 14px;
+}
+.addtrip-table .danger:hover
+{
+  background:#ce0012;
+  border: 1px solid #ce0012;
+}
+.addtrip-table .danger:active
+{
+  background:#ce0012;
+  border: 1px solid #ce0012;
+}
+

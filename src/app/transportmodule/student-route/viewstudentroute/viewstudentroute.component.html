@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="row">
+    <div _ngcontent-c6="" class="col">
+      <h3 _ngcontent-c6="" class="adsc"><i class="material-icons ng-star-inserted">business</i> &nbsp;View Student
+        Routes</h3>
+    </div>
+  </div>
+  <form [formGroup]="studentrouteForm" novalidate>
+    <div class="col-mb-12">
+      <div class="card-body">
+        <div class="row">
+
+          <div class="col-md-6">
+            <label>Route Name</label>
+            <input type="text" placeholder="Route Name" style="margin-bottom: 5px;" class="form-control col-md-12"
+              disabled [(ngModel)]="studentRoute.route_name" name="route_name" formControlName="routenames" />
+          </div>
+
+          <div class="col-md-6">
+            <label>Student</label>
+            <input type="text" placeholder="Student" style="margin-bottom: 5px;" class="form-control col-md-12" disabled
+              [(ngModel)]="studentRoute.student" name="student" value="" formControlName="students" />
+          </div>
+
+          <div class="col-md-6">
+            <label>Start Location</label>
+            <input type="text" placeholder="Start Location" style="margin-bottom: 5px;" class="form-control col-md-12"
+              disabled [(ngModel)]="studentRoute.start_location" name="start_location" value=""
+              formControlName="startlocations" />
+          </div>
+
+          <div class="col-md-6">
+            <label>Stop Location</label>
+            <input type="text" placeholder="Stop Location" style="margin-bottom: 5px;" class="form-control col-md-12"
+              disabled [(ngModel)]="studentRoute.stop_location" name="stop_location" value=""
+              formControlName="stoplocations" />
+
+          </div>
+
+          <div class="col-md-6">
+            <label>Start time</label>
+            <input type="text" placeholder="Start time" style="margin-bottom: 5px;" class="form-control col-md-12"
+              disabled [(ngModel)]="studentRoute.start_time" name="start_time" value="" formControlName="startTimes" />
+
+          </div>
+
+          <div class="col-md-6">
+            <label>End Time</label>
+            <input type="text" placeholder="End Time" style="margin-bottom: 5px;" class="form-control col-md-12"
+              disabled [(ngModel)]="studentRoute.end_time" name="end_time" value="" formControlName="endTimes" />
+
+          </div>
+
+          <div class="col-md-6">
+            <label>Status</label>
+            <input type="text" placeholder="Status" style="margin-bottom: 5px;" class="form-control col-md-12" disabled
+              [(ngModel)]="studentRoute.status" name="status" value="" formControlName="statues" />
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,533 @@
+<div *ngIf="showdisplay === true">
+
+  <form>
+    <!-- service-form -->
+    <div class="service-form col-md-12" style="margin-top: 0em!important;">
+
+      <div class="rows">
+        <div class="header">
+          <div class="">
+
+            <div class="row">
+              <div class="">
+                <h3 class="adsc"> <i class="fa fa-address-book-o"></i> &nbsp;User Management </h3>
+              </div>
+
+              <div class="col-12 col-md-6 mb-3">
+              </div>
+            </div>
+
+          </div><br>
+        </div>
+
+        <div class="">
+          <button type="button" class="btn btn-secondary excel pull-right" (click)='exportasExcell()'> <i
+              class="material-icons ng-star-inserted" style="color: #fff !important;">get_app</i> Excel</button>
+          <!-- <button type="button" class="btn btn-secondary excel">PDF</button> -->
+          <input class="Search pull-left" style="border:none;width: 20%; margin: 0px 0px 2em 0px;" type="text"
+            placeholder="Search" name="search" [(ngModel)]="filter">
+          <br>
+        </div>
+        <div class="cols">
+
+          <div class="">
+            <div class="row">
+              <div class="tabl">
+
+                <table class="table table-bordered table-responsive"
+                  style="border-collapse:collapse;margin-top: 0em!important;" [mfData]="datas| filter:filter"
+                  #mf="mfDataTable" [mfRowsOnPage]="10">
+                  <thead>
+                    <tr>
+                      <th>S.No</th>
+                      <th>First Name <mfDefaultSorter by="first_name"> <i class="fa fa-sort"
+                            style="color:#fff!important;"></i></mfDefaultSorter>
+                      </th>
+                      <th>Phone Number <mfDefaultSorter by="phone_number"> <i class="fa fa-sort"
+                            style="color:#fff!important;"></i></mfDefaultSorter>
+                      </th>
+                      <!-- <th>Address <mfDefaultSorter by="street"> <i class="fa fa-sort" style="color:#fff!important;"></i></mfDefaultSorter></th> -->
+                      <th>Email Address <mfDefaultSorter by="email_address"> <i class="fa fa-sort"
+                            style="color:#fff!important;"></i></mfDefaultSorter>
+                      </th>
+
+                      <th>View</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                      <th>Disable / Enable</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngFor="let data of mf.data  ;let i = index">
+                      <tr colspan="6" data-toggle="collapse" [attr.data-target]="data.dispid" class="accordion-toggle">
+                        <td>{{i+1}}</td>
+                        <td id="f1">{{data.first_name}}</td>
+                        <td id="m1">{{data.phone_number}}</td>
+                        <!-- <td id="a1">{{data.street}}, {{data.city}} {{data.pincode}},{{data.state}}, {{data.country}}.  </td> -->
+                        <td id="e1">{{data.email_address}}</td>
+
+                        <td class="dlt" style="text-align:center;"> <button
+                            class="accordion-toggle delete btn mat-button-wrapper btn-sm" data-toggle="collapse"
+                            href="#country1"><i _ngcontent-c4="" _ngcontent-c6=""
+                              class="m-1 icon-screen-desktop"></i></button></td>
+                        <td class="dlt" style="text-align:center;"><button type="button" data-toggle="modal"
+                            data-target="#edit" data-uid="1" class="update btn btn-primary btn-sm"
+                            (click)="edit($event, data)"><i _ngcontent-c4="" _ngcontent-c6=""
+                              class="m-1 icon-note"></i></button></td>
+
+                        <td class="dlt" style="text-align:center;">
+                          <div *ngIf="(data.schools.length == 0);then content1 else other_content2"></div>
+                          <ng-template #content1>
+                            <ng-container>
+                              <div *ngIf="data.isActive; then acontent1 else other_content1"></div>
+                            </ng-container>
+
+                            <ng-template #acontent1>
+                              <button type="button" data-toggle="modal" data-target="#disabletodelete" data-uid="1"
+                                class="delete btn btn-danger btn-sm" (click)="open($event, data)"><i _ngcontent-c4=""
+                                  _ngcontent-c6="" class="m-1 icon-close"></i></button>
+                            </ng-template>
+
+                            <ng-template #other_content1>
+                              <button type="button" data-toggle="modal" data-target="#delete" data-uid="1"
+                                class="delete btn btn-danger btn-sm" (click)="open($event, data)"><i _ngcontent-c4=""
+                                  _ngcontent-c6="" class="m-1 icon-close"></i></button>
+                            </ng-template>
+
+                          </ng-template>
+
+                          <ng-template #other_content2>
+                          </ng-template>
+
+                        </td>
+
+                        <td>
+                          <div class="form-group">
+                            <div class="checkbox checbox-switch switch-primary">
+                              <label>
+                                <div *ngIf="data.isActive
+                                                    ;then content else other_content">here is ignored</div>
+                                <ng-template #content>
+
+                                  <input type="checkbox" name="" checked="" (change)="check(data)" />
+                                </ng-template>
+                                <ng-template #other_content>
+
+                                  <input type="checkbox" name="" (change)="check(data)" />
+                                </ng-template>
+                                <span></span>
+                              </label>
+                            </div>
+                          </div>
+                        </td>
+
+                      </tr>
+                      <tr class="p">
+                        <td colspan="12" class="hiddenRow well">
+                          <div class="accordian-body collapse p-3" [attr.id]="data.dispid2">
+                            <!--start-->
+                            <!--start-->
+                            <div class="row">
+                              <div class="col-12 col-md-4 mb-3">
+                                <div class="card cards">
+                                  <div class="card-body">
+                                    <ul class="list-unstyled" style="line-height: 2">
+                                      <li><span class="fa fa-check text-success"></span><b>Title</b> : {{data.title}}
+                                      </li>
+                                      <li><span class="fa fa-check text-success"></span><b>First Name</b> :
+                                        {{data.first_name}}</li>
+                                      <li><span class="fa fa-check text-success"></span><b>Middle Name</b> :
+                                        {{data.middle_name}}</li>
+                                      <li><span class="fa fa-check text-success"></span><b>Last Name </b>:
+                                        {{data.last_name}} </li>
+                                      <!--  </ul>
+                                                      <ul class="list-unstyled" style="line-height: 2"> -->
+                                      <li *ngFor="let school of data.schools">
+                                        <span class="fa fa-check text-success"></span>
+                                        <b>schoolID</b> : {{school.schoolID}} -- {{school.schoolName}}
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-12 col-md-4 mb-3">
+                                <div class="card cards">
+                                  <div class="card-body">
+                                    <ul class="list-unstyled" style="line-height: 2">
+
+                                      <li><span class="fa fa-check text-success"></span><b>Phone Number</b> :
+                                        {{data.phone_number}} </li>
+                                      <li><span class="fa fa-check text-success"></span><b>Mobile Number </b>:
+                                        {{data.mobile_number}} </li>
+                                      <li><span class="fa fa-check text-success"></span><b>Email Address</b> :
+                                        {{data.email_address}} </li>
+                                      <li><span class="fa fa-check text-success"></span><b>Lane / Street</b>
+                                        :{{data.street}} </li>
+
+                                      <br>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-12 col-md-4 mb-3">
+                                <div class="card cards">
+                                  <div class="card-body">
+                                    <ul class="list-unstyled" style="line-height: 2">
+
+                                      <li><span class="fa fa-check text-success"></span><b>City</b> : {{data.city}}
+                                      </li>
+                                      <li><span class="fa fa-check text-success"></span><b>State</b> : {{data.state}}
+                                      </li>
+                                      <li><span class="fa fa-check text-success"></span><b>Country</b> :
+                                        {{data.country}} </li>
+                                      <li><span class="fa fa-check text-success"></span><b>Pin Code</b> :
+                                        {{data.pincode}} </li>
+                                      <li><span class="fa fa-check text-success"></span><b>Updated date </b>:
+                                        {{data.updated_date  | cynosureDateTimeZone:"YYYY-MM-DD HH:mm:ss" }}</li>
+                                      <li><span class="fa fa-check text-success"></span><b>Updated Name </b>:
+                                        {{data.updated_by_name}}</li>
+
+                                      <br> <br>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!--end-->
+                          </div>
+                        </td>
+                      </tr>
+
+                    </ng-container>
+
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="11">
+                        <mfBootstrapPaginator [rowsOnPageSet]="[5,50,100]"></mfBootstrapPaginator>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div id="edit" class="modal modal2 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Update Data</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <div class=" col-md-12">
+            <div class="row">
+              <div class="col-6 col-md-6 mb-3">
+                <input id="fn" type="text" class="form-control" name="fname" placeholder="School ID">
+                <input id="ln" type="text" class="form-control" name="fname" placeholder="School Name">
+                <input id="mn" type="text" class="form-control" name="fname" placeholder="Created Time">
+                <input id="an" type="text" class="form-control" name="fname" placeholder="Updated Time">
+                <input id="en" type="text" class="form-control" name="fname" placeholder="Lane / Street">
+
+                <input id="fn" type="text" class="form-control" name="fname" placeholder="Area ">
+                <input id="ln" type="text" class="form-control" name="fname" placeholder="City ">
+                <input id="mn" type="text" class="form-control" name="fname" placeholder="Pin Code">
+                <input id="an" type="text" class="form-control" name="fname" placeholder="State ">
+                <input id="en" type="text" class="form-control" name="fname" placeholder="Country ">
+
+                <input id="fn" type="text" class="form-control" name="fname" placeholder="Primary Contact Number ">
+                <input id="ln" type="text" class="form-control" name="fname" placeholder="Alternate Contact Number  ">
+              </div>
+
+              <div class="col-6 col-md-6 mb-3">
+                <input id="mn" type="text" class="form-control" name="fname" placeholder="Primary Email Address">
+                <input id="an" type="text" class="form-control" name="fname" placeholder="Alternate Email Address  ">
+                <input id="en" type="text" class="form-control" name="fname"
+                  placeholder="Primary Contact Person Contact Number ">
+
+                <input id="fn" type="text" class="form-control" name="fname"
+                  placeholder="Primary Contact Person Mobile Number ">
+                <input id="ln" type="text" class="form-control" name="fname"
+                  placeholder="Primary Contact Person Email Address ">
+                <input id="mn" type="text" class="form-control" name="fname"
+                  placeholder="Alternate Contact Person Name ">
+                <input id="an" type="text" class="form-control" name="fname"
+                  placeholder="Alternate Contact Person Contact Number">
+                <input id="en" type="text" class="form-control" name="fname"
+                  placeholder="Alternate Contact Person Mobile Number ">
+
+                <input id="mn" type="text" class="form-control" name="fname"
+                  placeholder="Alternate Contact Person Email Address ">
+                <input id="an" type="text" class="form-control" name="fname" placeholder="Created by">
+                <input id="en" type="text" class="form-control" name="fname" placeholder="Updated by">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="up" class="btn btnsu btn-warning" data-dismiss="modal">Update</button>
+          <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="delete" class="modal modal3 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Delete User</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Are you sure you want to delete {{delid.first_name}} -- {{delid.email_address}} ?</strong>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          <button type="button" id="del" class="btn btn-danger" data-dismiss="modal" (click)="deleteuser()">Yes</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="disabletodelete" class="modal modal3 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Delete User</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Active users cannot be deleted, please disable the user and try again</strong>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="del" class="btn btn-danger" data-dismiss="modal">OK</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="removeschooltodelete" class="modal modal3 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Delete User</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Kindly remove the associated Schools before deleting</strong>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="del" class="btn btn-danger" data-dismiss="modal">OK</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+
+          <form>
+            <!-- service-form -->
+            <div class="service-forms">
+
+              <div class="row">
+
+                <div class="">
+                  <div class="row">
+                    <div class="col-sm-12 multistep-form-section">
+
+                      <div class="col-12 col-sm-12 form-group">
+                        <p>you can add multiple user at once width same access type and permission</p>
+                        <div class="row">
+                          <div class="col-12 col-sm-4 form-group">
+                            <div class="form-group service-form-group">
+                              <label>Title</label>
+                              <label class="control-label sr-only" for="name"></label>
+                              <input type="text" placeholder="Title" class="form-control" required=""
+                                [(ngModel)]="model.title" name="title">
+                              <div class="form-icon"></div>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-4 form-group">
+                            <div class="form-group service-form-group">
+                              <label>First Name</label>
+                              <label class="control-label sr-only" for="name"></label>
+                              <input type="text" placeholder="First Name" class="form-control" required=""
+                                [(ngModel)]="model.first_name" name="first_name">
+                              <div class="form-icon"></div>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-4 form-group">
+                            <div class="form-group service-form-group">
+                              <label>Middle Name</label>
+                              <label class="control-label sr-only" for="name"></label>
+                              <input type="text" placeholder="Middle Name" class="form-control" required=""
+                                [(ngModel)]="model.middle_name" name="middle_name">
+                              <div class="form-icon"></div>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-4 form-group">
+                            <div class="form-group service-form-group">
+                              <label>Last Name</label>
+                              <label class="control-label sr-only" for="name"></label>
+                              <input type="text" placeholder="Last Name" class="form-control" required=""
+                                [(ngModel)]="model.last_name" name="last_name">
+                              <div class="form-icon"></div>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-4 form-group">
+                            <div class="form-group service-form-group">
+                              <label>Phone Number</label>
+                              <label class="control-label sr-only" for="phone"></label>
+                              <input type="number" placeholder=" Phone Number" class="form-control" required=""
+                                [(ngModel)]="model.phone_number" name="phone_number">
+                              <div class="form-icon"></div>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-4 form-group">
+                            <div class="form-group service-form-group">
+                              <label>Mobile Number</label>
+                              <label class="control-label sr-only" for="phone"></label>
+                              <input type="number" placeholder="Mobile Number" class="form-control" required=""
+                                [(ngModel)]="model.mobile_number" name="mobile_number">
+                              <div class="form-icon"></div>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-4 form-group">
+                            <div class="form-group service-form-group">
+                              <label>Email Address</label>
+                              <label class="control-label sr-only" for="email"></label>
+                              <input id="email" type="email" placeholder=" Email Address" class="form-control"
+                                required="" [(ngModel)]="model.email_address" name="email_address">
+                              <div class="form-icon"></div>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-4 form-group">
+                            <div class="form-group service-form-group">
+                              <label>Lane / Street</label>
+                              <label class="control-label sr-only" for="name"></label>
+                              <textarea id="name" type="text" placeholder="Lane / Street" class="form-control"
+                                required="" [(ngModel)]="model.street" name="street"></textarea>
+                              <div class="form-icon"></div>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-4 form-group">
+                            <div class="form-group service-form-group">
+                              <label>City</label>
+                              <label class="control-label sr-only" for="name"></label>
+                              <input id="name" type="text" placeholder="City" class="form-control" required=""
+                                [(ngModel)]="model.city" name="city">
+                              <div class="form-icon"></div>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-4 form-group">
+                            <div class="form-group">
+                              <label>select State</label>
+                              <label class="control-label sr-only" for="State"></label>
+                              <input id="name" type="text" placeholder="State" class="form-control" required=""
+                                [(ngModel)]="model.state" name="state">
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-4 form-group">
+                            <div class="form-group">
+                              <label>select Country</label>
+                              <label class="control-label sr-only" for="Country"></label>
+                              <input id="name" type="text" placeholder="Country" class="form-control" required=""
+                                [(ngModel)]="model.country" name="country">
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-4 form-group">
+                            <div class="form-group service-form-group">
+                              <label>Pin Code </label>
+                              <label class="control-label sr-only" for="phone"></label>
+                              <input id="phone" type="number" placeholder=" Pin Code " class="form-control" required=""
+                                [(ngModel)]="model.pincode" name="pincode">
+                              <div class="form-icon"></div>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-12 form-group" style="display: none">
+                            <div class="form-group service-form-group">
+                              <input id="myCheckbox" type="checkbox" checked>
+                              <label for="myCheckbox">&nbsp;Assign School</label>
+                            </div>
+                          </div>
+                          <div class="cols " style="display: none">
+                            <div class="col-12 col-sm-4 form-group">
+                              <div class="form-group service-form-group">
+                                <label>Select School </label>
+                                <input type="text" placeholder="Select School" class="form-control" required=""
+                                  name="date" list="cars" />
+                                <datalist id="cars">
+                                  <option>School 1</option>
+                                  <option>School 2</option>
+                                  <option>School 3</option>
+                                  <option>School 4</option>
+                                </datalist>
+                              </div>
+                            </div>
+
+                          </div>
+
+                          <div class="col-12 col-sm-12 form-group"> <br> <br>
+                            <button type="submit" name="singlebutton" class="btn px-gdn-btn btn-block mb10">Add
+                              user</button>
+                            <!-- to del (click) = "check(item)" -->
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="deleteLoading" id="snackbar" class="show">Deleting... Pleaser Wait!</div>
+</div>
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

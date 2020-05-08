@@ -1,0 +1,29 @@
+<perfect-scrollbar class="menu-scroll">
+  <ul [class.menu-collapse]="collapse | async">
+    <ng-template #recursiveList let-menuModel>
+      <li #menuItem *ngFor="let item of menuModel" (click)="toggleOpen(item); $event.stopPropagation()"
+        [ngClass]="{opened: item.opened, selected: item.selected, pointed: item === pointedMenuItem && !item.children}">
+        <a *ngIf="item.externalUrl; else withRouterLink" [attr.href]="item.externalUrl"
+          class="d-flex align-items-center">
+          <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+        </a>
+        <ng-template #withRouterLink>
+          <a *ngIf="!item.externalUrl" [routerLink]="item.routerUrl ? item.routerUrl : null"
+            class="d-flex align-items-center">
+            <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+          </a>
+        </ng-template>
+        <ng-template #itemContent>
+          <i *ngIf="item.iconClass || item.iconCode" class="{{item.iconClass}}">{{item.iconCode}}</i>
+          <span>{{item.title}}</span>
+          <div *ngIf="item.count">{{item.count}}</div>
+        </ng-template>
+        <ul *ngIf="item.children?.length > 0">
+          <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children }"></ng-container>
+        </ul>
+      </li>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: menuModel }"></ng-container>
+  </ul>
+  <div #pointer class="pointer"></div>
+</perfect-scrollbar>

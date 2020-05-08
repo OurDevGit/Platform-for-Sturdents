@@ -1,0 +1,153 @@
+h3.adsc {
+  margin-left: 0px;
+  background: #75a7d5;
+  padding: 10px;
+  margin-top: 0px !important;
+  color: #fff;
+}
+.frms {
+  padding: 10px;
+  margin-top: 0px;
+}
+.form-group {
+  margin-bottom: 0px;
+}
+.ng-select-container, .ng-select-container:hover, .ng-select-container:active, .ng-select-container:focus{
+  outline: none !important;
+}
+.ng-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container{
+   border-color:unset !important; 
+  outline: none !important;
+
+}
+.form-control.is-invalid, .was-validated .form-control:invalid {
+  border-color: #dc3545;
+  padding-right: 2.25rem;
+  background-repeat: no-repeat;
+  background-position: center right calc(2.25rem / 4);
+  background-size: calc(2.25rem / 2) calc(2.25rem / 2);
+  background-image: none;
+}
+.card {
+  position: relative;
+  display: inline-table;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0px solid transparent;
+  border-radius: 2px;
+  width: 100%;
+  max-width: 100%;
+}
+.mail-option {
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.mail-option .chk-all, .mail-option .btn-group a.btn {
+  background: none repeat scroll 0 0 #fcfcfc;
+  border: 1px solid #e7e7e7;
+  border-radius: 3px !important;
+  color: #afafaf;
+  display: inline-block;
+  padding: 5px 10px;
+}
+
+.mail-option a {
+  color: #2e75b6;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+.form-check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -0.25rem;
+}
+
+.custom-file-input {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: calc(0.9125rem + 2px);
+  margin: 0;
+  opacity: 0;
+  display: none;
+}
+.custom-file-label {
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  height: calc(2.9125rem + 2px);
+  padding: 0.8rem 2.8rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.59);
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  border-radius: 0.125rem;
+  box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0);
+}
+.custom-file-label:after {
+  background: linear-gradient(60deg, #2e75b6 0%, #9dc3e6 100%) !important;
+  color: #fff !important;
+  border: none;
+}
+
+.custom-file-input {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: calc(0.9125rem + 2px);
+  margin: 0;
+  opacity: 0;
+  display: none;
+}
+.custom-file-label {
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  height: calc(2.9125rem + 2px);
+  padding: 0.8rem 2.8rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.59);
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  border-radius: 0.125rem;
+  box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0);
+}
+.custom-file-label:after {
+  background: linear-gradient(60deg, #2e75b6 0%, #9dc3e6 100%) !important;
+  color: #fff !important;
+  border: none;
+}
+.table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
+  border-top: 0;
+  border: 1px #eee solid;
+  text-align: center;
+}
+
+.form-control[_ngcontent-c4] {
+  padding: 15px 16px 15px 12px;
+}
+.ng-select {
+  font-size: 11px!important;
+  color: #555!important;
+}
+.ng-value.ng-star-inserted p {
+  margin-bottom: 0px!important;
+  font-size: 10px!important;
+}
+.ng-select .ng-select-container {
+  background-color: #fff;
+  border-radius: 0px!important;
+  border: 1px solid #ccc;
+  min-height: 50px!important;
+  align-items: center;
+}

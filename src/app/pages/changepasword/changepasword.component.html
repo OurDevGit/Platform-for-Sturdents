@@ -1,0 +1,76 @@
+<div class="card mx-auto login">
+  <div class="card-body">
+
+    <h2 class="card-title text-center "> <img src="assets/images/cynosure.png"></h2>
+    <form>
+      <div class="form-group ">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="password">Old Password</label>
+          </div>
+          <div class="col-md-8">
+            <input #uname type="password" class="form-control col-md-12" id="password" required>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="passwords">New Password</label>
+          </div>
+          <div class="col-md-8">
+            <input #pass type="password" class="form-control col-md-12" id="passwords">
+            <p style="color:red;">Enter Valid Password</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="passwords">Confirm Password</label>
+          </div>
+          <div class="col-md-8">
+            <input #pass1 type="password" class="form-control col-md-12" id="cpasswords">
+            <p style="color:red;">Enter Valid Confirm Password</p>
+          </div>
+        </div>
+      </div>
+      <div class=" text-center">
+        <button (click)="changePassword(uname.value, pass.value, pass1.value)" type="button"
+          class="btn  btn btn-primary px-gdn-btn mb-3 mr-3" style="    padding: 10px;
+        ">Submit</button>
+
+      </div>
+
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+
+            <div class="modal-body">
+              <p class="lead" style="color: green; font-size: 20px;">Successfully Logged in</p>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-dialog" data-dismiss="modal">Ok</button>
+
+            </div>
+          </div><!-- modal-content -->
+        </div><!-- modal-dialog -->
+      </div><!-- modal -->
+
+      <!-- <button onclick="myFunction()">Try it</button> -->
+
+      <!-- <div class="text-center">Don’t have an account? <a routerLink="/register">Sign up</a></div> -->
+
+    </form>
+
+  </div>
+</div>
+<div class="text-nowrap footer">
+  2018 <a routerLink="/">Cynosure</a> all rights reserved
+</div>
+<!-- <img src="/assets/images/user-pages/login-img.png"> -->

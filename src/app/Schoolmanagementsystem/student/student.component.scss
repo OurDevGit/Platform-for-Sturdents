@@ -1,0 +1,420 @@
+#login-modal .modal-dialog {
+  width: 600px;
+  margin-left: 40%;
+}
+.btn-primary {
+  background-color: #13477e !important;
+  border-radius: 100px;
+}
+#login-modal input[type=text], input[type=password] {
+margin-top: 10px;
+}
+
+#div-login-msg,
+#div-lost-msg,
+#div-register-msg {
+  border: 1px solid #dadfe1;
+  height: 30px;
+  line-height: 28px;
+  transition: all ease-in-out 500ms;
+}
+
+#div-login-msg.success,
+#div-lost-msg.success,
+#div-register-msg.success {
+  border: 1px solid #68c3a3;
+  background-color: #c8f7c5;
+}
+
+#div-login-msg.error,
+#div-lost-msg.error,
+#div-register-msg.error {
+  border: 1px solid #eb575b;
+  background-color: #ffcad1;
+}
+
+#icon-login-msg,
+#icon-lost-msg,
+#icon-register-msg {
+  width: 30px;
+  float: left;
+  line-height: 28px;
+  text-align: center;
+  background-color: #dadfe1;
+  margin-right: 5px;
+  transition: all ease-in-out 500ms;
+}
+
+#icon-login-msg.success,
+#icon-lost-msg.success,
+#icon-register-msg.success {
+  background-color: #68c3a3 !important;
+}
+
+#icon-login-msg.error,
+#icon-lost-msg.error,
+#icon-register-msg.error {
+  background-color: #eb575b !important;
+}
+
+#img_logo {
+  max-height: 100px;
+  max-width: 100px;
+}
+
+/* #########################################
+ #    override the bootstrap configs     #
+ ######################################### */
+
+.modal-backdrop.in {
+  filter: alpha(opacity=50);
+  opacity: .8;
+}
+
+.modal-header {
+  min-height: 16.43px;
+  padding: 15px 15px 15px 15px;
+  border-bottom: 0px;
+}
+
+.modal-body {
+  position: relative;
+  padding: 5px 15px 5px 15px;
+}
+
+.modal-footer {
+  padding: 15px 15px 15px 15px;
+  text-align: left;
+  border-top: 0px;
+}
+
+.checkbox {
+  margin-bottom: 0px;
+}
+
+.btn {
+  border-radius: 0px;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+  outline: none;
+}
+
+.btn-lg, .btn-group-lg>.btn {
+  border-radius: 0px;
+}
+
+.btn-link {
+  padding: 5px 10px 0px 0px;
+  color: #95a5a6;
+}
+
+.btn-link:hover, .btn-link:focus {
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+.glyphicon {
+  top: 0px;
+}
+.btn-primary[_ngcontent-c4] {
+  background-color: transparent!important;
+ 
+}
+
+h3.adsc 
+{
+  margin-left: 0px;
+  background: #75a7d5;
+  padding: 10px;
+  margin-top: 0px !important;
+  color: #fff;
+  font-size: 18px !important;
+}
+label 
+{
+  display: block;
+  font-size: 14px;
+  color: #222;
+  margin-top: 0px;
+  font-family: OpenSans !important;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+  background-color: #0be3df;
+}
+.custom-control-input:checked~.custom-control-label::before {
+  color: #fff;
+  background-color: #0be3df;
+  box-shadow: none;
+}
+.custom-control-label::before {
+  position: absolute;
+  top: .25rem;
+  left: -1.5rem;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+  content: "";
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #dee2e6;
+  box-shadow: none;
+}
+.frms {
+  padding: 10px;
+  margin-top: 0px;
+}
+table tr.highlight {
+  background-color:#fff !important;
+  color: #ffffff;
+}
+.highlight td 
+{
+  color: #f10a0a !important;
+}
+
+.form-group 
+{
+  margin-bottom: 0px;
+}
+.card {
+  position: relative;
+  display: inline-table;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0px solid transparent;
+  border-radius: 2px;
+  width: 100%;
+  max-width: 100%;
+}
+.mail-option {
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.mail-option .chk-all, .mail-option .btn-group a.btn {
+  background: none repeat scroll 0 0 #fcfcfc;
+  border: 1px solid #e7e7e7;
+  border-radius: 3px !important;
+  color: #afafaf;
+  display: inline-block;
+  padding: 5px 10px;
+}
+.btn-group{
+  margin: 1px 5px 0px 4px;
+}
+
+.btn-group, .btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.mail-option a {
+  color: #2e75b6;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+.m-1 {
+  margin: 10px !important;
+}
+.form-check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -0.25rem;
+}
+.form-control {
+  display: block;
+  width: 100%;
+}
+.material-switch > input[type="checkbox"] {
+  display: none;
+}
+
+.material-switch > label {
+  cursor: pointer;
+  height: 0px;
+  position: relative;
+  width: 40px;
+}
+
+.material-switch > label::before {
+  background: rgb(0, 0, 0);
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  content: '';
+  height: 16px;
+  margin-top: -8px;
+  position:absolute;
+  opacity: 0.3;
+  transition: all 0.4s ease-in-out;
+  width: 40px;
+}
+.material-switch > label::after {
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  content: '';
+  height: 24px;
+  left: -4px;
+  margin-top: -8px;
+  position: absolute;
+  top: -4px;
+  transition: all 0.3s ease-in-out;
+  width: 24px;
+}
+.material-switch > input[type="checkbox"]:checked + label::before {
+  background: inherit;
+  opacity: 0.5;
+}
+.material-switch > input[type="checkbox"]:checked + label::after {
+  background: inherit;
+  left: 20px;
+}
+.delet a{
+  color:#2e75b6;
+}
+
+.delet {
+  border: 1px #eee solid;
+  padding: 4px;
+  color: blue($color: #000000)
+
+}
+.updea{
+  margin: 0px 5px 0px 1px;
+  background: transparent;
+  border: 1px #ffffff solid;
+  width: 47px;
+  border-radius: 100px;
+  padding: 0px;
+  cursor: pointer;
+}
+button:focus {
+
+  outline: 0px auto -webkit-focus-ring-color;
+
+}
+.updea i{
+  font-size: 20px;
+  color: #747575;
+}
+
+.material-icons {
+  font-size: 18px;
+}
+
+.excel {
+  margin: 0px 5px 5px 0px;
+  background: #2e75b6 !important;
+  padding: 5px;
+  float: right;
+  padding: 8px 15px 8px 8px;
+  color: #fff!important;
+
+}
+.px-gdn-btn {
+  background: linear-gradient(60deg, #2e75b6 0%, #9dc3e6 100%) !important;
+  color: #fff !important;
+}
+.application, .search, .form-control {
+  border: none!important;
+  background-color: transparent;
+  line-height: 40px;
+  box-shadow: none!important;
+}
+.input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control {
+  position: relative;
+  flex: 1 1 auto;
+  width: 1%;
+  margin-bottom: 0;
+}
+ .application, .search i {
+  color: rgba(0,0,0,.18);
+  cursor: pointer;
+  line-height: 38px;
+}
+.form-control[_ngcontent-c6] {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.form-controls{
+  border: 1px #ddd solid!important;
+}
+.form-control {
+  padding: .8rem 20px;
+  height: auto;
+}
+ .search {
+  max-width: 200px;
+  height: 40px;
+  border: 1px solid rgba(0,0,0,.12)!important;
+  z-index: 0;
+}
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+}
+.headers{
+  margin-bottom: 1em;
+}
+.table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
+  border-top: 0;
+  border: 1px #eee solid;
+  text-align: center;
+  word-break: break-word;
+}
+.updea i {
+  font-size: 20px;
+  color: #2e75b6;
+}
+td
+{
+  text-align: center!important;
+  color: #000;
+}
+.filter-popup .modal-content[_ngcontent-xlq-c4] 
+{
+  background-color: #5590c7 !important;
+  border: none;
+  border-radius: 0px;
+  outline: 0;
+}
+.studsearch-btn 
+{
+  font-size: 14px !important;
+  margin: auto;
+  padding: 10px 6px;
+  width: 90px;
+}
+#login-form 
+{
+  text-align: center;
+}
+.filter-popup .pull-right 
+{
+  background: #13477e !important;
+  border: none;
+  margin: 8px 0px 0px 0px;
+  color: #fff;
+  margin-left: 90% !important;
+  padding: 3px;
+}
+

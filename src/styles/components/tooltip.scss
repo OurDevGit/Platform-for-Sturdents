@@ -1,0 +1,29 @@
+.tooltip {
+  .arrow {
+    @include mat-elevation(4);
+  }
+  &.bs-tooltip-top {
+    .arrow::before {
+      margin-left: -$tooltip-arrow-width;
+    }
+  }
+  &.bs-tooltip-right {
+    .arrow::before {
+      margin-top: -$tooltip-arrow-width;
+    }
+  }
+  &.bs-tooltip-bottom {
+    .arrow::before {
+      margin-left: -$tooltip-arrow-width;
+    }
+  }
+  &.bs-tooltip-left {
+    .arrow::before {
+      margin-top: -$tooltip-arrow-width;
+    }
+  }
+}
+
+.tooltip-inner {
+  box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.5), 0px 7px 10px 1px rgba(0, 0, 0, 0.44), 0px 2px 16px 1px rgba(0, 0, 0, 0.42);
+}

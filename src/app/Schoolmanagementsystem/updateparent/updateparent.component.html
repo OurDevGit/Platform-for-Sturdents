@@ -1,0 +1,159 @@
+<div *ngIf="showdisplay === true">
+    <!-- Steps form -->
+    <div class="card">
+        <div _ngcontent-c6="" class="">
+            <div _ngcontent-c6="" class="row">
+                <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style="padding-right: 0px;padding-left: 0px;">
+                    <h3 _ngcontent-c6="" class="adsc">
+                        <i class="material-icons ng-star-inserted">people</i> &nbsp;&nbsp;Update Parents</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-body mb-4">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <!-- First Step -->
+                <div class="col-md-12">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Full Name</label>
+                            <input type="text" maxlength="30" placeholder="Full Name" formControlName="FullNames"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.FullNames.errors }"
+                                [(ngModel)]="addparent.fullName" name="fullName" value="" #fullName />
+                            <div *ngIf="submitted && f.FullNames.errors" class="invalid-feedback">
+                                <div *ngIf="f.FullNames.errors.required">Full Name is required</div>
+                                <div *ngIf="f.FullNames.errors.pattern">Please enter AlphaNumeric Characters only and
+                                    Max of 50-characters</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Short Name</label>
+                            <input type="text" maxlength="30" placeholder="Short Name" formControlName="ShortNames"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ShortNames.errors }"
+                                [(ngModel)]="addparent.shortName" name="shortName" value="" #shortName />
+                            <div *ngIf="submitted && f.ShortNames.errors" class="invalid-feedback">
+                                <div *ngIf="f.ShortNames.errors.required">Short Name is required</div>
+                                <div *ngIf="f.ShortNames.errors.pattern">Please enter AlphaNumeric Characters only and
+                                    Max of 30-characters</div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <label>Email</label>
+                            <input type="text" placeholder="Email" disabled formControlName="Emails"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Emails.errors }"
+                                [(ngModel)]="addparent.email" name="email" value="" #email />
+                            <div *ngIf="submitted && f.Emails.errors" class="invalid-feedback">
+                                <div *ngIf="f.Emails.errors.required">Email is required</div>
+                                <div *ngIf="f.Emails.errors.email">Enter Valid Email</div>
+                            </div>
+
+                        </div>
+                        <!--end6-->
+                        <div class="col-md-6">
+                            <label>Alternate Email</label>
+                            <input type="text" placeholder="Alternate Email" formControlName="altEmailIds"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.altEmailIds.errors }"
+                                [(ngModel)]="addparent.altEmailId" name="altEmailId" value="" #altEmailId />
+                            <div *ngIf="submitted && f.altEmailIds.errors" class="invalid-feedback">
+                                <div *ngIf="f.altEmailIds.errors.required">Alternate Email is required</div>
+                                <div *ngIf="f.altEmailIds.errors.email">Enter Valid Alternate Email </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Primary Mobile Number</label>
+                            <div class="row">
+                                <div class="col-md-6" style="padding-right: 10px;padding-left: 0px;">
+                                    <select class="form-control" id="exampleFormControlSelect1"
+                                        formControlName="GeoLocation2"
+                                        [ngClass]="{ 'is-invalid': submitted && f.GeoLocation2.errors }"
+                                        [(ngModel)]="addparent.pcountrycode" name="pcountrycode" value="" #pcountrycode>
+                                        <option value="" disabled>Select Country Code </option>
+                                        <ng-container *ngFor="let country of countrylist">
+
+                                            <option value="{{country.dial_code}}">{{country.name}}</option>
+                                        </ng-container>
+                                    </select>
+                                    <div *ngIf=" submitted && f.GeoLocation2.errors" class="invalid-feedback">
+                                        <div *ngIf=" submitted && f.GeoLocation2.errors">Select a country</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="padding-right: 0px;padding-left: 0px;">
+                                    <input type="number" maxlength="15" placeholder="Primary Mobile Number"
+                                        formControlName="primaryMobiles" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.primaryMobiles.errors }"
+                                        [(ngModel)]="addparent.primaryMobile" name="primaryMobile" value=""
+                                        #primaryMobile />
+                                    <div *ngIf="submitted && f.primaryMobiles.errors" class="invalid-feedback">
+                                        <div *ngIf="f.primaryMobiles.errors.required">Primary Mobile Numberis required
+                                        </div>
+                                        <div *ngIf="f.primaryMobiles.errors.pattern">Enter Valid Primary Mobile Number
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Secondary Mobile Number</label>
+                            <div class="row">
+                                <div class="col-md-6" style="padding-right: 10px;padding-left: 0px;">
+                                    <select class="form-control" id="exampleFormControlSelect1"
+                                        formControlName="GeoLocation11"
+                                        [ngClass]="{ 'is-invalid': submitted && f.GeoLocation11.errors }"
+                                        [(ngModel)]="addparent.altcountrycode" name="altcountrycode" value=""
+                                        #altcountrycode>
+                                        <ng-container *ngFor="let country of countrylist">
+                                            <option value="{{country.dial_code}}">{{country.name}}</option>
+                                        </ng-container>
+                                    </select>
+                                    <div *ngIf=" submitted && f.GeoLocation11.errors" class="invalid-feedback">
+                                        <div *ngIf=" submitted && f.GeoLocation11.errors">Select a country</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="padding-right: 0px;padding-left: 0px;">
+                                    <input type="number" maxlength="10" placeholder="Secondary Mobile Number"
+                                        formControlName="altMobiles" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.altMobiles.errors }"
+                                        [(ngModel)]="addparent.altMobile" name="altMobile" value="" #altMobile />
+                                    <div *ngIf="submitted && f.altMobiles.errors" class="invalid-feedback">
+                                        <div *ngIf="f.altMobiles.errors.required">Secondary Mobile Number is required
+                                        </div>
+                                        <div *ngIf="f.altMobiles.errors.pattern">Enter Valid Secondary Mobile Number
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--end6-->
+
+                    </div>
+                    <!--endrow-->
+
+                    <!--endrow-->
+
+                    <div class="row">
+
+                        <div class="col-md-2">
+                            <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted"
+                                name="singlebutton" type="submit" style="margin-top: 2em;">Update</button>
+
+                        </div>
+                    </div>
+                    <!--endrow-->
+                </div>
+                <!-- fourth Step -->
+            </form>
+        </div>
+    </div>
+    <!-- Steps form -->
+    <Br><br>
+
+</div>
+
+<div *ngIf="showdisplay === false">
+    <h3>! You Don't Have the Access</h3>
+</div>

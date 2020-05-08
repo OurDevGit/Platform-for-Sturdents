@@ -1,0 +1,122 @@
+@import 'elevation';
+
+//Simple line icons
+$simple-line-font-path: '../../node_modules/simple-line-icons/fonts/';
+
+//Colors
+$body-color: rgba(#000000, 0.59);
+$primary-color: #0be3df;
+$primary-color-2: #00c8fa;
+$light-color: #ffffff;
+
+$red: #ff0000;
+$yellow: #f4c22b;
+$green: #28a745;
+
+
+$theme-colors: (
+  primary: $primary-color,
+  secondary: #a7a7a7,
+  success: $green,
+  info: $primary-color-2,
+  warning: $yellow,
+  danger: $red,
+  light: $light-color,
+  dark: #343a40,
+  body: $body-color
+);
+
+//General
+$body-bg: #f2f3f7;
+$input-color: $body-color;
+$input-color-placeholder: rgba(#000000, 0.38);
+$grid-gutter-width: 16px;
+$border-radius: .125rem !default;
+$border-radius-lg: $border-radius;
+$border-radius-sm: $border-radius;
+$enable-shadows: true;
+
+//Typography
+$font-family-base: OpenSans;
+$font-size-base: 0.875rem;
+$font-size-lg: 1.125rem;
+$font-size-sm: 0.750rem;
+$font-weight-bold: 700 !default;
+$fa-font-path: "~font-awesome/fonts";
+$headings-font-weight: 400;
+$h1-font-size: 2.375rem !default;
+$h2-font-size: 1.875rem !default;
+$h3-font-size: 1.625rem !default;
+$h4-font-size: 1.375rem !default;
+$h5-font-size: 1.125rem !default;
+$small-font-size: 0.75rem;
+
+// Links
+$link-hover-color: $primary-color;
+
+//Cards
+$card-border-width: 0px;
+$card-border-radius: 2px;
+$card-border-color: transparent;
+$card-cap-bg: #ffffff;
+
+//Tooltips
+$tooltip-opacity: 0.7;
+$tooltip-padding-y: 8px;
+$tooltip-padding-x: 8px;
+$tooltip-arrow-width: 10px;
+$tooltip-arrow-height: 10px;
+
+//Tables
+$table-cell-padding-sm: 0.475rem;
+$table-border-color: rgba(#3e4f5c, 0.11);
+$table-accent-bg: rgba($primary-color, .1);
+$table-hover-bg: transparent;
+
+//Progress
+$progress-height: 4px;
+$progress-bg: rgba(0, 0, 0, 0.11);
+
+//Dropdown
+$dropdown-padding-y: 10px;
+$dropdown-border-color: transpatrent;
+$dropdown-border-width: 0;
+$dropdown-item-padding-y: 7px;
+$dropdown-item-padding-x: 1.5rem;
+$dropdown-divider-bg: rgba(#000000, 0.08);
+$dropdown-link-hover-color: $primary-color;
+$dropdown-link-hover-bg: inherit;
+$dropdown-link-color: $body-color;
+$zindex-dropdown: 1010;
+
+//Buttons
+$input-btn-padding-y: 0.8rem;
+$input-btn-padding-x: 2.8rem;
+$input-btn-padding-y-lg: $input-btn-padding-y;
+$input-btn-padding-x-lg: $input-btn-padding-x;
+$btn-box-shadow: none;
+$input-btn-focus-box-shadow: 0px 0px 7px 0px rgba(#09b5b2, 0.53);
+$btn-active-box-shadow: none;
+$btn-transition: background-color .15s ease-in-out, border-color .15s ease-in-out, color .15s ease-in-out, mat-elevation-transition-property-value();
+
+// Forms
+$input-bg: #ffffff;
+$input-color: $body-color;
+$input-border-color: rgba(#000000, 0.11);
+$input-box-shadow: 0px 0px 0px 0px rgba(#fff, 0);
+$input-focus-border-color: #0be3e0;
+$input-placeholder-color: rgba(#000000, 0.3);
+$input-group-addon-bg: #ffffff;
+$custom-file-button-color: #ffffff;
+$custom-control-indicator-box-shadow: none;
+
+// Form validation
+$form-feedback-valid-color: map-get($theme-colors, "success");
+$form-feedback-invalid-color: map-get($theme-colors, "danger");
+
+// Breadcrumbs
+$breadcrumb-item-padding: .5rem !default;
+$breadcrumb-margin-bottom: 1rem !default;
+$breadcrumb-bg: transparent;
+$breadcrumb-divider-color: $body-color;
+$breadcrumb-active-color: $primary-color;

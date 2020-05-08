@@ -1,0 +1,396 @@
+<div *ngIf="showdisplay === true">
+
+    <form>
+        <!-- service-form -->
+        <div class="service-forms">
+
+            <div class="rows">
+
+                <div class="">
+                    <div class="row">
+                        <div class="col-sm-12 multistep-form-section">
+
+                            <form class="frms" name="form" novalidate>
+                                <div class="row">
+
+                                    <div class="col-12 col-sm-12 form-group">
+                                        <form name="form" novalidate>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-6 form-group">
+                                                    <div class="row">
+                                                        <label>Title</label>
+                                                        <input type="text" placeholder="Title"
+                                                            class="form-control col-md-12" [(ngModel)]="model.title"
+                                                            name="title" pattern="^[a-zA-Z0-9_-\s]{2,150}$"
+                                                            #title="ngModel" />
+                                                        <div class="form-icon"></div>
+                                                        <p *ngIf="title.errors?.pattern" style="color:red">enter valid
+                                                            Title
+                                                        </p>
+                                                        <p *ngIf="(!title.errors?.pattern) && title.invalid && (title.dirty || title.touched)"
+                                                            style="color:red">Enter Title</p>
+                                                        <label>Middle Name</label>
+                                                        <input type="text" placeholder="Middle Name"
+                                                            class="form-control col-md-12" required=""
+                                                            [(ngModel)]="model.middle_name" name="middle_name"
+                                                            pattern="^[a-zA-Z0-9_-\s]{0,150}$" #middle_name="ngModel">
+                                                        <div class="form-icon"></div>
+                                                        <p *ngIf="middle_name.errors?.pattern" style="color:red">enter
+                                                            valid
+                                                            Middle Name</p>
+                                                        <p *ngIf="(!middle_name.errors?.pattern) && middle_name.invalid && (middle_name.dirty || middle_name.touched)"
+                                                            style="color:red">Enter Middle Name</p>
+                                                        <label>Lane / Street</label>
+                                                        <textarea id="name" type="text" placeholder="Lane / Street"
+                                                            class="form-control col-md-12" required=""
+                                                            [(ngModel)]="model.street" name="street"
+                                                            pattern="^[a-zA-Z0-9,_-\s]{2,150}$"
+                                                            #street="ngModel"></textarea>
+                                                        <div class="form-icon"></div>
+                                                        <p *ngIf="street.errors?.pattern" style="color:red">enter valid
+                                                            Lane
+                                                            / Street</p>
+                                                        <p *ngIf="(!street.errors?.pattern) && street.invalid && (street.dirty || street.touched)"
+                                                            style="color:red">Enter Lane / Street</p>
+                                                        <label> State</label>
+                                                        <input id="name" type="text" placeholder="State"
+                                                            class="form-control col-md-12" required=""
+                                                            [(ngModel)]="model.state" name="state"
+                                                            pattern="^[a-zA-Z0-9_-\s]{2,150}$" #state="ngModel">
+                                                        <p *ngIf="state.errors?.pattern" style="color:red">enter valid
+                                                            State
+                                                        </p>
+                                                        <p *ngIf="(!state.errors?.pattern) && state.invalid && (state.dirty || state.touched)"
+                                                            style="color:red">Enter State</p>
+                                                        <label> Country</label>
+                                                        <input id="name" type="text" placeholder="Country"
+                                                            class="form-control col-md-12" required=""
+                                                            [(ngModel)]="model.country" name="country"
+                                                            pattern="^[a-zA-Z0-9_-\s]{2,150}$" #country="ngModel">
+                                                        <p *ngIf="country.errors?.pattern" style="color:red">enter valid
+                                                            Country</p>
+                                                        <p *ngIf="(!country.errors?.pattern) && country.invalid && (country.dirty || country.touched)"
+                                                            style="color:red">Enter Country</p>
+                                                        <label>Mobile Number</label>
+                                                        <input type="text" placeholder="Mobile Number"
+                                                            class="form-control col-md-12" required=""
+                                                            [(ngModel)]="model.mobile_number" name="mobile_number"
+                                                            pattern="^\+(?:[0-9]●?){6,14}[0-9]$"
+                                                            #mobile_number="ngModel">
+                                                        <div class="form-icon"></div>
+                                                        <p *ngIf="mobile_number.errors?.pattern" style="color:red">enter
+                                                            valid Mobile Number (90....)</p>
+                                                        <p *ngIf="(!mobile_number.errors?.pattern) && mobile_number.invalid && (mobile_number.dirty || mobile_number.touched)"
+                                                            style="color:red">Enter Mobile Number</p>
+                                                        <label>Select Role</label>
+                                                        <select class="form-control col-md-12"
+                                                            id="exampleFormControlSelect1" name="roleID"
+                                                            [(ngModel)]="model.roleID">
+                                                            <ng-container *ngFor="let data of rolllist">
+                                                                <option value="{{data.id}}">{{data.title}}</option>
+                                                            </ng-container>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 col-sm-6 form-group">
+                                                    <div class="row">
+                                                        <label>First Name</label>
+                                                        <input type="text" placeholder="First Name"
+                                                            class="form-control col-md-12" required=""
+                                                            [(ngModel)]="model.first_name" name="first_name"
+                                                            pattern="^[a-zA-Z0-9_-\s]{2,150}$" #first_name="ngModel">
+
+                                                        <p *ngIf="first_name.errors?.pattern" style="color:red">enter
+                                                            valid
+                                                            First Name</p>
+                                                        <p *ngIf="(!first_name.errors?.pattern) && first_name.invalid && (first_name.dirty || first_name.touched)"
+                                                            style="color:red">Enter First Name</p>
+
+                                                        <label>Last Name</label>
+                                                        <input type="text" placeholder="Last Name"
+                                                            class="form-control col-md-12" required=""
+                                                            [(ngModel)]="model.last_name" name="last_name"
+                                                            pattern="^[a-zA-Z0-9_-\s]{0,150}$" #last_name="ngModel">
+
+                                                        <p *ngIf="last_name.errors?.pattern" style="color:red">enter
+                                                            valid
+                                                            Last Name</p>
+                                                        <p *ngIf="(!last_name.errors?.pattern) && last_name.invalid && (last_name.dirty || last_name.touched)"
+                                                            style="color:red">Enter Last Name</p>
+                                                        <label>City</label>
+                                                        <input id="name" type="text" placeholder="City"
+                                                            class="form-control col-md-12" required=""
+                                                            [(ngModel)]="model.city" name="city"
+                                                            pattern="^[a-zA-Z0-9_-\s]{2,150}$" #city="ngModel">
+
+                                                        <p *ngIf="city.errors?.pattern" style="color:red">enter valid
+                                                            City
+                                                        </p>
+                                                        <p *ngIf="(!city.errors?.pattern) && city.invalid && (city.dirty || city.touched)"
+                                                            style="color:red">Enter City</p>
+                                                        <label>Pin Code </label>
+                                                        <input id="phone" type="number" placeholder=" Pin Code "
+                                                            class="form-control col-md-12" required=""
+                                                            [(ngModel)]="model.pincode" name="pincode"
+                                                            pattern="^[0-9]{2,10}$" #pincode="ngModel">
+
+                                                        <p *ngIf="pincode.errors?.pattern" style="color:red">enter valid
+                                                            Pin
+                                                            Code</p>
+                                                        <p *ngIf="(!pincode.errors?.pattern) && pincode.invalid && (pincode.dirty || pincode.touched)"
+                                                            style="color:red">Enter Pin Code</p>
+                                                        <label>Phone Number</label>
+                                                        <input type="text" placeholder=" Phone Number"
+                                                            class="form-control col-md-12" required=""
+                                                            [(ngModel)]="model.phone_number" name="phone_number"
+                                                            pattern="^\+(?:[0-9]●?){6,14}[0-9]$"
+                                                            #phone_number="ngModel">
+
+                                                        <p *ngIf="phone_number.errors?.pattern" style="color:red">enter
+                                                            valid Phone Number (90....)</p>
+                                                        <p *ngIf="(!phone_number.errors?.pattern) && phone_number.invalid && (phone_number.dirty || phone_number.touched)"
+                                                            style="color:red">Enter Phone Number</p>
+                                                        <label>Email Address</label>
+                                                        <input id="email" type="email" placeholder=" Email Address"
+                                                            class="form-control col-md-12" required=""
+                                                            [(ngModel)]="model.email_address" name="email_address"
+                                                            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                                            #email_address="ngModel" disabled>
+
+                                                        <p *ngIf="email_address.errors?.pattern" style="color:red">enter
+                                                            valid Email Address</p>
+                                                        <p *ngIf="(!email_address.errors?.pattern) && email_address.invalid && (email_address.dirty || email_address.touched)"
+                                                            style="color:red">Enter Email Address</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 col-sm-10 form-group" style="display: none">
+                                                    <div class="form-group service-form-group">
+                                                        <input id="myCheckbox" type="checkbox" checked>
+                                                        <label for="myCheckbox">&nbsp;Assign School</label>
+                                                    </div>
+                                                </div>
+                                                <div class="cols " style="display: none">
+                                                    <div class="col-12 col-sm-10 form-group">
+                                                        <div class="form-group service-form-group">
+                                                            <label>Select School </label>
+                                                            <input type="text" placeholder="Select School"
+                                                                class="form-control col-md-8" required="" name="date"
+                                                                list="cars" />
+                                                            <datalist id="cars">
+                                                                <option>School 1</option>
+                                                                <option>School 2</option>
+                                                                <option>School 3</option>
+                                                                <option>School 4</option>
+                                                            </datalist>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-12 col-sm-12 form-group"> <br> <br>
+                                                    <div *ngIf="title.errors?.pattern ||
+                                      first_name.errors?.pattern ||
+                                      middle_name.errors?.pattern ||
+                                      last_name.errors?.pattern ||
+                                      phone_number.errors?.pattern ||
+                                      mobile_number.errors?.pattern ||
+                                      email_address.errors?.pattern ||
+                                      street.errors?.pattern ||
+                                      city.errors?.pattern ||
+                                      state.errors?.pattern ||
+                                      country.errors?.pattern ||
+                                      pincode.errors?.pattern
+                                      ;then content else other_content">here is ignored</div>
+                                                    <ng-template #content>
+                                                        <button name="singlebutton"
+                                                            class="btn px-gdn-btn btn-block mb10">Enter Valid data to
+                                                            submit</button>
+                                                    </ng-template>
+                                                    <ng-template #other_content>
+                                                        <button name="singlebutton"
+                                                            class="btn px-gdn-btn btn-block mb10"
+                                                            (click)="check()">Update user</button>
+                                                    </ng-template>
+
+                                                    <!-- <div>(click) = "check()"</div> -->
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<div *ngIf="showdisplay === false">
+    <h3>! You Don't Have the Access</h3>
+</div>
+
+<!-- <form>
+    service-form
+    <div class="service-forms">
+
+        <div class="row">
+
+<div class="">
+  <div class="row">
+     <div class="col-sm-12 multistep-form-section">
+
+        <div class="col-12 col-sm-12 form-group">
+            <p>you can add multiple user at once width same access type and permission</p>
+            <div class="row">
+            <div class="col-12 col-sm-4 form-group">
+                    <div class="form-group service-form-group">
+                            <label>Title</label>
+                        <label class="control-label sr-only" for="name"></label>
+                        <input type="text" placeholder="Title" class="form-control" required=""  [(ngModel)]="model.title" name="title">
+                        <div class="form-icon"></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 form-group">
+                    <div class="form-group service-form-group">
+                            <label>First Name</label>
+                        <label class="control-label sr-only" for="name"></label>
+                        <input  type="text" placeholder="First Name" class="form-control" required=""  [(ngModel)]="model.first_name" name="first_name">
+                        <div class="form-icon"></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 form-group">
+                    <div class="form-group service-form-group">
+                            <label>Middle Name</label>
+                        <label class="control-label sr-only" for="name"></label>
+                        <input type="text" placeholder="Middle Name" class="form-control" required=""  [(ngModel)]="model.middle_name" name="middle_name">
+                        <div class="form-icon"></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 form-group">
+                    <div class="form-group service-form-group">
+                            <label>Last Name</label>
+                        <label class="control-label sr-only" for="name"></label>
+                        <input type="text" placeholder="Last Name" class="form-control" required=""  [(ngModel)]="model.last_name" name="last_name">
+                        <div class="form-icon"></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 form-group">
+                    <div class="form-group service-form-group">
+                            <label>Phone Number</label>
+                        <label class="control-label sr-only" for="phone"></label>
+                        <input type="number" placeholder=" Phone Number" class="form-control" required=""  [(ngModel)]="model.phone_number" name="phone_number">
+                        <div class="form-icon"></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 form-group">
+                    <div class="form-group service-form-group">
+                            <label>Mobile Number</label>
+                        <label class="control-label sr-only" for="phone"></label>
+                        <input  type="number" placeholder="Mobile Number" class="form-control" required=""  [(ngModel)]="model.mobile_number" name="mobile_number">
+                        <div class="form-icon"></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 form-group">
+                    <div class="form-group service-form-group">
+                            <label>Email Address</label>
+                        <label class="control-label sr-only" for="email"></label>
+                        <input id="email" type="email" placeholder=" Email Address" class="form-control" required=""  [(ngModel)]="model.email_address" name="email_address">
+                        <div class="form-icon"></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 form-group">
+                    <div class="form-group service-form-group">
+                            <label>Lane / Street</label>
+                        <label class="control-label sr-only" for="name"></label>
+                        <textarea id="name" type="text" placeholder="Lane / Street" class="form-control" required=""  [(ngModel)]="model.street" name="street"></textarea>
+                        <div class="form-icon"></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 form-group">
+                    <div class="form-group service-form-group">
+                            <label>City</label>
+                        <label class="control-label sr-only" for="name"></label>
+                        <input id="name" type="text" placeholder="City" class="form-control" required=""  [(ngModel)]="model.city" name="city">
+                        <div class="form-icon"></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 form-group">
+                        <div class="form-group">
+                                <label>select State</label>
+                            <label class="control-label sr-only" for="State"></label>
+                            <input id="name" type="text" placeholder="State" class="form-control" required=""  [(ngModel)]="model.state" name="state">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-4 form-group">
+                            <div class="form-group">
+                                    <label>select Country</label>
+                                <label class="control-label sr-only" for="Country"></label>
+                                <input id="name" type="text" placeholder="Country" class="form-control" required=""  [(ngModel)]="model.country" name="country">
+                            </div>
+                        </div>
+
+                  <div class="col-12 col-sm-4 form-group">
+                    <div class="form-group service-form-group">
+                            <label>Pin Code  </label>
+                        <label class="control-label sr-only" for="phone"></label>
+                        <input id="phone" type="number" placeholder=" Pin Code " class="form-control" required=""  [(ngModel)]="model.pincode" name="pincode">
+                        <div class="form-icon"></div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 form-group" style="display: none">
+                    <div class="form-group service-form-group">
+                        <input id="myCheckbox"  type="checkbox" checked>
+                         <label for="myCheckbox">&nbsp;Assign School</label>
+                    </div>
+                </div>
+                <div class="cols " style="display: none">
+                    <div class="col-12 col-sm-4 form-group">
+                        <div class="form-group service-form-group">
+                                <label>Select School </label>
+                            <input type="text" placeholder="Select School" class="form-control" required="" name="date"  list="cars" />
+                            <datalist id="cars">
+                              <option>School 1</option>
+                              <option>School 2</option>
+                              <option>School 3</option>
+                              <option>School 4</option>
+                            </datalist>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <div class="col-12 col-sm-12 form-group"> <br> <br>
+                    <button type="submit" name="singlebutton" class="btn px-gdn-btn btn-block mb10"   (click) = "check()" >Update</button>
+
+                </div>  </div>
+
+  </div>
+
+     </div>
+  </div>
+
+</div>
+
+        </div>
+    </div>
+</form>
+ -->

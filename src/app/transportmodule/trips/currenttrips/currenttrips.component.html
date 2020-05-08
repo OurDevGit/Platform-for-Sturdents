@@ -1,0 +1,214 @@
+
+<div *ngIf="showdisplay === true">
+
+<div class="card">
+  <div class="row">
+    <div _ngcontent-c6="" class="col">
+      <h3 _ngcontent-c6="" class="adsc"><i class="material-icons ng-star-inserted">business</i>
+        &nbsp; Start Trips</h3>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4">
+        <label>Select Route</label>
+        <select class="form-control" id="select-route" name="pcountrycode" value="" [(ngModel)]="routeInfo.RouteId"
+          (change)="selectRoute($event.target.value)">
+          <option value="">Select to Route</option>
+          <ng-container *ngFor="let data of routesIds">
+            <option value="{{data.routeId}}">{{data.routeName}}</option>
+          </ng-container>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label>Select Direction</label>
+        <select class="form-control" id="select-direction" name="pcountrycode" value="" [(ngModel)]="routeDirection">
+          <option value="">Select Direction</option>
+          <ng-container *ngFor="let data of directions">
+            <option value="{{data}}">{{data}}</option>
+          </ng-container>
+        </select>
+      </div>
+
+      <div class="col-md-4 addtrip-table">
+        <button type="button" mdbBtn class="success-start" mdbWavesEffect (click)="starTrip()">Start</button>
+      </div>
+    </div>
+
+
+    <div class="row" id="info-route-pannel">
+      <div class="col-md-8">
+        <ngb-accordion #acc="ngbAccordion">
+          <ngb-panel id="route-info" title="Route Information">
+            <ng-template ngbPanelContent>
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Route ID</label>
+                      <input type="text" placeholder="Route ID" style="margin-bottom: 5px;"
+                        class="form-control col-md-12" name="RouteId" value="" [(ngModel)]="routeInfo.RouteId"
+                        disabled />
+                    </div>
+
+                    <div class="col-md-6">
+                      <label>Route Name</label>
+                      <input type="text" placeholder="Route Name" style="margin-bottom: 5px;"
+                        class="form-control col-md-12" name="RouteName" value="" [(ngModel)]="routeInfo.RouteName"
+                        disabled />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>StartPoint</label>
+                      <input type="text" placeholder="StartPoint" style="margin-bottom: 5px;"
+                        class="form-control col-md-12" name="StartPoint" value="" [(ngModel)]="routeInfo.StartPoint"
+                        disabled />
+                    </div>
+
+                    <div class="col-md-6">
+                      <label>EndPoint</label>
+                      <input type="text" placeholder="EndPoint" style="margin-bottom: 5px;"
+                        class="form-control col-md-12" name="EndPoint" value="" [(ngModel)]="routeInfo.EndPoint"
+                        disabled />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <label>Areas Covered</label>
+                  <textarea type="text" placeholder="Areas Covered" class="form-control" 
+                    style="height: 118px !important; padding: 0px;" [(ngModel)]="routeInfo.AreasCovered"
+                    name="AreasCovered" disabled></textarea>
+                </div>
+              </div>
+
+
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</div>
+
+<div _ngcontent-c6="" class="row">
+  <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style=" padding-right: 1px;padding-left: 1px;">
+    <h3 _ngcontent-c6="" class="adsc">
+      <i class="material-icons ng-star-inserted">business</i> &nbsp; CURRENT RUNNING TRIPS</h3>
+  </div>
+
+</div>
+<div class="card">
+  <div class="row">
+    <div class="col-md-11"></div>
+    <div class="col-md-1">
+      <button type="button" class="btn btn-secondary excel" (click)='exportasExcell()'> <i
+          class="material-icons ng-star-inserted" style="color: #fff !important;">get_app</i> Excel</button>
+    </div>
+  </div>
+  <Br>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="tabl">
+          <form>
+            <table class="table table-bordered table-responsive" style="border-collapse:collapse;"
+            [mfData]="datas" #mf="mfDataTable" [mfRowsOnPage]="10">
+              <thead>
+                <tr>
+                  <th>
+                    #<mfDefaultSorter by="imei"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    Route Name<mfDefaultSorter by="imei"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    No.of Stops(waypoints) <mfDefaultSorter by="imei"> <i class="fa fa-sort"
+                        style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    No.of Stops(completed)<mfDefaultSorter by="adminNo"><i class="fa fa-sort"
+                        style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    Start time<mfDefaultSorter by="make"><i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    Stop time<mfDefaultSorter by="model"><i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    No of (Students)<mfDefaultSorter by="type"><i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+
+                  <th>
+                    Vehicle Number<mfDefaultSorter by="type"><i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+
+                  <th>
+                    Driver Name<mfDefaultSorter by="type"><i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    Driver Contact Number<mfDefaultSorter by="type"><i class="fa fa-sort"
+                        style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    MANAGE TRIP
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let item of mf.data; let i = index;">
+                  <tr [ngClass]="{'highlight' : item.isActive == false}" colspan="10" data-toggle="collapse"
+                    [attr.data-target]="item.dispid" class="accordion-toggle">
+
+                    <td>{{i + 1}}</td>
+                    <td>{{item.RouteName}}</td>
+                    <td>{{item.WaypointCount}}</td>
+                    <td>{{item.WaypointsReached}}</td>
+                    <td>{{item.TripStart}}</td>
+                    <!-- <td>{{item.TripEnd}}</td> -->
+                    <td></td>
+                    <td>{{item.noStudents}}</td>
+                    <td>{{item.VehicleID}}</td>
+                    <td>{{item.DriverName}}</td>
+                    <td>{{item.Driver.ContactNumber}}</td>
+
+                    <td><button type="button" class="updea" (click)="goDetail($event, item)"><i
+                          class="m-1 icon-note"></i></button></td>
+                  </tr>
+                </ng-container>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="12">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

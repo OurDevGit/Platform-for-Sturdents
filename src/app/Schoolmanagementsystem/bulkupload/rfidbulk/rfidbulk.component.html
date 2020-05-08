@@ -1,0 +1,22 @@
+<div _ngcontent-c6="" class="col-12 col-md-12 mb-3">
+  <h3 _ngcontent-c6="" class="adsc"> &nbsp;RFID Bulk Upload</h3>
+  <div class="col-md-6 pull-right"></div>
+</div>
+
+<div class="csv-file-chooser-section">
+  <input type="file" #fileImportInput name="File Upload" id="txtFileUpload" (change)="fileChangeListener($event)"
+    accept=".csv" style="float:left; " />
+  <button [ngClass]="{disabled : uploadbutton === false }" type="button" (click)="upload()"
+    class="btn btn-secondary excel">
+    <i class="fa fa-upload" aria-hidden="true"></i> &nbsp; Upload
+  </button>
+  <button type="button" (click)="reset()" class="btn btn-secondary excel">
+    <i class="fa fa-refresh" aria-hidden="true"></i> &nbsp; Reset
+  </button>
+</div>
+<h5>Note Your School-id is:{{schoolid}}</h5>
+
+<B *ngIf="uploadbutton === false">Error :</B>
+<ng-container *ngFor="let data of csvRecords">
+  <h5 style="color: #f90202 !important;">{{data}}</h5>
+</ng-container>

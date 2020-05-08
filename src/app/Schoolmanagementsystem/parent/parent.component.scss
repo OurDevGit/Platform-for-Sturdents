@@ -1,0 +1,213 @@
+h3.adsc 
+{
+  margin-left: 0px;
+  background: #75a7d5;
+  padding: 10px;
+  margin-top: 0px !important;
+  color: #fff;
+  font-size: 18px !important;
+}
+label {
+  display: block;
+  font-size: 14px;
+  color: #222;
+  margin-top: 0px;
+  font-family: OpenSans !important;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.btn{
+   border-radius: 0px!important;
+}
+table tr.highlight {
+  background-color: #fff !important;
+  color: #ffffff;
+}
+.highlight td 
+{
+    color:#f10a0a !important;
+}
+
+.table-responsive {
+  display: inline-table;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.frms {
+  padding: 10px;
+  margin-top: 0px;
+}
+.form-group {
+  margin-bottom: 0px;
+}
+.card {
+  position: relative;
+  display: inline-table;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0px solid transparent;
+  border-radius: 2px;
+  width: 100%;
+  max-width: 100%;
+}
+.mail-option {
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.mail-option .chk-all, .mail-option .btn-group a.btn {
+  background: none repeat scroll 0 0 #fcfcfc;
+  border: 1px solid #e7e7e7;
+  border-radius: 3px !important;
+  color: #afafaf;
+  display: inline-block;
+  padding: 5px 10px;
+}
+.btn-group{
+  margin: 1px 5px 0px 4px;
+}
+
+.btn-group, .btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.mail-option a {
+  color: #2e75b6;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+.form-check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -0.25rem;
+}
+.form-control {
+  display: block;
+  width: 100%;
+}
+.delet a{
+  color:#2e75b6;
+}
+
+.delet {
+  border: 1px #eee solid;
+  padding: 4px;
+ 
+}
+.updea{
+  margin: 0px 5px 0px 1px;
+  background: transparent;
+  border: 1px #ffffff solid;
+  width: 47px;
+  border-radius: 100px;
+  padding: 0px;
+  cursor: pointer;
+}
+button:focus {
+
+  outline: 0px auto -webkit-focus-ring-color;
+
+}
+.updea i{
+  font-size: 20px;
+  color: #747575;
+}
+// .material-icons {
+//   font-size: 18px;
+// }
+
+.excel {
+  margin: 0px 5px 5px 0px;
+  background: #2e75b6 !important;
+  padding: 5px;
+  float: right;
+  padding: 8px 15px 8px 8px;
+  color: #fff!important;
+
+}
+.px-gdn-btn {
+  background: linear-gradient(60deg, #2e75b6 0%, #9dc3e6 100%) !important;
+  color: #fff !important;
+  border-radius: 25px !important;
+  margin-top: 3em;
+}
+.application, .search, .form-control {
+  border: none!important;
+  background-color: transparent;
+  line-height: 40px;
+  box-shadow: none!important;
+}
+.input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control {
+  position: relative;
+  flex: 1 1 auto;
+  width: 1%;
+  margin-bottom: 0;
+}
+ .application, .search i {
+  color: rgba(0,0,0,.18);
+  cursor: pointer;
+  line-height: 38px;
+}
+.form-control[_ngcontent-c6] {
+  display: block;
+  width: 100%;
+  height: calc(3.4125rem + 2px);
+}
+.form-control {
+  padding: .8rem 20px;
+  height: calc(3.4125rem + 2px);
+}
+ .search {
+  max-width: 200px;
+  height: 40px;
+  border: 1px solid rgba(0,0,0,.12)!important;
+  z-index: 0;
+}
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+}
+.headers{
+  margin-bottom: 1em;
+}
+.table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
+  border-top: 0;
+  border: 1px #eee solid;
+  text-align: center;
+}
+.updea i {
+  font-size: 20px;
+  color: #2e75b6;
+}
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+  line-height: 1.428571;
+  vertical-align: top;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  text-align: center;
+}
+td{
+  text-align: center!important;
+  color: #000;
+}
+.table-responsive {
+
+  width: 100%;
+  overflow-x: auto;
+
+}
+.parent-table thead tr th 
+{
+  text-align: left !important;
+}

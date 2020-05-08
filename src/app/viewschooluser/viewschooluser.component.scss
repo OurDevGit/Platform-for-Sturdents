@@ -1,0 +1,51 @@
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+  padding: px!important;
+  line-height: 1.428571;
+  vertical-align: top;
+  border: 1px solid #ddd;
+  width: auto!important;
+}
+.table[_ngcontent-c9] > tbody[_ngcontent-c9] > tr[_ngcontent-c9] > td[_ngcontent-c9], .table[_ngcontent-c9] > tbody[_ngcontent-c9] > tr[_ngcontent-c9] > th[_ngcontent-c9], .table[_ngcontent-c9] > tfoot[_ngcontent-c9] > tr[_ngcontent-c9] > td[_ngcontent-c9], .table[_ngcontent-c9] > tfoot[_ngcontent-c9] > tr[_ngcontent-c9] > th[_ngcontent-c9], .table[_ngcontent-c9] > thead[_ngcontent-c9] > tr[_ngcontent-c9] > td[_ngcontent-c9], .table[_ngcontent-c9] > thead[_ngcontent-c9] > tr[_ngcontent-c9] > th[_ngcontent-c9] {
+  padding: px !important;
+  line-height: 1.428571;
+  vertical-align: top;
+  border: 1px solid #ddd;
+  width: auto!important;
+}
+.table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
+  border-top: 0;
+  border: 1px #eee solid;
+  text-align: center!important;
+}
+.th{
+  text-align: center!important;
+}
+
+.header
+{
+    width: 100%;
+    float: left;
+    background: #74a7d4;
+    margin-bottom: 2em;
+    border: 2px #74a7d4 solid;
+    padding: 0px;
+    height: 45px;
+    margin: 0px;
+}
+h3.adsc
+{
+    font-size: 14px !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+}
+h3.adsc i 
+{
+    font-size: 20px;
+    padding-left: 10px;
+}
+.excel 
+{
+    margin: 0px 0px 0px 10px;
+    background: #2e75b6;
+}

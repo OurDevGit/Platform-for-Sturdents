@@ -1,0 +1,405 @@
+<!-- Steps form -->
+<div class="card">
+  <div _ngcontent-c6="" class="">
+    <div _ngcontent-c6="" class="row">
+      <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style="padding-right: 1px;
+        padding-left: 1px;">
+        <h3 _ngcontent-c6="" class="adsc">
+          <i class="fa fa-graduation-cap" style="color:#fff!important;"></i> &nbsp;&nbsp;Student Details</h3>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="card-body mb-4" style="padding: 0px;">
+
+    <form class="frms" role="form" action="" method="post" novalidate>
+
+      <!-- First Step -->
+      <div class="col-md-12">
+        <!--endrow-->
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <label>School Student ID</label>
+              <input required type="text" placeholder="School Student ID" class="form-control col-md-12"
+                [(ngModel)]="updateustudent.schoolStudentID" name="SchoolID" value="" #SchoolID disabled>
+
+              <label>Short Name</label>
+              <input required type="text" placeholder="Short Name" class="form-control col-md-12"
+                [(ngModel)]="updateustudent.shortName" name="ShortName" value="" #ShortName disabled>
+            </div>
+
+            <label>Primary Mobile Number</label>
+            <div class="row">
+              <div class="col-md-3" style="padding-right: 10px;padding-left: 0px;">
+                <input required type="text" placeholder="country code" class="form-control col-md-12"
+                  [(ngModel)]="updateustudent.pcountrycode" name="pcountrycode" value="" #pcountrycode disabled>
+
+              </div>
+              <div class="col-md-9" style="padding-right: 0px;padding-left: 0px;">
+                <input type="text" placeholder="Primary Mobile Number" class="form-control col-md-12"
+                  [(ngModel)]="updateustudent.pMobile" name="pMobile" value="" #pMobile disabled />
+              </div>
+            </div>
+            <div class="row">
+              <label>Geo Location</label>
+              <input required type="text" placeholder="Geo Location" class="form-control col-md-12"
+                [(ngModel)]="updateustudent.geoLocation" name="GeoLocation" value="" #GeoLocation disabled>
+              <label>Academic Year</label>
+              <input type="text" placeholder="Academic Year" class="form-control col-md-12"
+                [(ngModel)]="updateustudent.acadamicYear" name="acadamicYear" value="" #acadamicYear disabled />
+              <label>Last update date & time</label>
+              <input required type="text" placeholder="updateDate" class="form-control col-md-12" name="updateDate"
+                value="{{updateustudent.updateDate | cynosureDateTimeZone: 'YYYY-MM-DD HH:mm:ss'}}" #updateDate
+                disabled>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="row">
+              <label>Full Name</label>
+              <input required type="text" placeholder="Full Name" class="form-control col-md-12"
+                [(ngModel)]="updateustudent.fullName" name="FullName" value="" #FullName disabled>
+              <label>Address</label>
+              <textarea style="" required type="text" placeholder="Address" class="form-control col-md-12"
+                [(ngModel)]="updateustudent.address" name="Address" value="" #Address disabled></textarea>
+            </div>
+            <label>Secondory Mobile Number</label>
+            <div class="row">
+              <div class="col-md-3" style="padding-right: 10px;padding-left: 0px;">
+                <input required type="text" placeholder="country code" class="form-control col-md-12"
+                  [(ngModel)]="updateustudent.scountrycode" name="scountrycode" value="" #scountrycode disabled>
+              </div>
+              <div class="col-md-9" style="padding-right: 0px;padding-left: 0px;">
+                <input type="text" placeholder="Secondory Mobile Number" class="form-control col-md-12"
+                  [(ngModel)]="updateustudent.sMobile" name="sMobile" value="" #sMobile disabled />
+              </div>
+
+            </div>
+            <div class="row">
+              <label>Class</label>
+              <input required type="text" placeholder="Class" class="form-control col-md-12"
+                [(ngModel)]="updateustudent.gradeName" name="Grade" value="" #Grade disabled>
+              <label>Update by</label>
+              <input required type="text" placeholder="" class="form-control col-md-12"
+                [(ngModel)]="updateustudent.updateName" name="updateName" value="" #updateName disabled>
+
+            </div>
+
+          </div>
+        </div>
+        <!--endrow-->
+
+        <div class="row">
+          <div class="form-group service-form-group col-md-12">
+            <div class="row">
+              <div class="col-md-2">
+                <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted" name="singlebutton"
+                  type="submit" data-toggle="modal" data-target="#disable" *ngIf="updateustudent.isActive === true">
+                  Disable</button>
+                <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted" name="singlebutton"
+                  type="submit" data-toggle="modal" data-target="#disable1" *ngIf="updateustudent.isActive === false">
+                  Enable</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--endrow-->
+
+        <!--endrow-->
+
+      </div>
+      <!-- fourth Step -->
+    </form>
+  </div>
+</div>
+<!-- Steps form -->
+<Br><br>
+
+<!-- Steps form -->
+<div class="card">
+  <div _ngcontent-c6="" class="">
+    <div _ngcontent-c6="" class="row">
+      <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style="padding-right: 1px;
+          padding-left: 1px;">
+        <h3 _ngcontent-c6="" class="adsc">
+          <i class="material-icons ng-star-inserted" style="color: #fff;">people</i> &nbsp;&nbsp;Add Parents</h3>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- <form  [formGroup]="registerForm1" (ngSubmit)="onSubmit1()"> -->
+  <div class="mb-4" style="padding-left: 30px;">
+    <div class="row">
+      <div class="col-md-6">
+        <label>Email</label>
+        <div class="row">
+          <div class="col-md-9" style="padding-right: 10px;padding-left: 0px;">
+            <input required type="text" placeholder="Email" class="form-control col-md-12" [(ngModel)]="addparent.email"
+              name="email" value="" #email>
+          </div>
+          <div class="col-md-3">
+            <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted"
+              (click)="checkemail(email.value)"><i class="fa fa-plus-search"></i>&nbsp; Search</button>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="col-md-6">
+
+      </div>
+
+      <div class="col-md-1">
+
+      </div>
+      <div class="col-md-5">
+        <label *ngIf="message" style="color:red;">New User</label>
+        <label *ngIf="message1" style="color:red;">Enter Email</label>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row"> -->
+
+  <!-- <div class="form-group service-form-group col-md-5">
+                   
+              <div class="form-group service-form-group col-md-6">
+                <div class="row"> -->
+
+  <!-- </div>
+          </div>
+        </div> -->
+  <!-- </div> -->
+
+  <!-- </form> -->
+  <div class="card-body mb-4">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- First Step -->
+      <div class="col-md-12">
+        <!--endrow-->
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="row">
+              <label>Email</label>
+              <input required type="text" placeholder="Email" formControlName="Emails" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.Emails.errors }" class="form-control col-md-12"
+                [(ngModel)]="addparent.email" name="email" value="" #email>
+              <div class="form-icon"></div>
+              <div *ngIf="submitted && f.Emails.errors" class="invalid-feedback">
+                <div *ngIf="f.Emails.errors.required">Email is required</div>
+                <div *ngIf="f.Emails.errors.email">Email must be a valid email address</div>
+              </div>
+              <label>Full Name</label>
+              <input required type="text" placeholder="Full Name" class="form-control col-md-12"
+                formControlName="FullNames" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.FullNames.errors }" [(ngModel)]="addparent.fullName"
+                name="fullName" value="" #fullName>
+              <div class="form-icon"></div>
+              <div *ngIf="submitted && f.FullNames.errors" class="invalid-feedback">
+                <div *ngIf="f.FullNames.errors.required">Full Name is required</div>
+                <div *ngIf="f.FullNames.errors.pattern">Enter valid Full Name </div>
+              </div>
+            </div>
+            <div class="row">
+              <label>Primary Mobile code</label>
+              <select class="form-control col-md-12" id="exampleFormControlSelect1" formControlName="GeoLocation2"
+                [ngClass]="{ 'is-invalid': submitted && f.GeoLocation2.errors }" [(ngModel)]="addparent.pcountrycode"
+                name="pcountrycode" value="" #pcountrycode>
+                <ng-container *ngFor="let country of countrylist">
+                  <option value="{{country.dial_code}}">{{country.name}}</option>
+                </ng-container>
+              </select>
+              <div *ngIf=" submitted && f.GeoLocation2.errors" class="invalid-feedback">
+                <div *ngIf=" submitted && f.GeoLocation2.errors">Select a country</div>
+              </div>
+            </div>
+            <div class="row">
+              <label>Secondary Mobile code</label>
+              <select class="form-control" id="exampleFormControlSelect1" formControlName="GeoLocation3"
+                [ngClass]="{ 'is-invalid': submitted && f.GeoLocation2.errors }" [(ngModel)]="addparent.altcountrycode"
+                name="altcountrycode" value="" #altcountrycode>
+                <ng-container *ngFor="let country of countrylist">
+                  <option value="{{country.dial_code}}">{{country.name}}</option>
+                </ng-container>
+              </select>
+              <div *ngIf=" submitted && f.GeoLocation3.errors" class="invalid-feedback">
+                <div *ngIf=" submitted && f.GeoLocation3.errors">Select a country</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Alternate Email </label>
+            <input required type="text" placeholder=" Alternate Email" class="form-control col-md-12"
+              formControlName="altEmailIds" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.altEmailIds.errors }" [(ngModel)]="addparent.altEmailId"
+              name="altEmailId" value="" #altEmailId>
+            <div class="form-icon"></div>
+            <div *ngIf="submitted && f.altEmailIds.errors" class="invalid-feedback">
+              <div *ngIf="f.altEmailIds.errors.required">Alternate Emai is required</div>
+              <div *ngIf="f.altEmailIds.errors.email">Alternate Email must be a valid email address</div>
+            </div>
+
+            <label>Short Name</label>
+            <input required type="text" placeholder="Short Name" class="form-control col-md-12"
+              formControlName="ShortNames" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.ShortNames.errors }" [(ngModel)]="addparent.shortName"
+              name="shortName" value="" #shortName>
+            <div class="form-icon"></div>
+            <div *ngIf="submitted && f.ShortNames.errors" class="invalid-feedback">
+              <div *ngIf="f.ShortNames.errors.required">Short Name is required</div>
+              <div *ngIf="f.ShortNames.errors.pattern">Enter valid Short Name</div>
+            </div>
+
+            <label>Primary Mobile Number</label>
+            <input required type="text" placeholder="Primary Mobile Number" class="form-control col-md-12"
+              formControlName="primaryMobiles" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.primaryMobiles.errors }" [(ngModel)]="addparent.primaryMobile"
+              name="primaryMobile" value="" #primaryMobile>
+            <div class="form-icon"></div>
+            <div *ngIf="submitted && f.primaryMobiles.errors" class="invalid-feedback">
+              <div *ngIf="f.primaryMobiles.errors.required">Primary Mobile Number is required</div>
+              <div *ngIf="f.primaryMobiles.errors.pattern">Enter valid Primary Mobile Number</div>
+            </div>
+
+            <label>Secondary Mobile Number</label>
+            <input required type="text" placeholder="Secondary Mobile Number" class="form-control col-md-12"
+              formControlName="altMobiles" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.altMobiles.errors }" [(ngModel)]="addparent.altMobile"
+              name="altMobile" value="" #altMobile>
+            <div class="form-icon"></div>
+            <div *ngIf="submitted && f.altMobiles.errors" class="invalid-feedback">
+              <div *ngIf="f.altMobiles.errors.required">Secondary Mobile Number is required</div>
+              <div *ngIf="f.altMobiles.errors.pattern">Enter valid Secondary Mobile Number</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!--endrow-->
+
+        <div class="row">
+
+          <div class="col-md-2">
+            <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted" name="singlebutton"
+              type="submit"> Add</button>
+          </div>
+        </div>
+        <!--endrow-->
+      </div>
+      <!-- fourth Step -->
+    </form>
+  </div>
+</div>
+<!-- Steps form -->
+<Br><br>
+
+<form>
+  <!-- service-form -->
+  <div class="service-form" style="margin-top: 0em!important;">
+
+    <div class="">
+
+      <div class="col">
+        <div class="">
+          <div class="row">
+            <div _ngcontent-c6="" class="col-md-12" style="margin-bottom:10px;">
+              <button _ngcontent-c6="" _ngcontent-c7="" *ngIf="sendbutton == 'true'"
+                class="btn px-gdn-btn btn-block  col-md-2 mb10 ng-star-inserted pull-right" (click)="send()"> Send
+                Mail</button>
+              <button _ngcontent-c6="" _ngcontent-c7="" *ngIf="sendbutton == 'false'"
+                class="btn px-gdn-btn btn-block  col-md-2 mb10 ng-star-inserted pull-right" disabled> Send Mail</button>
+
+            </div>
+            <br>
+            <div class="tabl">
+
+              <table class="table table-bordered table-responsive"
+                style="border-collapse:collapse;display: inline-table;">
+                <thead>
+                  <tr>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Short Name</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of datas">
+                    <tr colspan="6" data-toggle="collapse" [attr.data-target]="data.dispid" class="accordion-toggle">
+                      <td>{{data.parent.email}}</td>
+                      <td>{{data.parent.fullName}}</td>
+                      <td>{{data.parent.shortName}}</td>
+                      <td><button type="button" data-toggle="modal" data-target="#delete" data-uid="1"
+                          class="delete btn btn-danger btn-sm" (click)="deleteacadamic($event, data)"><i
+                            _ngcontent-c6="" class="m-1 icon-close"></i></button></td>
+                    </tr>
+
+                  </ng-container>
+
+                </tbody>
+              </table>
+              <!-- <div *ngIf="loading" ><div class="loader text-center"></div></div> -->
+
+              <div class="card-footer p-0">
+                <!-- <ngb-pagination [collectionSize]="collsize" [(page)]="advancedPage" (pageChange)="newsync()" [boundaryLinks]="true" ></ngb-pagination> -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<div id="disable" class="modal modal4 fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Disbale Data</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+
+      </div>
+      <div class="modal-body">
+        <strong>Are you sure you want to Disbale these Data </strong>
+
+      </div>
+      <div class="modal-footer">
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+          class="btn btn-default" data-dismiss="modal">No</button>
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+          class="btn btn-danger" data-dismiss="modal" (click)="Disable()">Yes</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="disable1" class="modal modal4 fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Enable Data</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+
+      </div>
+      <div class="modal-body">
+        <strong>Are you sure you want to Enable thiese Data </strong>
+
+      </div>
+      <div class="modal-footer">
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+          class="btn btn-default" data-dismiss="modal">No</button>
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+          class="btn btn-danger" data-dismiss="modal" (click)="Disable()">Yes</button>
+
+      </div>
+    </div>
+  </div>
+</div>

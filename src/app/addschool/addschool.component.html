@@ -1,0 +1,385 @@
+<div *ngIf="showdisplay === true">
+<div>
+  <div style='display: block' *ngIf="is_submitting" id="vishnuoverlay">
+    <div class="myloader-wrap">
+      <div class="myloader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+  <div class="header">
+    <div class="">
+      <div class="row">
+        <div class="col-12 col-md-6 mb-3">
+          <h3 class="adsc"> <i class="material-icons ng-star-inserted">business</i> &nbsp;Create New School</h3>
+        </div>
+      </div>
+    </div><br>
+  </div>
+  <!-- Steps form -->
+  <div class="card">
+    <div class="card-body mb-4">
+      <form class="frms" role="form" action="" method="post" novalidate>
+        <!-- First Step -->
+        <div class="cols">
+          <div class="row">
+            <div class="form-group service-form-group col-md-6">
+              <label>School ID</label>
+              <input required type="text" placeholder="School ID" (input)="checkSchoolID($event.target.value)"
+                class="{{notuniqueid ? 'form-control col-md-12 is-invalid' : 'form-control col-md-12 '}}"
+                [(ngModel)]="model.schoolID" name="schoolID" pattern="^[a-zA-Z0-9_-\s]{1,150}$" #schoolID="ngModel">
+              <div class="form-icon"></div>
+              <p *ngIf="schoolID.errors?.pattern && (!notuniqueid)" style="color:red">Enter Valid School ID</p>
+              <p *ngIf="(!notuniqueid) && schoolID.invalid && (schoolID.dirty || schoolID.touched) && (!schoolID.errors?.pattern)"
+                style="color:red">Enter School ID</p>
+              <p *ngIf="notuniqueid" style="color:red"> School ID Already Exist</p>
+            </div>
+            <div class="form-group service-form-group col-md-6">
+              <label>School Name</label>
+              <input required type="text" placeholder="School Name" class="form-control col-md-12"
+                [(ngModel)]="model.schoolName" name="schoolName" pattern="^[a-zA-Z0-9_-\s]{1,150}$"
+                #schoolName="ngModel">
+              <div class="form-icon"></div>
+              <p *ngIf="schoolName.errors?.pattern" style="color:red">Enter Valid School Name</p>
+              <p *ngIf="(!schoolName.errors?.patter) && (schoolName.value == '') && schoolName.invalid && (schoolName.dirty || schoolName.touched)"
+                style="color:red">Enter School Name</p>
+            </div>
+          </div>
+        </div>
+        <!-- Second Step -->
+        <div class="cols">
+          <div class="col-md-12">
+            <h3 class="font-weight-bold pl-0 my-4 col-md-12"><strong>School Address</strong></h3>
+          </div>
+          <div class="row">
+            <div class="form-group service-form-group col-md-6">
+              <div class="row">
+                <label>Lane / Street</label>
+                <input required type="text" placeholder="Lane / Street" class="form-control col-md-12" required=""
+                  [(ngModel)]="model.schoolAddress_Lane" name="schoolAddress_Lane" pattern="^[a-zA-Z0-9_-\s]{1,150}$"
+                  #schoolAddress_Lane="ngModel">
+                <p *ngIf="schoolAddress_Lane.errors?.pattern" style="color:red">Enter Valid Lane / Street</p>
+                <p *ngIf="(!schoolAddress_Lane.errors?.pattern) && schoolAddress_Lane.invalid && (schoolAddress_Lane.dirty || schoolAddress_Lane.touched)"
+                  style="color:red">Enter Lane / Street</p>
+                <label> City</label>
+                <input required type="text" placeholder="City" class="form-control col-md-12" required=""
+                  [(ngModel)]="model.schoolAddress_City" name="schoolAddress_City" pattern="^[a-zA-Z0-9_-\s]{1,150}$"
+                  #schoolAddress_City="ngModel">
+                <p *ngIf="schoolAddress_City.errors?.pattern" style="color:red">Enter Valid City</p>
+                <p *ngIf="(!schoolAddress_City.errors?.pattern) && schoolAddress_City.invalid && (schoolAddress_City.dirty || schoolAddress_City.touched)"
+                  style="color:red">Enter City</p>
+                <label>State</label>
+                <label class="control-label sr-only" for="State"></label>
+                <input required type="text" placeholder="State" class="form-control col-md-12" required=""
+                  [(ngModel)]="model.schoolAddress_State" name="schoolAddress_State" pattern="^[a-zA-Z0-9_-\s]{1,150}$"
+                  #schoolAddress_State="ngModel">
+                <p *ngIf="schoolAddress_State.errors?.pattern" style="color:red">Enter Valid State</p>
+                <p *ngIf="(!schoolAddress_State.errors?.pattern) && schoolAddress_State.invalid && (schoolAddress_State.dirty || schoolAddress_State.touched)"
+                  style="color:red">Enter State</p>
+                <label>Primary Contact Number</label>
+              </div>
+              <div class="row">
+                <div class="col-md-4" style="padding-right:10px;padding-left: 0px;">
+                  <select class="form-control col-md-12" id="exampleFormControlSelect1"
+                    name="t_primary_Contact_Number_countrycode" [(ngModel)]="t_primary_Contact_Number_countrycode"
+                    (change)="resetselecterror(1)">
+                    <option value="Select Country Code1">Select Country Code</option>
+                    <ng-container *ngFor="let country of countrylist">
+                      <option value="{{country.dial_code}}">{{country.name}}</option>
+                    </ng-container>
+                  </select>
+                  <p style="color:red">{{er_countrycode1}}</p>
+                </div>
+                <div class="col-md-8" style="padding-right:0px;padding-left: 0px;">
+                  <input required id="phone" type="phone" placeholder="Primary Contact Number"
+                    class="form-control col-md-12" required="" [(ngModel)]="model.primary_Contact_Number"
+                    name="primary_Contact_Number" pattern="^[0-9+]{2,13}$" #primary_Contact_Number="ngModel">
+                  <div class="form-icon"></div>
+                  <p *ngIf="primary_Contact_Number.errors?.pattern" style="color:red">Enter Valid Primary Contact Number
+                    (90....)</p>
+                  <p *ngIf="(!primary_Contact_Number.errors?.pattern) && primary_Contact_Number.invalid && (primary_Contact_Number.dirty || primary_Contact_Number.touched)"
+                    style="color:red">Enter Primary Contact Number (90....)</p>
+                </div>
+              </div>
+              <label>Primary Email Address</label>
+              <label class="control-label sr-only" for="Email Address"></label>
+              <input type="email" placeholder="Primary  Email Address" class="form-control col-md-12" required=""
+                [(ngModel)]="model.primary_Email_Address" name="primary_Email_Address"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #primary_Email_Address="ngModel">
+              <div class="form-icon"></div>
+              <p *ngIf="primary_Email_Address.errors?.pattern" style="color:red">Enter Valid Email Address</p>
+              <p *ngIf="(!primary_Email_Address.errors?.pattern) && primary_Email_Address.invalid && (primary_Email_Address.dirty || primary_Email_Address.touched)"
+                style="color:red">Enter Email Address</p>
+              <label> TimeZone</label>
+              <select class="form-control col-md-12" id="exampleFormControlSelect1" name="timezone"
+                [(ngModel)]="model.timeZone">
+                <option value="Select Country Code1">Select TimeZone</option>
+                <ng-container *ngFor="let time of timezoneList">
+                  <option value="{{time.value}}">{{time.value}}</option>
+                </ng-container>
+              </select>
+            </div>
+            <div class="form-group service-form-group col-md-6">
+              <div class="row">
+                <label>Area</label>
+                <label class="control-label sr-only" for="name"></label>
+                <input required type="text" placeholder="Area" class="form-control col-md-12" required=""
+                  [(ngModel)]="model.schoolAddress_Area" name="schoolAddress_Area" pattern="^[a-zA-Z0-9_-\s]{1,150}$"
+                  #schoolAddress_Area="ngModel">
+                <div class="form-icon"></div>
+                <p *ngIf="schoolAddress_Area.errors?.pattern" style="color:red">Enter Valid Area</p>
+                <p *ngIf="(!schoolAddress_Area.errors?.pattern) && schoolAddress_Area.invalid && (schoolAddress_Area.dirty || schoolAddress_Area.touched)"
+                  style="color:red">Enter Area</p>
+                <label>Pin Code</label>
+                <label class="control-label sr-only" for="name"></label>
+                <input required type="number" placeholder="Pin Code" class="form-control col-md-12" required=""
+                  [(ngModel)]="model.schoolAddress_Pincode" name="schoolAddress_Pincode" pattern="^[0-9_-]{2,10}$"
+                  #schoolAddress_Pincode="ngModel">
+                <div class="form-icon"></div>
+                <p *ngIf="schoolAddress_Pincode.errors?.pattern" style="color:red">Enter Valid Pin Code</p>
+                <p *ngIf="(!schoolAddress_Pincode.errors?.pattern) && schoolAddress_Pincode.invalid && (schoolAddress_Pincode.dirty || schoolAddress_Pincode.touched)"
+                  style="color:red">Enter Pin Code</p>
+                <label>Country</label>
+                <label class="control-label sr-only" for="Country"></label>
+                <input required type="text" placeholder="Country" class="form-control col-md-12" required=""
+                  [(ngModel)]="model.schoolAddress_Country" name="schoolAddress_Country"
+                  pattern="^[a-zA-Z0-9_-\s]{1,150}$" #schoolAddress_Country="ngModel">
+                <p *ngIf="schoolAddress_Country.errors?.pattern" style="color:red">Enter Valid Country</p>
+                <p *ngIf="(!schoolAddress_Country.errors?.pattern) && schoolAddress_Country.invalid && (schoolAddress_Country.dirty || schoolAddress_Country.touched)"
+                  style="color:red">Enter Country</p>
+                <label>Alternate Contact Number</label>
+              </div>
+              <div class="row">
+                <div class="col-md-4" style="padding-right:10px;padding-left: 0px;">
+                  <select class="form-control col-md-12" id="exampleFormControlSelect1"
+                    name="t_alternate_Contact_Number_countrycode" [(ngModel)]="t_alternate_Contact_Number_countrycode"
+                    (change)="resetselecterror(2)">
+                    <option value="Select Country Code2">Select Country Code</option>
+                    <ng-container *ngFor="let country of countrylist">
+                      <option value="{{country.dial_code}}">{{country.name}}</option>
+                    </ng-container>
+                  </select>
+                  <p style="color:red">{{er_countrycode2}}</p>
+                </div>
+                <div class="col-md-8" style="padding-right:0px;padding-left: 0px;">
+                  <input id="phone" required type="phone" placeholder="Alternate Contact Number"
+                    class="form-control col-md-12" required="" [(ngModel)]="model.alternate_Contact_Number"
+                    name="alternate_Contact_Number" pattern="^[0-9+]{2,13}$" #alternate_Contact_Number="ngModel">
+                  <div class="form-icon"></div>
+                  <p *ngIf="alternate_Contact_Number.errors?.pattern" style="color:red">Enter Valid Contact Number</p>
+                  <p *ngIf="(!alternate_Contact_Number.errors?.pattern) && alternate_Contact_Number.invalid && (alternate_Contact_Number.dirty || alternate_Contact_Number.touched)"
+                    style="color:red">Enter Contact Number</p>
+                </div>
+                <label>Alternate Email Address</label>
+                <label class="control-label sr-only" for="email"></label>
+                <input required type="email" placeholder="Alternate Email Address" class="form-control col-md-12"
+                  required="" [(ngModel)]="model.alternate_Email_Address" name="alternate_Email_Address"
+                  pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #alternate_Email_Address="ngModel">
+                <div class="form-icon"></div>
+                <p *ngIf="alternate_Email_Address.errors?.pattern" style="color:red">Enter Valid Email Address</p>
+                <!-- <p *ngIf="(!alternate_Email_Address.errors?.pattern) && alternate_Email_Address.invalid && (alternate_Email_Address.dirty || alternate_Email_Address.touched)" style="color:red">Enter Email Address</p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Third Step -->
+        <div class="cols">
+          <div class="col-md-12">
+            <h3 class="font-weight-bold pl-0 my-4 col-md-12"><strong>Primary Contact Person</strong></h3>
+          </div>
+          <div class="row">
+            <div class="form-group service-form-group col-md-6">
+              <div class="row">
+                <label> Full Name</label>
+                <input required type="text" placeholder="Full Name" class="form-control col-md-12" required=""
+                  [(ngModel)]="model.primary_Contact_Person_Name" name="primary_Contact_Person_Name"
+                  pattern="^[a-zA-Z0-9_-\s]{1,150}$" #primary_Contact_Person_Name="ngModel">
+                <div class="form-icon"></div>
+                <p *ngIf="primary_Contact_Person_Name.errors?.pattern" style="color:red">Enter Valid Full Name</p>
+                <p *ngIf="(!primary_Contact_Person_Name.errors?.pattern) && primary_Contact_Person_Name.invalid && (primary_Contact_Person_Name.dirty || primary_Contact_Person_Name.touched)"
+                  style="color:red">Enter Full Name</p>
+              </div>
+              <label> Contact Number</label>
+              <div class="row">
+                <div class="col-md-3" style="padding-right:10px;padding-left: 0px;">
+                  <select class="form-control col-md-12" placeholder="Select School" id="exampleFormControlSelect1"
+                    name="t_primary_Contact_Person_contact_number_countrycode"
+                    [(ngModel)]="t_primary_Contact_Person_contact_number_countrycode" (change)="resetselecterror(3)">
+                    <option value="Select Country Code3">Select Country Code</option>
+                    <ng-container *ngFor="let country of countrylist">
+                      <option value="{{country.dial_code}}">{{country.name}}</option>
+                    </ng-container>
+                  </select>
+                  <p style="color:red">{{er_countrycode3}}</p>
+                </div>
+                <div class="col-md-9" style="padding-right:0px;padding-left: 0px;">
+                  <input type="text" placeholder=" Contact Number" class="form-control col-md-12" required=""
+                    [(ngModel)]="model.primary_Contact_Person_contact_number"
+                    name="primary_Contact_Person_contact_number" pattern="^[0-9+]{2,13}$"
+                    #primary_Contact_Person_contact_number="ngModel">
+                  <div class="form-icon"></div>
+                  <p *ngIf="primary_Contact_Person_contact_number.errors?.pattern" style="color:red">Enter Valid Contact
+                    Number</p>
+                  <p *ngIf="(!primary_Contact_Person_contact_number.errors?.pattern) && primary_Contact_Person_contact_number.invalid && (primary_Contact_Person_contact_number.dirty || primary_Contact_Person_contact_number.touched)"
+                    style="color:red">Enter Contact Number</p>
+                </div>
+              </div>
+            </div>
+            <div class="form-group service-form-group col-md-6">
+              <div class="row">
+                <label> Email Address</label>
+                <input type="email" placeholder="Email Address" class="form-control col-md-12" required=""
+                  [(ngModel)]="model.primary_Contact_Person_email_address" name="primary_Contact_Person_email_address"
+                  pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #primary_Contact_Person_email_address="ngModel">
+                <div class="form-icon"></div>
+                <p *ngIf="primary_Contact_Person_email_address.errors?.pattern" style="color:red">Enter Valid Email
+                  Address</p>
+                <p *ngIf="(!primary_Contact_Person_email_address.errors?.pattern) && primary_Contact_Person_email_address.invalid && (primary_Contact_Person_email_address.dirty || primary_Contact_Person_email_address.touched)"
+                  style="color:red">Enter Email Address</p>
+              </div>
+              <label>Mobile Number</label>
+              <div class="row">
+                <div class="col-md-3" style="padding-right:10px;padding-left: 0px;">
+                  <select class="form-control col-md-12" id="exampleFormControlSelect1"
+                    name="t_primary_Contact_Person_mobile_number_countrycode"
+                    [(ngModel)]="t_primary_Contact_Person_mobile_number_countrycode" (change)="resetselecterror(4)">
+                    <option value="Select Country Code4">Select Country Code</option>
+                    <ng-container *ngFor="let country of countrylist">
+                      <option value="{{country.dial_code}}">{{country.name}}</option>
+                    </ng-container>
+                  </select>
+                  <p style="color:red">{{er_countrycode4}}</p>
+                </div>
+                <div class="col-md-9" style="padding-right:0px;padding-left: 0px;">
+                  <input type="text" placeholder=" Mobile Number" class="form-control col-md-12" required=""
+                    [(ngModel)]="model.primary_Contact_Person_mobile_number" name="primary_Contact_Person_mobile_number"
+                    pattern="^[0-9+]{2,13}$" #primary_Contact_Person_mobile_number="ngModel">
+                  <div class="form-icon"></div>
+                  <p *ngIf="primary_Contact_Person_mobile_number.errors?.pattern" style="color:red">Enter Valid Mobile
+                    Number</p>
+                  <p *ngIf="(!primary_Contact_Person_mobile_number.errors?.pattern) && primary_Contact_Person_mobile_number.invalid && (primary_Contact_Person_mobile_number.dirty || primary_Contact_Person_mobile_number.touched)"
+                    style="color:red">Enter Mobile Number</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- fourth Step -->
+        <div class="cols">
+          <div class="col-md-12">
+            <h3 class="font-weight-bold pl-0 my-4 col-md-12"><strong>Alternate Contact Person</strong></h3>
+          </div>
+          <div class="row">
+            <div class="form-group service-form-group col-md-6">
+              <div class="row">
+                <label> Full Name</label>
+                <input type="text" placeholder="Full Name" class="form-control col-md-12" required=""
+                  [(ngModel)]="model.alternate_Contact_Person_Name" name="alternate_Contact_Person_Name"
+                  pattern="^[a-zA-Z0-9_-\s]{1,150}$" #alternate_Contact_Person_Name="ngModel">
+                <div class="form-icon"></div>
+                <p *ngIf="alternate_Contact_Person_Name.errors?.pattern" style="color:red">Enter Valid Full Name</p>
+                <p *ngIf="(!alternate_Contact_Person_Name.errors?.pattern) && alternate_Contact_Person_Name.invalid && (alternate_Contact_Person_Name.dirty || alternate_Contact_Person_Name.touched)"
+                  style="color:red">Enter Full Name</p>
+              </div>
+              <label> Contact Number</label>
+              <div class="row">
+                <div class="col-md-3" style="padding-right:10px;padding-left: 0px;">
+                  <select class="form-control col-md-12" id="exampleFormControlSelect1"
+                    name="t_alternate_Contact_Person_contact_number_countrycode"
+                    [(ngModel)]="t_alternate_Contact_Person_contact_number_countrycode">
+                    <ng-container *ngFor="let country of countrylist">
+                      <option value="{{country.dial_code}}">{{country.name}}</option>
+                    </ng-container>
+                  </select>
+                </div>
+                <div class="col-md-9" style="padding-right:0px;padding-left: 0px;">
+                  <input type="text" placeholder=" Contact Number" class="form-control col-md-12" required=""
+                    [(ngModel)]="model.alternate_Contact_Person_contact_number"
+                    name="alternate_Contact_Person_contact_number" pattern="^[0-9+]{2,13}$"
+                    #alternate_Contact_Person_contact_number="ngModel">
+                  <div class="form-icon"></div>
+                  <p *ngIf="alternate_Contact_Person_contact_number.errors?.pattern" style="color:red">Enter Valid
+                    Contact Number</p>
+                </div>
+              </div>
+            </div>
+            <div class="form-group service-form-group col-md-6">
+              <div class="row">
+                <label>Email Address</label>
+                <input type="email" placeholder="Email Address" class="form-control col-md-12" required=""
+                  [(ngModel)]="model.alternate_Contact_Person_email_address"
+                  name="alternate_Contact_Person_email_address" pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                  #alternate_Contact_Person_email_address="ngModel">
+                <div class="form-icon"></div>
+                <p *ngIf="alternate_Contact_Person_email_address.errors?.pattern" style="color:red">Enter Valid Email
+                  Address</p>
+              </div>
+              <label>Mobile Number</label>
+              <div class="row">
+                <div class="col-md-3" style="padding-right:10px;padding-left: 0px;">
+                  <select class="form-control col-md-12" id="exampleFormControlSelect1"
+                    name="t_alternate_Contact_Person_mobile_number_countrycode"
+                    [(ngModel)]="t_alternate_Contact_Person_mobile_number_countrycode">
+                    <ng-container *ngFor="let country of countrylist">
+                      <option value="{{country.dial_code}}">{{country.name}}</option>
+                    </ng-container>
+                  </select>
+                </div>
+                <div class="col-md-9" style="padding-right:0px;padding-left: 0px;">
+                  <input type="text" placeholder=" Mobile Number" class="form-control col-md-12" required=""
+                    [(ngModel)]="model.alternate_Contact_Person_mobile_number"
+                    name="alternate_Contact_Person_mobile_number" pattern="^[0-9+]{2,13}$"
+                    #alternate_Contact_Person_mobile_number="ngModel">
+                  <div class="form-icon"></div>
+                  <p *ngIf="alternate_Contact_Person_mobile_number.errors?.pattern" style="color:red">Enter Valid Mobile
+                    Number</p>
+                  <!-- <p *ngIf="(!alternate_Contact_Person_mobile_number.errors?.pattern) && alternate_Contact_Person_mobile_number.invalid && (alternate_Contact_Person_mobile_number.dirty || alternate_Contact_Person_mobile_number.touched)" style="color:red">Enter Mobile Number</p> -->
+                </div>
+              </div>
+            </div>
+            <br>
+            <div *ngIf="(notuniqueid) ||
+                        alternate_Contact_Person_Name.errors?.pattern ||
+                        primary_Contact_Person_email_address.errors?.pattern ||
+                        primary_Contact_Person_mobile_number.errors?.pattern ||
+                        primary_Contact_Person_contact_number.errors?.pattern ||
+                        primary_Contact_Person_Name.errors?.pattern ||
+                        primary_Email_Address.errors?.pattern ||
+                        alternate_Contact_Number.errors?.pattern ||
+                        primary_Contact_Number.errors?.pattern ||
+                        schoolAddress_Country.errors?.pattern ||
+                        schoolAddress_State.errors?.pattern ||
+                        schoolAddress_Pincode.errors?.pattern ||
+                        schoolAddress_City.errors?.pattern ||
+                        schoolAddress_Area.errors?.pattern ||
+                        schoolAddress_Lane.errors?.pattern ||
+                        schoolName.errors?.pattern ||
+                        schoolID.errors?.pattern
+                        ;then content else other_content">here is ignored</div>
+            <ng-template #content>
+              <div class="col-md-12">
+                <button class="btn px-gdn-btn btn-rounded float-left" type="submit" disabled>Submit</button>
+              </div>
+              <div class="col-md-12">
+                <p style="color:red;padding-top: 10px;">* Enter Valid Data To Submit</p>
+              </div>
+            </ng-template>
+            <ng-template #other_content>
+              <div class="col-md-12">
+                <button class="btn px-gdn-btn btn-rounded float-left" type="submit" (click)='check()'>
+                  &nbsp;Submit</button>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Steps form -->
+</div>
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

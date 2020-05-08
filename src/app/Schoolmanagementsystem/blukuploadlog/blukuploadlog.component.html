@@ -1,0 +1,93 @@
+<div _ngcontent-c6="" class="row">
+  <div _ngcontent-c6="" class="col-12 col-md-12 mb-3">
+    <h3 _ngcontent-c6="" class="adsc">
+      <i class="material-icons ng-star-inserted">business</i> &nbsp;Activities
+      ListS
+    </h3>
+  </div>
+</div>
+<div class="card">
+  <Br />
+  <!-- <div *ngIf="deleteLoading" id="snackbar" class="show"> {{loadingmsg}}</div> -->
+  <div class="headers">
+    <div class="col-md-12">
+      <div class="row col-md-12">
+        <div class="col-md-5">
+          <div class="search input-group">
+            <input class="form-control" style="border:none;" type="text" placeholder="Search" name="search"
+              [(ngModel)]="filter" />
+            <!-- <input type="text" class="form-control pr-2 py-0"  [(ngModel)]="filter" placeholder="Search"> -->
+            <div class="input-group-append">
+              <i class="material-icons pr-2">search</i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+    </div>
+  </div>
+
+  <form>
+    <table class="table table-bordered table-responsive" style="border-collapse:collapse;"
+      [mfData]="datas | filter: filter" #mf="mfDataTable" [mfRowsOnPage]="10">
+      <thead>
+        <tr>
+          <th style="width: 10%;">
+            SchoolID
+            <mfDefaultSorter by="schoolID">
+              <i class="fa fa-sort" style="color:#fff!important;"></i></mfDefaultSorter>
+          </th>
+          <th style="width: 25%;">
+            type
+            <mfDefaultSorter by="type">
+              <i class="fa fa-sort" style="color:#fff!important;"></i></mfDefaultSorter>
+          </th>
+          <th style="width: 40%;">
+            updateID
+            <mfDefaultSorter by="updateID">
+              <i class="fa fa-sort" style="color:#fff!important;"></i></mfDefaultSorter>
+          </th>
+          <th style="width: 30%;">
+            updateName
+            <mfDefaultSorter by="updateName">
+              <i class="fa fa-sort" style="color:#fff!important;"></i></mfDefaultSorter>
+          </th>
+          <th style="width: 25%;">
+            updatedAt<mfDefaultSorter by="updatedAt"><i class="fa fa-sort" style="color:#fff!important;"></i>
+            </mfDefaultSorter>
+          </th>
+          <th style="width: 40%;">
+            status<mfDefaultSorter by="status"><i class="fa fa-sort" style="color:#fff!important;"></i>
+            </mfDefaultSorter>
+          </th>
+          <th style="width: 40%;">
+            errorMessage<mfDefaultSorter by="errorMessage"><i class="fa fa-sort" style="color:#fff!important;"></i>
+            </mfDefaultSorter>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let item of mf.data">
+          <tr>
+            <td>{{ item.schoolID }}</td>
+            <td>{{ convertTypetoDisplay(item.type) }}</td>
+            <td>{{ item.updateID }}</td>
+            <td>{{ item.updateName }}</td>
+            <td>
+              {{ item.updatedAt | cynosureDateTimeZone: "YYYY-MM-DD HH:mm:ss" }}
+            </td>
+            <td>{{ item.status }}</td>
+            <td>{{ item.errorMessage }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="11">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5, 10, 25]"></mfBootstrapPaginator>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>

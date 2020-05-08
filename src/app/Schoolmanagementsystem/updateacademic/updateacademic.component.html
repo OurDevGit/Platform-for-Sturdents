@@ -1,0 +1,135 @@
+<div *ngIf="showdisplay === true">
+
+  <div class="card">
+    <div class="row">
+      <div _ngcontent-c6="" class="col">
+        <h3 _ngcontent-c6="" class="adsc"><i class="material-icons ng-star-inserted">business</i>
+          &nbsp;ACADEMIC GROUP</h3>
+      </div>
+    </div>
+
+    <div class="col-mb-12">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Academic Group Name</label>
+            <input type="text" placeholder="Academic Group Name" style="margin-bottom: 5px;"
+              class="form-control col-md-12" [(ngModel)]="groupname" name="groupname" value="" />
+            <label *ngIf="errorgroupname" style="color: red">* Enter Academic Group
+              Name</label>
+            <label *ngIf="errorgrouplength" style="color: red">* Enter maximum of 15
+              characters </label>
+          </div>
+          <div class="col-md-6">
+            <label>Start Class</label>
+            <select (change)="endclasschangealert()" class="form-control" style="margin-bottom: 5px;" name="startclass"
+              value="{{startclass}}" [(ngModel)]="startclass" id="exampleFormControlSelect2">
+              <option value="" disabled>Select Start Class</option>
+              <ng-container *ngFor="let data of sclistgrade">
+                <option value="{{data.title}}">{{data.title}}</option>
+              </ng-container>
+            </select>
+            <label *ngIf="errorstartclass" style="color: red">* Enter Start Class</label>
+          </div>
+          <div class="col-md-6">
+            <label>End Class</label>
+            <select class="form-control" style="margin-bottom: 5px;" [(ngModel)]="endclass" name="endclass"
+              value="{{endclass}}" id="exampleFormControlSelect1">
+              <option value="" disabled>Select End Class</option>
+              <ng-container *ngFor="let data of eclistgrade">
+                <option value="{{data.title}}">{{data.title}}</option>
+              </ng-container>
+            </select>
+            <label *ngIf="errorendclass" style="color: red">* Enter End Class</label>
+          </div>
+          <div class="col-md-6">
+            <label>Number of Week Days</label>
+            <select required type="date" style="margin-bottom: 5px;" class="form-control col-md-12"
+              [(ngModel)]="weekday" name="weekday" value="{{weekday}}">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+            </select>
+            <label *ngIf="errorweekday" style="color: red">* Enter Number of Week
+              Days</label>
+          </div>
+          <div class="col-md-3">
+            <div class="overflow-x-auto">
+              <label>Start Time</label>
+              <ngb-timepicker [(ngModel)]="meridianTime" style="margin-bottom: 5px;" [meridian]="meridian">
+              </ngb-timepicker>
+            </div>
+            <label *ngIf="errorstarttime" style="color: red">* {{errormessagetime}}</label>
+
+          </div>
+          <div class="col-md-3">
+            <div class="overflow-x-auto">
+              <label>End Time</label>
+              <ngb-timepicker [(ngModel)]="meridianTime1" style="margin-bottom: 5px;" [meridian]="meridian1">
+              </ngb-timepicker>
+            </div>
+            <label *ngIf="errorendtime" style="color: red">* {{errormessagetime}}</label>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <div class="input-group">
+                <label>Academic Start Date</label>
+                <input class="form-control" style="margin-bottom: 0px;" placeholder="yyyy-mm-dd" name="dp"
+                  [(ngModel)]="popupModel" ngbDatepicker #b="ngbDatepicker">
+                <button class="btn px-gdn-btn px-gdn-btn-icon px-4 input-group-addon" type="button"
+                  (click)="b.toggle()">
+                  <i class="material-icons">date_range</i>
+                </button>
+                <label *ngIf="errorstartdate" style="color: red">*
+                  {{errormessagedate}}</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+
+              <div class="input-group">
+                <label>Academic End Date</label>
+                <input class="form-control" style="margin-bottom: 0px;" placeholder="yyyy-mm-dd" name="dp"
+                  [(ngModel)]="popupModel1" ngbDatepicker #a="ngbDatepicker">
+                <button class="btn px-gdn-btn px-gdn-btn-icon px-4 input-group-addon" type="button"
+                  (click)="a.toggle()">
+                  <i class="material-icons">date_range</i>
+                </button>
+                <label *ngIf="errorenddate" style="color: red">*
+                  {{errormessagedate}}</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Week Day Start</label>
+            <select required type="date" style="margin-bottom: 5px;" class="form-control col-md-12" name="weekdaystart"
+              [(ngModel)]="weekdaystart" value="">
+              <ng-container *ngFor="let data of fetchdays">
+                <option value="{{data.id}}">{{data.datFullName}}</option>
+              </ng-container>
+            </select>
+            <label *ngIf="errorweekdaystart" style="color: red">* Enter Week Day
+              Start</label>
+          </div>
+          <div class="col-md-6">
+          </div>
+          <div class="col-md-6">
+            <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted" style="width: 30%;"
+              (click)="add()">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

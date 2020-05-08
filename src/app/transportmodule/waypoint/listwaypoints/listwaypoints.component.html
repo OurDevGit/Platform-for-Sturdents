@@ -1,0 +1,251 @@
+<div _ngcontent-c6="" class="row">
+  <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style=" padding-right: 1px;padding-left: 1px;">
+    <h3 _ngcontent-c6="" class="adsc">
+      <i class="material-icons ng-star-inserted">business</i> &nbsp;WayPoints List</h3>
+  </div>
+
+</div>
+<div class="card"><Br>
+  <!-- <div *ngIf="deleteLoading" id="snackbar" class="show"> {{loadingmsg}}</div> -->
+  <div class="headers">
+    <div class="col-md-12">
+      <div class="row col-md-12">
+
+        <div class="col-md-1">
+          <div ngbDropdown class="dropdown-no-toggle btn-group hidden-phone delet" style="height: 40px;">
+            <a ngbDropdownToggle class="btn mini blue" aria-expanded="false">
+              Action
+              <i class="fa fa-angle-down"></i>
+            </a>
+            <ul ngbDropdownMenu class="dropdown-menu">
+              <li *ngIf='disablebutton==="true"'><a data-toggle="modal" data-target="#disable" data-uid="1"><i
+                    class="fa fa-ban"></i> Disable</a></li>
+              <li *ngIf='disablebutton==="false"'><a data-toggle="modal" data-target="#alert" data-uid="1"><i
+                    class="fa fa-ban"></i> Disable</a></li>
+              <li class="divider"></li>
+              <li *ngIf='enablebutton==="true"'><a data-toggle="modal" data-target="#disable1" data-uid="1"><i
+                    class="fa fa-check-circle-o"></i> Enable</a></li>
+              <li *ngIf='enablebutton==="false"'><a data-toggle="modal" data-target="#alert" data-uid="1"><i
+                    class="fa fa-check-circle-o"></i> Enable</a></li>
+              <li class="divider"></li>
+              <li *ngIf='deletebutton==="true"'><a data-toggle="modal" data-target="#delete" data-uid="1"><i
+                    class="fa fa-trash-o"></i> Delete</a></li>
+              <li *ngIf='deletebutton==="false"'><a data-toggle="modal" data-target="#alert" data-uid="1"><i
+                    class="fa fa-trash-o"></i> Delete</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="search input-group">
+            <input style="height:auto!important;border:none;" class="form-control" type="text" placeholder="Search"
+              name="search" [(ngModel)]="filter">
+            <!-- <input type="text" class="form-control pr-2 py-0"  [(ngModel)]="filter" placeholder="Search"> -->
+            <div class="input-group-append">
+              <i class="material-icons pr-2">search</i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <button type="button" class="btn btn-secondary excel" (click)='exportasExcell()'> <i
+              class="material-icons ng-star-inserted" style="color: #fff !important;">get_app</i> Excel</button>
+
+        </div>
+        <div class="col-md-6">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+
+        <div class="tabl">
+          <form>
+            <table class="table table-bordered table-responsive" style="border-collapse:collapse;"
+              [mfData]="datas | filter:filter" #mf="mfDataTable" [mfRowsOnPage]="10">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1"
+                      (change)="checkUncheckAll()" class="form-check-input" [(ngModel)]="masterSelected">
+
+                  </th>
+                  <th>
+                    WayPoint Id <mfDefaultSorter by="wayPointId"> <i class="fa fa-sort"
+                        style="color:#fff!important;"></i></mfDefaultSorter>
+                  </th>
+                  <th>
+                    WayPoint Name <mfDefaultSorter by="wayPointName"> <i class="fa fa-sort"
+                        style="color:#fff!important;"></i></mfDefaultSorter>
+                  </th>
+                  <th>
+                    WayPoint Seq<mfDefaultSorter by="wayPointSeq"><i class="fa fa-sort"
+                        style="color:#fff!important;"></i></mfDefaultSorter>
+                  </th>
+                  <th>
+                    GeoPoint Text<mfDefaultSorter by="geoPointText"><i class="fa fa-sort"
+                        style="color:#fff!important;"></i></mfDefaultSorter>
+                  </th>
+                  <th>
+                    Route Id<mfDefaultSorter by="routeId"><i class="fa fa-sort" style="color:#fff!important;"></i>
+                    </mfDefaultSorter>
+                  </th>
+                  <th>
+                    View
+                  </th>
+                  <th>
+                    Edit
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let item of mf.data | filter:filter">
+                  <tr [ngClass]="{'highlight' : item.isActive == false}" colspan="10" data-toggle="collapse"
+                    [attr.data-target]="item.dispid" class="accordion-toggle">
+                    <td><input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1"
+                        (change)="isAllSelected()" class="form-check-input" style="text-align: center;"
+                        [(ngModel)]="item.isSelected"></td>
+                    <td>{{item.wayPointId}}</td>
+                    <td>{{item.wayPointName}}</td>
+                    <td>{{item.wayPointSeq}}</td>
+                    <td>{{item.geoPointText}}</td>
+                    <td>{{item.routeId}}</td>
+                    <td> <button class="updea"> <i class="m-1 icon-screen-desktop"
+                          (click)='view($event, item)'></i></button></td>
+                    <td><button type="button" class="updea" (click)="update($event, item)"><i
+                          class="m-1 icon-note"></i></button></td>
+                  </tr>
+                </ng-container>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="9">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="delete" class="modal modal3 fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Data</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+
+      </div>
+      <div class="modal-body">
+        <strong>Are you sure you want to remove </strong>
+
+      </div>
+      <div class="modal-footer">
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+          class="btn btn-default" data-dismiss="modal">No</button>
+
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+          class="btn btn-danger" data-dismiss="modal" (click)="deletelist()">Yes</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="disable" class="modal modal4 fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Disable Data</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+
+      </div>
+      <div class="modal-body">
+        <strong>Are you sure you want to Disable </strong>
+      </div>
+      <div class="modal-footer">
+
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+          class="btn btn-default" data-dismiss="modal">No</button>
+
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+          class="btn btn-danger" data-dismiss="modal" (click)="disablelist()">Yes</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="disable1" class="modal modal4 fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Enable Data</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+
+      </div>
+      <div class="modal-body">
+        <strong>Are you sure you want to Enable </strong>
+
+      </div>
+      <div class="modal-footer">
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+          class="btn btn-default" data-dismiss="modal">No</button>
+
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+          class="btn btn-danger" data-dismiss="modal" (click)="Enablelist()">Yes</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="disable1" class="modal modal4 fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Enable Data</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+
+      </div>
+      <div class="modal-body">
+        <strong>Are you sure you want to Enable </strong>
+
+      </div>
+      <div class="modal-footer">
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+          class="btn btn-danger" data-dismiss="modal" (click)="Enablelist()">Yes</button>
+
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+          class="btn btn-default" data-dismiss="modal">No</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="alert" class="modal modal4 fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Alert</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+
+      </div>
+      <div class="modal-body">
+        <strong>Please select any item for the list</strong>
+
+      </div>
+      <div class="modal-footer">
+
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+          class="btn btn-default" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

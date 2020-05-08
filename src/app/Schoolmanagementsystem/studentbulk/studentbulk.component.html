@@ -1,0 +1,5 @@
+<label for="imageUpload">File Upload</label>
+<input type="file" (change)="fileChangeListener($event)" name="imageUpload" id="imageUpload" />
+<button (click)="upload()"> Upload</button>
+
+<h6>Note Your School Id is {{schoolid}}, use this school id in Csv file to bulkupload the data</h6>

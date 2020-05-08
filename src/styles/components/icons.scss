@@ -1,0 +1,28 @@
+@import '../variables';
+
+.clickable {
+  color: rgba(#000000, 0.39);
+  cursor: pointer;
+  @include hover-color();
+}
+
+.px-gdn-icon {
+  font-size: 20px;
+  @extend .clickable;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.circle-hover {
+  border: 1px solid #ffffff;
+  border-radius: 25px;
+  padding: 7px;
+  transition: box-shadow 0.2s ease, color 0.2s ease;
+  box-shadow: inset 0 0 0 0 #ffffff;
+  color: #ffffff;
+  &:hover {
+    color: $primary-color;
+    box-shadow: inset 0 0 0 25px #ffffff;
+  }
+}

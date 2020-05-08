@@ -1,0 +1,96 @@
+body {
+    height: 100%;
+    // overflow: hidden;
+}
+
+.card {
+    max-width: 630px;
+    .card-body {}
+    .px-gdn-btn:active {
+        background: linear-gradient(60deg, #2e75b6 0%, #9dc3e6 100%) !important;
+    }
+    img {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+    @media screen and (max-width: 768px) {
+        padding-bottom: 290px;
+        .card {
+            margin-top: 50px;
+            .card-body {
+                padding-left: 80px;
+                padding-right: 80px;
+            }
+        }
+        footer {
+            bottom: 235px;
+        }
+    }
+    @media screen and (max-width: 425px) {
+        .card {
+            margin-top: 0;
+            .card-body {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        }
+    }
+}
+
+app-login-page img {
+    position: static!important;
+    left: 0;
+    top: 20!important;
+    width: 25%;
+    margin: 0 auto;
+}
+
+.footer {
+    width: 100%;
+    float: left;
+    background: #222;
+    padding: 10px;
+    text-align: center;
+    bottom: 0;
+    position: fixed;
+    color: #fff;
+}
+
+.login {
+    margin-top: 100px !important;
+}
+
+.form-control {
+    border-radius: 0px;
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+    line-height: 1.42857143;
+    border: 1px solid #327d1a;
+    background-color: #fff;
+    letter-spacing: 0px;
+    webkit-box-shadow: 0px 11px 10px -10px rgba(0, 0, 0, 0.24);
+    font-family: OpenSans !important;
+    float: right;
+    margin-right: 0px;
+    height: calc(2.5125rem + 2px);
+}
+
+app-login-page .card {
+    max-width: 450px;
+    padding-bottom: 0px;
+    border: 2px #eee solid;
+}
+
+.form-group {
+    margin-bottom: 9px;
+}
+
+.loginbg {
+    // background-image: url(/assets/images/user-pages/school_bg.jpg);
+    height: 100vh;
+    padding-top: 100px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}

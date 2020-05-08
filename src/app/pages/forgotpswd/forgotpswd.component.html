@@ -1,0 +1,55 @@
+<div class="card mx-auto forgot">
+  <div class="card-body">
+
+    <h2 class="card-title text-center "> <img src="assets/images/cynosure.png"></h2>
+    <form>
+      <div class="col-md-12">
+        <label style="margin-bottom: 20px!important;" for="Email">Enter Email</label>
+        <input id="email" type="email" placeholder=" Email Address" class="form-control col-md-12" required=""
+          [(ngModel)]="email_address_Txt" name="email_address" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          #email_address="ngModel">
+        <div class="form-icon"></div>
+        <p *ngIf="email_address.errors?.pattern" style="color:red">enter valid data</p>
+      </div>
+
+      <div class=" text-center">
+        <!-- data-target="#myModal" -->
+        <div class="col">
+          <div *ngIf="
+          email_address.errors?.pattern ;then content else other_content">here is ignored</div>
+          <ng-template #content>
+            <button data-toggle="modal" type="button" class="btn  btn btn-primary px-gdn-btn mb-3 "
+              style="padding: 10px; ">Submit</button>
+          </ng-template>
+          <ng-template #other_content>
+            <button data-toggle="modal" type="button" class="btn  btn btn-primary px-gdn-btn mb-3 "
+              (click)='forgotpassword(email_address.value)' style="padding: 10px;">Submit</button>
+          </ng-template>
+
+        </div>
+      </div>
+    </form>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+
+          </div>
+
+          <div class="modal-body">
+            <p class="lead" style="color: green; font-size: 20px;">Please Check Your mail inbox</p>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dialog" data-dismiss="modal">Ok</button>
+
+          </div>
+        </div><!-- modal-content -->
+      </div><!-- modal-dialog -->
+    </div><!-- modal -->
+  </div>
+</div>
+<div class="text-nowrap footer">
+  2018 <a routerLink="" style="color:#2e75b6 ;">Cynosure</a> all rights reserved
+</div>

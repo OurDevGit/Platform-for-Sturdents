@@ -1,0 +1,346 @@
+<div *ngIf="showdisplay === true">
+
+  <div class="row">
+    <div class="col-12 col-md-12 mb-3" style="padding-right: 0px; padding-left: 0px;">
+      <h3 class="adsc"><i _ngcontent-c6="" class="fa fa-calendar"></i> &nbsp;Calendar</h3>
+    </div>
+
+  </div>
+  <div class="card"><br>
+    <div class="headers">
+      <div class="col-md-12">
+        <div class="row col-md-12">
+          <div class="col-md-1">
+            <div ngbDropdown class="dropdown-no-toggle btn-group hidden-phone delet" style="height: 40px;">
+              <a ngbDropdownToggle class="btn mini blue" aria-expanded="false">
+                Action
+                <i class="fa fa-angle-down"></i>
+              </a>
+              <ul ngbDropdownMenu class="dropdown-menu">
+                <li *ngIf='disablebutton==="true"'><a data-toggle="modal" data-target="#disable" data-uid="1"><i
+                      class="fa fa-ban"></i> Disable</a></li>
+                <li *ngIf='disablebutton==="false"'><a data-toggle="modal" data-target="#alert" data-uid="1"><i
+                      class="fa fa-ban"></i> Disable</a></li>
+                <li class="divider"></li>
+                <li *ngIf='enablebutton==="true"'><a data-toggle="modal" data-target="#disable1" data-uid="1"><i
+                      class="fa fa-check-circle-o"></i> Enable</a></li>
+                <li *ngIf='enablebutton==="false"'><a data-toggle="modal" data-target="#alert" data-uid="1"><i
+                      class="fa fa-check-circle-o"></i> Enable</a></li>
+                <li class="divider"></li>
+
+                <li *ngIf='deletebutton==="true"'><a class="disabled" data-toggle="modal" data-target="#delete"
+                    data-uid="1"><i class="fa fa-trash-o"></i> Delete</a></li>
+                <li *ngIf='deletebutton==="false"'><a class="disabled" data-toggle="modal" data-target="#alert"
+                    data-uid="1"><i class="fa fa-trash-o"></i> Delete</a></li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="search input-group">
+              <input style="height:auto!important;border:none;" class="form-control" type="text" placeholder="Search"
+                name="search" [(ngModel)]="filter">
+
+              <!-- <input style="height:auto!important;" type="text" class="form-control pr-2 py-0" [(ngModel)]="filter" placeholder="Search"> -->
+              <div class="input-group-append">
+                <i class="material-icons pr-2">search</i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="btn btn-secondary excel pull-right" style="width:150px; display: none"
+              data-toggle="collapse" data-toggle="modal" data-target="#login-modal1">
+              <i class="fa fa-filter" aria-hidden="true"></i> &nbsp; Filter
+            </button>
+            <!-- BEGIN # MODAL LOGIN -->
+            <div class="modal fade" id="login-modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+              aria-hidden="true" style="display: none;">
+              <div class="modal-dialog modal-dialogs" style="max-width: 500px;">
+                <div class="modal-content">
+
+                  <button type="button" class="close" data-dismiss="modal" style="background: white;">&times;</button>
+
+                  <!-- Begin # DIV Form -->
+                  <div id="div-forms">
+
+                    <!-- Begin # Login Form -->
+                    <form id="login-form" style="display: none">
+                      <div class="modal-body" style="background: white;">
+
+                        <div class="login-form">
+                          <div class="main-div">
+                            <div class="panel">
+                              <h3>Filter</h3>
+                            </div>
+                            <form id="Login">
+
+                              <div class="form-group">
+                                <div class="row col-md-12">
+                                  <label class="pull-left">Start & End Class</label>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <div class="row col-md-12">
+                                  <div class="col-md-6">
+                                    <select class="form-control" name="StartClass" value="" #StartClass
+                                      id="exampleFormControlSelect2">
+                                      <ng-container *ngFor="let data of listgrade">
+                                        <option value="{{data.title}}">{{data.title}}</option>
+                                      </ng-container>
+                                    </select>
+                                  </div>
+                                  <div class="col-md-6">
+
+                                    <select class="form-control" name="EndClass" value="" #EndClass
+                                      id="exampleFormControlSelect2">
+                                      <ng-container *ngFor="let data of listgrade">
+                                        <option value="{{data.title}}">{{data.title}}</option>
+                                      </ng-container>
+                                    </select>
+
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <div class="row col-md-12">
+                                  <label class="pull-left">Start & End Date</label>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <div class="row col-md-12">
+                                  <div class="col-md-6">
+                                    <input class="form-control" type="date">
+                                  </div>
+                                  <div class="col-md-6">
+                                    <input class="form-control" type="date">
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <div class="row col-md-12">
+                                  <label class="pull-left">Holiday</label>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <div class="row col-md-12">
+                                  <div class="col-md-6"></div>
+                                  <div class="col-md-6"></div>
+                                </div>
+                              </div>
+
+                            </form>
+                          </div>
+                          <button class="btn btn-primary" data-dismiss="modal"
+                            style="color:#fff; background:#13477e!important;"
+                            (click)="search(StartClass.value,EndClass.value)">Search</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+
+            <button type="button" class="btn btn-secondary excel pull-right" (click)='exportasExcell()'> <i
+                class="material-icons ng-star-inserted" style="color: #fff !important;">get_app</i> Excel</button>
+            <!-- <a class="btn btn-secondary excel pull-right" href="http://protrology.com/cynosurefiles/Calender.csv">Sample Document</a>
+                <button  (click)='uploadbulk()' type="button" class="btn btn-secondary excel   pull-right">
+                  <i class="fa fa-upload" aria-hidden="true"></i> &nbsp; Bulkupload
+              </button> -->
+            <!-- (click)='accbulup()' -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form>
+      <!-- service-form -->
+      <div class="service-form col-md-12" style="margin-top: 0em!important;">
+        <div class="row">
+          <div class="col">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="tabl" style="text-align: left;">
+                  <ng-container *ngFor="let data of pagedata | filter:filter">
+                    <table class="table table-striped">
+
+                      <th *ngIf="data.isHoliday === true" data-sort="name">
+                        <input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1"
+                          (change)="onChange(data.id,$event.target.checked)" class="form-check-input"
+                          style="text-align: center;">
+
+                        <p style="margin: -21px 0px 0px 17px;font-size: 12px!important;">Calendar Name - {{data.title}}</p>
+                        <span style="float: right; font-weight: 600; margin: -18px 0px 0px 0px;">Student ID - {{data.id}}
+                        </span>
+                      </th>
+
+                      <th *ngIf="data.isHoliday === false" data-sort="name"> <input type="checkbox"
+                          id="inline-checkbox1" name="inline-checkbox1" value="option1"
+                          (change)="onChange(data.id,$event.target.checked)" class="form-check-input"
+                          style="text-align: center;">
+                        <p style="margin: -21px 0px 0px 17px;font-size: 12px!important;">Calendar Name - {{data.title}}</p>
+                        <span style="float: right; font-weight: 600; margin: -18px 0px 0px 0px;">Student ID - {{data.id}}
+                        </span>
+                      </th>
+                      
+                      <tbody>
+                        <tr>
+                          <td><span style="padding-right: 3em;color: #3980c2;">Start Date:
+                              {{data.applicableStartDate  | date: 'dd-MM-yyyy'}} <span
+                                style="color:#3980c2;font-weight: 500"> &nbsp;&nbsp;End Date:
+                                {{data.applicableEndDate  | date: 'dd-MM-yyyy'}}</span> <span
+                                style="float: right; font-weight: 600;"> Start Time: {{data.applicableStartTime}}
+                                &nbsp;&nbsp; End Time: {{data.applicableEndTime}}</span></span></td>
+                        </tr>
+                        <tr>
+                          <td *ngIf="data.isActive === false" style="background: #e7e8ea;"><span
+                              style="padding-right: 3em;color: #3980c2;">Start Class: {{data.applicableClassStart}}
+                              &nbsp;&nbsp; End Class: {{data.applicableClassEnd}}</span>
+                            <span
+                              style="float: right; background: #858586;padding: 4px;color: #fff; padding: 4px;border-radius: 1px;"><i
+                                class="fa fa-ban"></i>&nbsp; Disable</span>
+                          </td>
+                          <td *ngIf="data.isActive === true" style="background: #e7e8ea;">
+                            <span style="padding-right: 3em;color: #3980c2;">Start Class: {{data.applicableClassStart}}
+                              & End Class: {{data.applicableClassEnd}}</span>
+                            <span
+                              style="float: right; background: #858586;padding: 4px;color: #fff;padding: 4px;border-radius: 1px;"><i
+                                class="fa fa-check-circle-o"></i>&nbsp; Enable</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><span style="padding-right: 3em;color: #3980c2;">Updated by: {{data.updateName}} <span
+                                style="color:#3980c2;font-weight: 500">Last update date & time:
+                                {{data.updateDate | cynosureDateTimeZone:"YYYY-MM-DD HH:mm:ss"}}</span> <span
+                                style="float: right; font-weight: 600;"> <button type="button"
+                                  (click)="edit($event,data)" class="btn btn-secondary excel">
+                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp; Edit
+                                </button> </span> </span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </ng-container>
+
+                  <ngb-pagination [collectionSize]="collsize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true"
+                    [(page)]="advancedPage" (pageChange)="newsync()" [boundaryLinks]="true"></ngb-pagination>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+
+  <div id="delete" class="modal modal3 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Delete Data</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Are you sure you want to remove </strong>
+
+        </div>
+        <div class="modal-footer">
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+            class="btn btn-default" data-dismiss="modal" (click)="deletelist()">Yes</button>
+
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+            class="btn btn-default" data-dismiss="modal">No</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="disable" class="modal modal4 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Disbale Data</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Are you sure you want to Disable </strong>
+
+        </div>
+        <div class="modal-footer">
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+            class="btn btn-default" data-dismiss="modal" (click)="disablelist()">Yes</button>
+
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+            class="btn btn-default" data-dismiss="modal">No</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="disable1" class="modal modal4 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Enable Data</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Are you sure you want to Enable </strong>
+
+        </div>
+        <div class="modal-footer">
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+            class="btn btn-default" data-dismiss="modal" (click)="Enablelist()">Yes</button>
+
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+            class="btn btn-default" data-dismiss="modal">No</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="alert" class="modal modal4 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Alert</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Please select any item for the list</strong>
+
+        </div>
+        <div class="modal-footer">
+
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+            class="btn btn-default" data-dismiss="modal">OK</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

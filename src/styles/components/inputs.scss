@@ -1,0 +1,232 @@
+$color-radio-dark: #1f1f1f;
+$color-radio-brown: #9f6939;
+$color-radio-grey: #727570;
+
+.color-radio {
+  .custom-control-label::before {
+    box-shadow: none;
+    width: 18px;
+    height: 18px;
+  }
+  .custom-control-input:checked ~ .custom-control-label::after {
+    width: 18px;
+    height: 18px;
+    background-image: none;
+    box-shadow: 0 0 0 2px $body-bg, 0 0 0 3px $primary-color;
+    border-radius: 50%;
+  }
+  &.dark {
+    .custom-control-input:checked ~ .custom-control-label::before,
+    .custom-control-label::before {
+      background-color: $color-radio-dark;
+    }
+    .custom-control-input:checked ~ .custom-control-label::after {
+      box-shadow: 0 0 0 2px $body-bg, 0 0 0 3px $color-radio-dark
+    }
+  }
+  &.brown {
+    .custom-control-input:checked ~ .custom-control-label::before,
+    .custom-control-label::before {
+      background-color: $color-radio-brown;
+    }
+    .custom-control-input:checked ~ .custom-control-label::after {
+      box-shadow: 0 0 0 2px $body-bg, 0 0 0 3px $color-radio-brown
+    }
+  }
+  &.grey {
+    .custom-control-input:checked ~ .custom-control-label::before,
+    .custom-control-label::before {
+      background-color: $color-radio-grey;
+    }
+    .custom-control-input:checked ~ .custom-control-label::after {
+      box-shadow: 0 0 0 2px $body-bg, 0 0 0 3px $color-radio-grey;
+    }
+  }
+}
+
+.px-gdn-checkbox-3.custom-checkbox,
+.px-gdn-checkbox-2.custom-checkbox,
+.px-gdn-checkbox-1.custom-checkbox {
+
+  .custom-control-label {
+    line-height: 33px;
+    &:before {
+      width: 26px;
+      height: 26px;
+      box-shadow: none;
+      background-color: transparent;
+      border: 1px solid rgba(#000, 0.11);
+    }
+    &:after {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  .custom-control-input {
+    &:checked ~ .custom-control-label {
+      &:before {
+        background-color: $primary-color;
+        border-color: transparent;
+      }
+      &:after {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg fill='%23ffffff' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'/%3E%3C/svg%3E");
+        background-size: auto;
+      }
+    }
+    &:disabled {
+      ~ .custom-control-label:before {
+        background-color: $custom-control-indicator-disabled-bg;
+        border-color: transparent;
+      }
+    }
+  }
+}
+
+.px-gdn-checkbox-2.custom-checkbox {
+  .custom-control-input {
+    &:checked ~ .custom-control-label {
+      &:before {
+        background-color: transparent;
+        border-color: $primary-color;
+      }
+      &:after {
+        content: '';
+        background-image: none;
+        width: 14px;
+        height: 14px;
+        border-radius: 2px;
+        background-color: $primary-color;
+        top: 10px;
+        left: 6px;
+      }
+    }
+    &:disabled {
+      ~ .custom-control-label {
+        &:before {
+          border-color: $custom-control-indicator-disabled-bg;
+        }
+        &:after {
+          background-color: $custom-control-indicator-disabled-bg;
+        }
+      }
+    }
+  }
+}
+
+.px-gdn-checkbox-3.custom-checkbox {
+  .custom-control-input {
+    &:checked ~ .custom-control-label {
+      &:before {
+        background-color: transparent;
+        border-color: $primary-color;
+      }
+      &:after {
+        background-image: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg fill='#{$primary-color}' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'/%3E%3C/svg%3E"), "#", "%23");
+      }
+    }
+    &:disabled {
+      ~ .custom-control-label {
+        &:before {
+          background-color: $custom-control-indicator-disabled-bg;
+          border-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+.px-gdn-radio-3.custom-radio,
+.px-gdn-radio-2.custom-radio,
+.px-gdn-radio-1.custom-radio {
+
+  .custom-control-label {
+    line-height: 33px;
+    &:before {
+      width: 26px;
+      height: 26px;
+      box-shadow: none;
+      background-color: transparent;
+      border: 1px solid rgba(#000, 0.11);
+    }
+    &:after {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+    }
+  }
+
+  .custom-control-input {
+    &:checked ~ .custom-control-label {
+      &:before {
+        background-color: $primary-color;
+        border-color: transparent;
+      }
+      &:after {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg fill='%23ffffff' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'/%3E%3C/svg%3E");
+        background-size: auto;
+      }
+    }
+    &:disabled {
+      ~ .custom-control-label {
+        &:before {
+          background-color: $custom-control-indicator-disabled-bg;
+          border-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+.px-gdn-radio-2.custom-radio {
+  .custom-control-input {
+    &:checked ~ .custom-control-label {
+      &:before {
+        background-color: transparent;
+        border-color: $primary-color;
+      }
+      &:after {
+        top: 11px;
+        left: 7px;
+        width: 12px;
+        height: 12px;
+        border-radius: 6px;
+        background-image: none;
+        background-color: $primary-color;
+      }
+    }
+    &:disabled {
+      ~ .custom-control-label {
+        &:before {
+          border-color: $custom-control-indicator-disabled-bg;
+          background-color: transparent;
+        }
+        &:after {
+          background-color: $custom-control-indicator-disabled-bg;
+        }
+      }
+    }
+  }
+}
+
+.px-gdn-radio-3.custom-radio {
+  .custom-control-input {
+    &:checked ~ .custom-control-label {
+      &:before {
+        background-color: transparent;
+        border-color: $primary-color;
+      }
+      &:after {
+        background-image: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg fill='#{$primary-color}' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'/%3E%3C/svg%3E"), "#", "%23");
+      }
+    }
+    &:disabled {
+      ~ .custom-control-label {
+        &:before {
+          border-color: transparent;
+          background-color: $custom-control-indicator-disabled-bg;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+<div *ngIf="showdisplay === true">
+
+<div class="row">
+  <div class="col-sm-12 col-lg-3">
+    <div class="card counter-box">
+      <a (click)="parents()">
+        <div class="card-body gird-c1">
+          <div class="dash-box dash-box-shadow dash-box-color-1">
+            <div class="dash-box-icon">
+              <i _ngcontent-c18="" class="fa m-1 fa-building ng-star-inserted"></i>
+            </div>
+            <div class="dash-box-body">
+              <span class="dash-box-count">Parent</span>
+              <span class="dash-box-title">{{paremntsCount}}</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-3">
+    <div class="card counter-box">
+      <a (click)="student()">
+        <div class="card-body gird-c2">
+          <div class="dash-box dash-box-shadow dash-box-color-2">
+            <div class="dash-box-icon">
+              <i _ngcontent-c18="" class="fa m-1 fa-vcard ng-star-inserted"></i>
+            </div>
+            <div class="dash-box-body">
+              <span class="dash-box-count">Students</span>
+              <span class="dash-box-title">{{studentCount}}</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-3">
+    <div class="card counter-box">
+      <a (click)="withoutuser()">
+        <div class="card-body gird-c3">
+          <div class="dash-box dash-box-shadow dash-box-color-2">
+            <div class="dash-box-icon">
+              <i _ngcontent-c18="" class="fa m-1 fa-building-o ng-star-inserted"></i>
+            </div>
+            <div class="dash-box-body">
+              <span class="dash-box-count">Student W/O Parent</span>
+              <span class="dash-box-title">{{numberofstudentwithoutparent}}</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-3">
+    <div class="card counter-box">
+      <a (click)="withoutschools()">
+        <div class="card-body gird-c4">
+          <div class="dash-box dash-box-shadow dash-box-color-2">
+            <div class="dash-box-icon">
+              <i class="fa m-1 fa-vcard-o ng-star-inserted"></i>
+            </div>
+            <div class="dash-box-body">
+              <span class="dash-box-count">Parent W/O Student</span>
+              <span class="dash-box-title">{{numberofparentwithoutstudent}}</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<br><br>
+
+<app-barchart-page></app-barchart-page>
+
+</div>
+
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

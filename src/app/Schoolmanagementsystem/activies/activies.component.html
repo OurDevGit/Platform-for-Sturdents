@@ -1,0 +1,92 @@
+<div *ngIf="showdisplay === true">
+
+<div _ngcontent-c6="" class="row">
+  <div _ngcontent-c6="" class="col-12 col-md-12 mb-3">
+    <h3 _ngcontent-c6="" class="adsc">
+      <i class="material-icons ng-star-inserted">business</i> &nbsp;Activities List</h3>
+  </div>
+
+</div>
+<div class="card"><Br>
+  <!-- <div *ngIf="deleteLoading" id="snackbar" class="show"> {{loadingmsg}}</div> -->
+  <div class="headers">
+    <div class="col-md-12">
+      <div class="row col-md-12">
+
+        <div class="col-md-6">
+          <div class="search input-group">
+            <input style="height:auto!important;border:none;" class="form-control" type="text" placeholder="Search"
+              name="search" [(ngModel)]="filter">
+            <!-- <input type="text" class="form-control pr-2 py-0"  [(ngModel)]="filter" placeholder="Search"> -->
+            <div class="input-group-append">
+              <i class="material-icons pr-2">search</i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <button type="button" class="btn btn-secondary excel pull-right" (click)='exportasExcell()'> <i
+              class="material-icons ng-star-inserted" style="color: #fff !important;">get_app</i> Excel</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form>
+    <table class="table table-bordered table-responsive activies-table" style="border-collapse:collapse;"
+      [mfData]="datas | filter:filter" #mf="mfDataTable" [mfRowsOnPage]="10">
+      <thead>
+        <tr>
+          <th>
+            SchoolID <mfDefaultSorter by="schoolID"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+            </mfDefaultSorter>
+          </th>
+          <th>
+            Title <mfDefaultSorter by="actionTitle"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+            </mfDefaultSorter>
+          </th>
+          <th>
+            Descriptions <mfDefaultSorter by="actionDescription"> <i class="fa fa-sort"
+                style="color:#fff!important;"></i></mfDefaultSorter>
+          </th>
+          <th>
+            Updated by <mfDefaultSorter by="updateName"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+            </mfDefaultSorter>
+          </th>
+          <th>
+            Last update<mfDefaultSorter by="updateDate"><i class="fa fa-sort" style="color:#fff!important;"></i>
+            </mfDefaultSorter>
+          </th>
+          <!-- <th>
+                    Update ID<mfDefaultSorter by="updateID"><i class="fa fa-sort" style="color:#fff!important;"></i></mfDefaultSorter>
+                 </th > -->
+
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let item of mf.data ">
+          <tr>
+            <td>{{item.schoolID}}</td>
+            <td>{{item.actionTitle}}</td>
+            <td>{{item.actionDescription}}</td>
+            <td>{{item.updateName | uppercase}}</td>
+            <td>{{item.updateDate | cynosureDateTimeZone:"YYYY-MM-DD HH:mm:ss"}}</td>
+            <!-- <td>{{item.updateID}}</td> -->
+          </tr>
+        </ng-container>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="11">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</div>
+</div>
+
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

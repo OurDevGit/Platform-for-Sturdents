@@ -1,0 +1,523 @@
+<div *ngIf="showdisplay === true">
+  <div *ngIf="deleteLoading" id="snackbari" class="showi"> Deleting! Please wait</div>
+  <div class="service-form col-md-12">
+
+    <div class="rows schoolmanagement-page">
+      <div class="header">
+
+        <div class="row">
+          <div class="col-12 col-md-6 mb-3">
+            <h3 class="adsc"> <i class="fa fa-university"></i> &nbsp;School Management</h3>
+          </div>
+
+          <div class="col-12 col-md-6 mb-3">
+          </div>
+        </div>
+
+        <br>
+      </div><br>
+      <div class="excels">
+        <button type="button" class="btn btn-secondary excel pull-right" (click)="exportasExcell()"> <i
+            class="material-icons ng-star-inserted" style="color: #fff !important;border-radius: 0px;">get_app</i>
+          Excel</button>
+        <!-- <button type="button" class="btn btn-secondary excel">PDF</button> -->
+        <input class="Search  pull-left" style="border:none;width: 20%;margin: 0px 0px 2em 0px;" type="text"
+          placeholder="Search" name="search" [(ngModel)]="filter">
+        <br>
+      </div>
+      <div class="cols">
+
+        <div class="">
+          <div class="row">
+
+            <div class="tabl">
+
+              <table class="table table-bordered table-responsive" style="border-collapse:collapse; "
+                [mfData]="datas | filter:filter" #mf="mfDataTable" [mfRowsOnPage]="10">
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>School ID <mfDefaultSorter by="schoolID"> <i class="fa fa-sort"
+                          style="color:#fff!important;"></i></mfDefaultSorter>
+                    </th>
+                    <th>School Name <mfDefaultSorter by="schoolName"> <i class="fa fa-sort"
+                          style="color:#fff!important;"></i></mfDefaultSorter>
+                    </th>
+                    <!-- <th>Address <mfDefaultSorter by="schoolAddress_Area"> <i class="fa fa-sort" style="color:#fff!important;"></i></mfDefaultSorter></th> -->
+                    <th>Primary Contact Number <mfDefaultSorter by="primary_Contact_Person_contact_number"> <i
+                          class="fa fa-sort" style="color:#fff!important;"></i></mfDefaultSorter>
+                    </th>
+                    <th>Primary Contact Person <mfDefaultSorter by="primary_Contact_Person_Name"> <i class="fa fa-sort"
+                          style="color:#fff!important;"></i></mfDefaultSorter>
+                    </th>
+                    <th>View</th>
+                    <th>Edit</th>
+                    <th *ngIf = "showdisplayDeleteBtn">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of mf.data;let i = index">
+                    <tr colspan="6" data-toggle="collapse" [attr.data-target]="data.dispid" class="accordion-toggle">
+                      <td>{{i+1}}</td>
+                      <td>{{data.schoolID}}</td>
+                      <td id="l1">{{data.schoolName}}</td>
+                      <!-- <td id="a1">{{data.schoolAddress_Area}}, {{data.schoolAddress_Lane}}, {{data.schoolAddress_City}},
+                                      {{data.schoolAddress_Pincode}}, {{data.schoolAddress_State}}, {{data.schoolAddress_Country}}</td> -->
+                      <td id="m1">{{data.primary_Contact_Person_contact_number}}</td>
+                      <td id="pc1">{{data.primary_Contact_Person_Name}}</td>
+
+                      <td class="dlt" style="text-align:center;"> <button
+                          class="accordion-toggle delete btn mat-button-wrapper btn-sm" data-toggle="collapse"><i
+                            _ngcontent-c6="" class="m-1 icon-screen-desktop"></i></button></td>
+                      <td class="dlt" style="text-align:center;"><button type="button" data-toggle="modal" data-uid="1"
+                          class="update btn btn-primary btn-sm" (click)="edit($event, data)"><i _ngcontent-c6=""
+                            class="m-1 icon-note"></i></button></td>
+                      <td class="dlt" style="text-align:center;">
+                        <button *ngIf = "showdisplayDeleteBtn" type="button" data-toggle="modal"
+                          data-target="#delete" data-uid="1" class="delete btn btn-danger btn-sm"
+                          (click)="open($event, data)"><i _ngcontent-c6="" class="m-1 icon-close"></i></button>
+                        </td>
+                    </tr>
+                    <tr class="p">
+                      <td colspan="12" class="hiddenRow well">
+                        <div class="accordian-body collapse p-3" [attr.id]="data.dispid2">
+                          <!--start-->
+                          <div class="row">
+                            <div class="col-12 col-md-4 mb-3">
+                              <div class="card cards">
+                                <div class="card-body">
+                                  <ul class="list-unstyled" style="line-height: 2">
+                                    <li><span class="fa fa-check text-success"></span><b>School ID</b>
+                                      :{{data.schoolID}}</li>
+                                    <li><span class="fa fa-check text-success"></span><b>School Name</b>
+                                      :{{data.schoolName }}</li>
+                                    <li><span class="fa fa-check text-success"></span><b>Created Time</b> :
+                                      {{data.create_Date | date: 'yyyy-MM-dd hh:mm:ss Z'}} </li>
+                                    <li><span class="fa fa-check text-success"></span><b>Updated Time </b>:
+                                      {{data.updated_Date | date: 'yyyy-MM-dd hh:mm:ss Z'}} </li>
+                                    <li><span class="fa fa-check text-success"></span><b>Lane / Street</b>
+                                      :{{data.schoolAddress_Lane}}</li>
+
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-12 col-md-4 mb-3">
+                              <div class="card cards">
+                                <div class="card-body">
+                                  <ul class="list-unstyled" style="line-height: 2">
+                                    <li><span class="fa fa-check text-success"></span><b>Area
+                                      </b>:{{data.schoolAddress_Area}} </li>
+                                    <li><span class="fa fa-check text-success"></span><b>City</b> :
+                                      {{data.schoolAddress_City}}</li>
+                                    <li><span class="fa fa-check text-success"></span><b>Pin Code</b>
+                                      :{{data.schoolAddress_Pincode}}</li>
+                                    <li><span class="fa fa-check text-success"></span><b>Select State</b> :
+                                      {{data.schoolAddress_State}} </li>
+                                    <li><span class="fa fa-check text-success"></span><b>Select Country</b> :
+                                      {{data.schoolAddress_Country}} </li>
+                                    <br>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-12 col-md-4 mb-3">
+                              <div class="card cards">
+                                <div class="card-body">
+                                  <ul class="list-unstyled" style="line-height: 2">
+                                    <li><span class="fa fa-check text-success"></span><b>Primary Contact Number</b> :
+                                      {{data.primary_Contact_Number}}</li>
+                                    <li><span class="fa fa-check text-success"></span><b>Alternate Contact Number</b> :
+                                      {{data.alternate_Contact_Number}}</li>
+                                    <li><span class="fa fa-check text-success"></span><b>Primary Email Address</b> :
+                                      {{data.primary_Email_Address}} </li>
+                                    <li><span class="fa fa-check text-success"></span><b>Alternate Email Address </b>:
+                                      {{data.alternate_Email_Address}}</li>
+                                    <li><span class="fa fa-check text-success"></span><b>Updated date </b>:
+                                      {{data.updated_Date | cynosureDateTimeZone:"YYYY-MM-DD HH:mm:ss"}}</li>
+                                    <li><span class="fa fa-check text-success"></span><b>Updated Name </b>:
+                                      {{data.updated_by_name}}</li>
+                                    <br> <br>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!--end-->
+                        </div>
+                      </td>
+                    </tr>
+                  </ng-container>
+
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="11">
+                      <mfBootstrapPaginator [rowsOnPageSet]="[5,10, 50,100]"></mfBootstrapPaginator>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="edit" class="modal modal2 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Update Data</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <div class=" col-md-12">
+            <div class="row">
+              <div class="col-6 col-md-6 mb-3">
+                <div class="col-12 col-md-12 mb-3"> <input id="sn" type="text" class="form-control" name="fname"
+                    placeholder="School Id"></div>
+                <div class="col-12 col-md-12 mb-3"> <input id="ln" type="text" class="form-control" name="fname"
+                    placeholder="School Name"></div>
+                <div class="col-12 col-md-12 mb-3"> <input id="an" type="text" class="form-control" name="fname"
+                    placeholder="Created Time"></div>
+                <div class="col-12 col-md-12 mb-3"> <input id="pcp" type="text" class="form-control" name="fname"
+                    placeholder="Updated Time"></div>
+                <div class="col-12 col-md-12 mb-3"> <input id="pc" type="text" class="form-control" name="fname"
+                    placeholder="Lane / Street"></div>
+
+                <div class="col-12 col-md-12 mb-3"> <input id="sn" type="text" class="form-control" name="fname"
+                    placeholder="Area "></div>
+                <div class="col-12 col-md-12 mb-3"> <input id="ln" type="text" class="form-control" name="fname"
+                    placeholder="City "></div>
+
+              </div>
+
+              <div class="col-6 col-md-6 mb-3">
+                <div class="col-12 col-md-12 mb-3"> <input id="an" type="text" class="form-control" name="fname"
+                    placeholder="Pin Code"></div>
+                <div class="col-12 col-md-12 mb-3"><input id="pcp" type="text" class="form-control" name="fname"
+                    placeholder="Select State"></div>
+                <div class="col-12 col-md-12 mb-3"><input id="pc" type="text" class="form-control" name="fname"
+                    placeholder="Select Country"></div>
+
+                <div class="col-12 col-md-12 mb-3"><input id="sn" type="text" class="form-control" name="fname"
+                    placeholder="Primary Contact Number "></div>
+                <div class="col-12 col-md-12 mb-3"><input id="ln" type="text" class="form-control" name="fname"
+                    placeholder="Alternate Contact Number "></div>
+                <div class="col-12 col-md-12 mb-3"><input id="an" type="text" class="form-control" name="fname"
+                    placeholder="Primary Email Address "></div>
+                <div class="col-12 col-md-12 mb-3"><input id="pcp" type="text" class="form-control" name="fname"
+                    placeholder="Alternate Email Address"></div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="up" class="btn btnsu btn-warning" data-dismiss="modal">Update</button>
+          <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="delete" class="modal modal3 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Delete Data</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Are you sure you want to delete {{delid.schoolName}} -- {{delid.schoolID}} ?</strong>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          <button type="button" id="del" class="btn btn-danger" data-dismiss="modal"
+            (click)="deleteschol()">Yes</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content modal-content2">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+
+          <!-- Steps form -->
+          <div class="card">
+            <div class="card-body mb-4">
+
+              <!-- <h2 class="text-center font-weight-bold pt-4 pb-5"><strong>Steps form example</strong></h2> -->
+
+              <!-- Stepper -->
+              <div class="steps-form">
+                <div class="steps-row setup-panel">
+                  <div class="steps-step">
+                    <a href="#step-9" type="button" class="btn btn-indigo btn-circle">1</a>
+                    <p>Step 1</p>
+                  </div>
+                  <div class="steps-step">
+                    <a href="#step-10" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                    <p>Step 2 </p>
+                  </div>
+                  <div class="steps-step">
+                    <a href="#step-11" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                    <p>Step 3</p>
+                  </div>
+                  <div class="steps-step">
+                    <a href="#step-12" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                    <p>Step 4</p>
+                  </div>
+                </div>
+              </div>
+
+              <form role="form" action="" method="post">
+
+                <!-- First Step -->
+                <div class="row setup-content" id="step-9">
+                  <div class="col-md-12">
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>Step 1</strong></h3>
+                    <div class="form-group service-form-group">
+                      <label>School ID</label>
+                      <label class="control-label sr-only" for="name"></label>
+                      <input type="number" placeholder="School ID" class="form-control" [(ngModel)]="model.schoolID"
+                        name="schoolID">
+                      <div class="form-icon"></div>
+                    </div>
+                    <div class="form-group service-form-group">
+                      <label>School Name</label>
+                      <label class="control-label sr-only" for="name"></label>
+                      <input type="text" placeholder="SchoolName" class="form-control" [(ngModel)]="model.schoolName"
+                        name="schoolName">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <button class="btn px-gdn-btn btn-rounded nextBtn float-right" type="button">Next</button>
+                  </div>
+                </div>
+
+                <!-- Second Step -->
+                <div class="row setup-content" id="step-10">
+                  <div class="col-md-12">
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>School Address</strong></h3>
+                    <div class="form-group service-form-group">
+                      <label>Lane / Street</label>
+                      <label class="control-label sr-only" for="name"></label>
+                      <input type="text" placeholder="Lane / Street" class="form-control" required=""
+                        [(ngModel)]="model.schoolAddress_Lane" name="schoolAddress_Lane">
+                      <div class="form-icon"></div>
+                    </div>
+                    <div class="form-group service-form-group">
+                      <label>Area</label>
+                      <label class="control-label sr-only" for="name"></label>
+                      <input type="text" placeholder="Area" class="form-control" required=""
+                        [(ngModel)]="model.schoolAddress_Area" name="schoolAddress_Area">
+                      <div class="form-icon"></div>
+                    </div>
+                    <div class="form-group service-form-group">
+                      <label> City</label>
+                      <label class="control-label sr-only" for="name"></label>
+                      <input type="text" placeholder="City" class="form-control" required=""
+                        [(ngModel)]="model.schoolAddress_City" name="schoolAddress_City">
+                      <div class="form-icon"></div>
+                    </div>
+                    <div class="form-group service-form-group">
+                      <label>Pin Code</label>
+                      <label class="control-label sr-only" for="name"></label>
+                      <input type="number" placeholder="Pin Code" class="form-control" required=""
+                        [(ngModel)]="model.schoolAddress_Pincode" name="schoolAddress_Pincode">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group">
+                      <label>State</label>
+                      <label class="control-label sr-only" for="State"></label>
+                      <input type="text" placeholder="State" class="form-control" required=""
+                        [(ngModel)]="model.schoolAddress_State" name="schoolAddress_State">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Country</label>
+                      <label class="control-label sr-only" for="Country"></label>
+                      <input type="text" placeholder="Country" class="form-control" required=""
+                        [(ngModel)]="model.schoolAddress_Country" name="schoolAddress_Country">
+                    </div>
+
+                    <div class="form-group service-form-group">
+                      <label>Primary Contact Number</label>
+                      <label class="control-label sr-only" for="phone"></label>
+                      <input id="phone" type="number" placeholder="Primary Contact Number" class="form-control"
+                        required="" [(ngModel)]="model.primary_Contact_Number" name="primary_Contact_Number">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                      <label>Alternate Contact Number</label>
+                      <label class="control-label sr-only" for="phone"></label>
+                      <input id="phone" type="number" placeholder="Alternate Contact Number" class="form-control"
+                        required="" [(ngModel)]="model.alternate_Contact_Number" name="alternate_Contact_Number">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                      <label>Primary Email Address</label>
+                      <label class="control-label sr-only" for="email"></label>
+                      <input type="email" placeholder="Primary Email Address" class="form-control" required=""
+                        [(ngModel)]="model.primary_Email_Address" name="primary_Email_Address">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                      <label>Alternate Email Address</label>
+                      <label class="control-label sr-only" for="email"></label>
+                      <input type="email" placeholder="Alternate Email Address" class="form-control" required=""
+                        [(ngModel)]="model.alternate_Email_Address" name="alternate_Email_Address">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <button class="btn px-gdn-btn btn-rounded prevBtn float-left" type="button">Previous</button>
+                    <button class="btn px-gdn-btn btn-rounded nextBtn float-right" type="button">Next</button>
+                  </div>
+                </div>
+
+                <!-- Third Step -->
+                <div class="row setup-content" id="step-11">
+                  <div class="col-md-12">
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>Primary Contact Person</strong></h3>
+
+                    <div class="form-group service-form-group">
+                      <label> Full Name</label>
+                      <label class="control-label sr-only" for="name"></label>
+                      <input type="text" placeholder="Full Name" class="form-control" required=""
+                        [(ngModel)]="model.primary_Contact_Person_Name" name="primary_Contact_Person_Name">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                      <label> Contact Number</label>
+                      <label class="control-label sr-only" for="phone"></label>
+                      <input type="text" placeholder=" Contact Number" class="form-control" required=""
+                        [(ngModel)]="model.primary_Contact_Person_contact_number"
+                        name="primary_Contact_Person_contact_number">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                      <label>Mobile Number</label>
+                      <label class="control-label sr-only" for="phone"></label>
+                      <input type="text" placeholder=" Mobile Number" class="form-control" required=""
+                        [(ngModel)]="model.primary_Contact_Person_mobile_number"
+                        name="primary_Contact_Person_mobile_number">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                      <label>Alternate Email Address</label>
+                      <label class="control-label sr-only" for="Email Address"></label>
+                      <input type="email" placeholder="Alternate Email Address" class="form-control" required=""
+                        [(ngModel)]="model.primary_Contact_Person_email_address"
+                        name="primary_Contact_Person_email_address">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <button class="btn px-gdn-btn btn-rounded prevBtn float-left" type="button">Previous</button>
+                    <button class="btn px-gdn-btn btn-rounded nextBtn float-right" type="button">Next</button>
+                  </div>
+                </div>
+
+                <!-- fourth Step -->
+                <div class="row setup-content" id="step-12">
+                  <div class="col-md-12">
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>Alternate Contact Person</strong></h3>
+
+                    <div class="form-group service-form-group">
+                      <label> Full Name</label>
+                      <label class="control-label sr-only" for="name"></label>
+                      <input type="text" placeholder="Full Name" class="form-control" required=""
+                        [(ngModel)]="model.alternate_Contact_Person_Name" name="alternate_Contact_Person_Name">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                      <label> Contact Number</label>
+                      <label class="control-label sr-only" for="phone"></label>
+                      <input type="text" placeholder=" Contact Number" class="form-control" required=""
+                        [(ngModel)]="model.alternate_Contact_Person_contact_number"
+                        name="alternate_Contact_Person_contact_number">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                      <label>Mobile Number</label>
+                      <label class="control-label sr-only" for="phone"></label>
+                      <input type="text" placeholder=" Mobile Number" class="form-control" required=""
+                        [(ngModel)]="model.alternate_Contact_Person_mobile_number"
+                        name="alternate_Contact_Person_mobile_number">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                      <label>Alternate Email Address</label>
+                      <label class="control-label sr-only" for="Email Address"></label>
+                      <input type="email" placeholder="Alternate Email Address" class="form-control" required=""
+                        [(ngModel)]="model.alternate_Contact_Person_email_address"
+                        name="alternate_Contact_Person_email_address">
+                      <div class="form-icon"></div>
+                    </div>
+
+                    <button class="btn px-gdn-btn btn-rounded prevBtn float-left" type="button">Previous</button>
+                    <button class="btn px-gdn-btn btn-rounded float-right" type="submit"
+                      (click)="check()">Submit</button>
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+          <!-- Steps form -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .table>tbody>tr>td,
+    .table>tbody>tr>th,
+    .table>tfoot>tr>td,
+    .table>tfoot>tr>th,
+    .table>thead>tr>td,
+    .table>thead>tr>th {
+      padding: px !important;
+      line-height: 1.428571;
+      vertical-align: top;
+      border: 1px solid #ddd;
+      text-align: left;
+      width: auto !important;
+    }
+  </style>
+</div>
+
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

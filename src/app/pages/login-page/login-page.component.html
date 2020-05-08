@@ -1,0 +1,129 @@
+<div class="alertmsg">
+  <div *ngIf="deleteLoading" id="snackbar" class="show">{{ loadingmsg }}</div>
+</div>
+
+
+<div *ngIf = "show_loading" class="loader-wrap1">
+  <div class="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+
+<div class="loginbg">
+  <div class="card mx-auto">
+    <div class="card-body">
+      <h2 class="card-title text-center">
+        <img src="assets/images/cynosure.png" />
+      </h2>
+      <form>
+        <ng-container *ngIf="Login">
+          <div class="form-group " *ngIf="time1">
+            <div class="row">
+              <div class="col-md-12" style="padding-right: 0px;padding-left: 0px;">
+                <label for="email">Email address</label>
+                <input #siuname type="email" class="form-control col-md-12" id="siuname" [(ngModel)]="siuser"
+                  name="thissiuser" />
+                <p style="color:red;">{{ erroremial }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" *ngIf="existinguser">
+            <div class="row">
+              <label for="passwords">Password</label>
+
+              <div class="col-md-12" style="padding-right: 0px;padding-left: 0px;">
+                <input #sipass type="password" class="form-control col-md-12" id="sipass" [(ngModel)]="sipassword"
+                  name="sipasswords" />
+
+                <p *ngIf="errorlogin" style="color:red;">
+                  {{ errormessagepass }}
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group" *ngIf="newuser">
+            <div class="row">
+              <div class="col-md-12" style="padding-right: 0px;padding-left: 0px;">
+                <label for="passwords">New Password</label>
+                <input #spass type="password" class="form-control col-md-12" id="passwords" [(ngModel)]="sipassword"
+                  name="sipasswords" />
+                <p *ngIf="errorlogin" style="color:red;">{{ errormessage }}</p>
+              </div>
+              <div class="col-md-12" style="padding-right: 0px;padding-left: 0px;">
+                <label for="passwords">Confirm Password</label>
+                <input #spass type="password" class="form-control col-md-12" id="passwords" [(ngModel)]="sipassword2"
+                  name="sipassword2" />
+                <p *ngIf="errorlogin" style="color:red;">{{ errormessage1 }}</p>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="col-md-12 text-center" *ngIf="time1" style="padding-right: 0px;padding-left: 0px;">
+            <button data-toggle="modal" data-target="#myModal" class="btn  btn btn-primary px-gdn-btn mb-3 "
+              (click)="checkUser()" style="padding: 10px;
+
+        margin-top: 0pc;">
+              Next
+            </button>
+          </div>
+          <div class=" text-center" *ngIf="existinguser">
+            <button data-toggle="modal" data-target="#myModal" class="btn  btn btn-primary px-gdn-btn mb-3 "
+              (click)="checkPassword()" style="padding: 10px;
+        margin-top: 0pc;">
+              Log in
+            </button>
+          </div>
+          <div class=" text-center" *ngIf="newuser">
+            <button data-toggle="modal" data-target="#myModal" class="btn  btn btn-primary px-gdn-btn mb-3 "
+              (click)="setPassword()" style="padding: 10px;
+        margin-top: 0pc;">
+              Register
+            </button>
+          </div>
+
+          <div class="form-group " *ngIf="otpverift">
+            <div class="row">
+              <div class="col-md-4">
+                <label for="email">Enter OTP</label>
+              </div>
+              <div class="col-md-8">
+                <input #otpcodes type="email" class="form-control col-md-12" id="otpcodes" [(ngModel)]="otpcode"
+                  name="otpcodes" />
+              </div>
+            </div>
+          </div>
+
+          <div class=" text-center" *ngIf="otpverift">
+            <button data-toggle="modal" data-target="#myModal" class="btn  btn btn-primary px-gdn-btn mb-3 mr-3"
+              (click)="verifyOtp()" style=" width: 100% !important;   padding: 10px;
+
+      margin-top: 0pc;">
+              Verify Otp
+            </button>
+          </div>
+        </ng-container>
+        <br />
+        <div class=" text-center reset">
+          Forgot password? <a routerLink="/forgotpassword">Reset</a>
+        </div>
+        <br />
+      </form>
+    </div>
+  </div>
+</div>
+<div class="text-nowrap footer">
+  2018
+  <!--<a routerLink=""style="color:#2e75b6 ;"> -->Cynosure
+  <!--</a>-->
+  all rights reserved
+</div>
+
+<!-- <img src="/assets/images/user-pages/login-img.png"> -->
+
+<style></style>

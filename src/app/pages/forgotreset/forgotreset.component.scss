@@ -1,0 +1,48 @@
+.forgot[_ngcontent-c1] {
+  max-width: 450px;
+  margin-top: 100px !important;
+}
+.footer {
+
+  float: left;
+  background: #222;
+  padding: 10px;
+  text-align: center;
+  bottom: 0;
+  position: fixed;
+  color: #fff;
+  width: 100%;
+}
+.footer {
+  z-index: 9999;
+}
+h2.card-title img {
+  position: static!important;
+  left: 0;
+  top: 20!important;
+  width: 25%!important;
+  margin: 0 auto;
+}
+
+.forgot.card {
+  max-width: 450px;
+  padding-bottom: 40px;
+  border: 2px #eee solid;
+}
+.form-control {
+  border-radius: 0px;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  line-height: 1.42857143;
+  border: 1px solid #327d1a;
+  background-color: #fff;
+  letter-spacing: 0px;
+  margin-bottom: 14px;
+  webkit-box-shadow: 0px 11px 10px -10px rgba(0, 0, 0, 0.24);
+  font-family: "Exo", sans-serif !important;
+  float: right;
+  margin-right: 0px;
+  margin-top: -8px;
+  height: calc(2.5125rem + 2px);
+}

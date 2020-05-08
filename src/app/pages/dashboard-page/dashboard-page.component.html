@@ -1,0 +1,132 @@
+
+<div *ngIf="showdisplay === true">
+
+<div class="row">
+  <div class="col-sm-12 col-lg-3 ">
+    <div class="card color-g1">
+        <a (click)="directpage('main/schoolmanagement')" >
+      <div class="card-body">
+        <div class="dash-box dash-box-shadow dash-box-color-1">
+          <div class="dash-box-icon">
+              <i _ngcontent-c18="" class="fa m-1 fa-building ng-star-inserted"></i>
+          </div>
+          <div class="dash-box-body">
+            <span class="dash-box-count">Schools</span>
+            <span class="dash-box-title">{{dashboarddaat.schoolCount}}</span>
+          </div>
+          <div layout="row" layout-align="center center" >
+         <!-- <div class="dash-box-action">
+            <button type="button" class="btn btn-info mb-3">More Info</button>
+          </div> -->
+          </div>
+        </div>
+      </div>
+    </a>
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-3 ">
+    <div class="card color-g2">
+        <a  (click)="directpage('main/assignusertocynosure')">
+      <div class="card-body">
+        <div class="dash-box dash-box-shadow dash-box-color-2">
+          <div class="dash-box-icon">
+             <i _ngcontent-c18="" class="fa m-1 fa-vcard ng-star-inserted"></i>
+          </div>
+          <div class="dash-box-body">
+            <span class="dash-box-count">Admin Users</span>
+            <span class="dash-box-title">{{dashboarddaat.schooladminCount}}</span>
+          </div>
+          <!-- <div class="dash-box-action">
+          <button type="button" class="btn btn-info mb-3 ">More Info</button>
+          </div> -->
+        </div>
+      </div>
+    </a>
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-3">
+    <div class="card color-g3">
+        <a (click)="directpage('main/numberofschoolswithoutusers')">
+      <div class="card-body">
+        <div class="dash-box dash-box-shadow dash-box-color-2">
+          <div class="dash-box-icon">
+              <i _ngcontent-c18="" class="fa m-1 fa-building-o ng-star-inserted"></i>
+          </div>
+          <div class="dash-box-body">
+            <span class="dash-box-count">Schools w/o users</span>
+            <span class="dash-box-title">{{dashboarddaat.numberofschoolwithoutuserCount}}</span>
+          </div>
+          
+          <!-- <div class="dash-box-action">
+          <button type="button" class="btn btn-info mb-3 ">More Info</button>
+          </div> -->
+        </div>
+      </div>
+    </a>
+    </div>
+    
+  </div>
+  <div class="col-sm-12 col-lg-3">
+    <div class="card color-g4">
+        <a (click)="directpage('main/numberofuserswithoutschools')">
+      <div class="card-body">
+        <div class="dash-box dash-box-shadow dash-box-color-2">
+          <div class="dash-box-icon">
+              <i class="fa m-1 fa-vcard-o ng-star-inserted"></i>
+          </div>
+          <div class="dash-box-body">
+            <span class="dash-box-count">Users w/o schools</span>
+            <span class="dash-box-title">{{dashboarddaat.numberofuserwithoutschoolCount}}</span>
+          </div>
+          <!-- <div class="dash-box-action">
+            <button type="button" class="btn btn-info mb-3 ">More Info</button>
+          </div> -->
+        </div>
+      </div>
+    </a>
+    </div>
+  </div>
+  </div>
+<br>
+<br>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="full">
+    <div class="card">
+<div class="tabl">
+        <table class="table table-striped" width = "100%">
+          <thead>
+          <tr>
+            <th scope="col" >School Name</th>
+            <th scope="col" >Number of School Admins</th>
+            <th scope="col" >Number of Parents</th>
+            <th scope="col" >Number of Students</th>
+          </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let data of dashboarddaat.school">
+                  <td>{{data.schoolName}} - {{data.schoolID}}</td>
+                  <td>{{data.alternate_Contact_Number}}</td>
+                  <td>{{data.alternate_Contact_Person_contact_number}}</td>
+                  <td>{{data.alternate_Contact_Person_mobile_number}}</td>
+                </tr>
+          </tbody>
+        </table>
+        </div>
+
+    </div>
+    </div>
+</div></div>
+<style>
+  .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th{
+    text-align: left;
+  }
+</style>
+</div>
+
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>
+
+

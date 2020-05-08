@@ -1,0 +1,241 @@
+
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+h3.adsc {
+  margin-left: 0px;
+  background: #75a7d5;
+  padding: 10px;
+  margin-top: 0px !important;
+  color: #fff;
+  font-size: 18px !important;
+}
+.field-padding label {
+  margin-bottom: 30px !important;
+}
+label {
+  display: block;
+  font-size: 14px;
+
+  margin-top: 0px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.frms {
+  padding: 10px;
+  margin-top: 0px;
+}
+.form-group {
+  margin-bottom: 0px;
+  
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+  border-color: #dc3545;
+  padding-right: 2.25rem;
+  background-repeat: no-repeat;
+  background-position: center right calc(2.25rem / 4);
+  background-size: calc(2.25rem / 2) calc(2.25rem / 2);
+  background-image: none;
+}
+
+.card {
+  position: relative;
+  display: inline-table;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0px solid transparent;
+  border-radius: 2px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.chevron[_ngcontent-c14]::before {
+  border-style: solid;
+  border-width: 0.29em 0.29em 0 0;
+  content: '';
+  display: inline-block;
+  height: 0.69em;
+  left: 0.05em;
+  position: relative;
+  top: 0.15em;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  vertical-align: middle;
+  width: 0.71em;
+}
+.excel 
+{
+  margin: 0px 5px 0px 0px;
+  background: #f79420;
+  padding: 6px;
+  font-size: 12px !important;
+}
+.excel:hover 
+{
+  background: #2e75b6;
+  color: #fff;
+}
+.excel i
+{
+  font-size: 12px;
+  padding-right: 8px;
+}
+.mail-option 
+{
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.mail-option .chk-all, .mail-option .btn-group a.btn {
+  background: none repeat scroll 0 0 #fcfcfc;
+  border: 1px solid #e7e7e7;
+  border-radius: 3px !important;
+  color: #afafaf;
+  display: inline-block;
+  padding: 5px 10px;
+}
+.btn-group{
+  margin: 1px 5px 0px 4px;
+}
+.excel {
+  color: #fff;
+}
+.btn-group, .btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.mail-option a {
+  color: #2e75b6;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+.form-check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -0.25rem;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(2.4125rem + 2px);
+}
+.bg-primary {
+  border-color: #2e75b6 !important;
+}
+.chevron.bottom[_ngcontent-c5]:before {
+  top: -1.3em;
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.chevron::before {
+  border-style: solid;
+  border-width: 0.29em 0.29em 0 0;
+  content: '';
+  display: inline-block;
+  height: 0.69em;
+  left: 0.05em;
+  position: relative;
+  top: 0.15em;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  vertical-align: middle;
+  width: 0.71em;
+  color: #74a5d4!important;
+}
+
+thead {
+  background: transparent;
+}
+
+.form-control{
+  padding: 15px 16px 15px 12px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+.btn-outline-primary 
+{
+  padding: 0px 16px 0px 16px !important;
+  border: 2px #2e75b6 solid !important;
+  margin-top: 20px;
+  border-radius: 2px;
+  height: calc(2.9325rem + 2px) !important;
+}
+.btn-outline-primary:hover
+{
+    background: #2e75b6 !important;
+    color: #fff;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.newcalendar-btn button
+{
+    width: auto !important;
+    margin: auto;
+    font-size: 14px !important;
+}
+

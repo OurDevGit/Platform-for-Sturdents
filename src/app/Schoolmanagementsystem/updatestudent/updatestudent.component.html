@@ -1,0 +1,151 @@
+<div *ngIf="showdisplay === true">
+    <div id="vishnuoverlay" style='display: block' *ngIf='loader'>
+        <div class="myloader-wrap">
+            <div class="myloader">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="row">
+            <div _ngcontent-c6="" class="col">
+                <h3 _ngcontent-c6="" class="adsc">
+                    <i class="fa fa-graduation-cap" style="color:#fff!important;"></i> &nbsp;&nbsp;Update Student</h3>
+            </div>
+        </div>
+
+        <div class="col-mb-12">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>School Student ID</label>
+                        <input type="text" placeholder="School Student ID" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="schoolstuid" name="schoolstuid" value="" />
+                        <label *ngIf="errorschostuid" style="color: red">* Enter School Student ID</label>
+                        <label *ngIf="errorschostuid1" style="color: red">* Please enter AlphaNumeric Characters
+                            only</label>
+                        <label *ngIf="errorschostuidlength" style="color: red">* Enter maximum of 25 characters </label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Full Name" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="fullname" name="fullname" value="" />
+                        <label *ngIf="errorfullname" style="color: red">* Enter Full Name</label>
+                        <label *ngIf="errorfullnamespecial" style="color: red">* Please enter AlphaNumeric Characters
+                            only</label>
+                        <label *ngIf="errorfullnamelength" style="color: red">* Enter maximum of 25 characters </label>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Short Name</label>
+                        <input type="text" placeholder="Short Name" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="shortname" name="shortname" value="" />
+                        <label *ngIf="errorshortname" style="color: red">* Enter Short Name</label>
+                        <label *ngIf="errorshortnamespecial" style="color: red">* Please enter AlphaNumeric Characters
+                            only</label>
+                        <label *ngIf="errorshortnamelength" style="color: red">* Enter maximum of 25 characters </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Country Code</label>
+                        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="countrycode1"
+                            name="countrycode1" value="">
+                            <option value="" disabled>Select Country Code</option>
+                            <ng-container *ngFor="let country of countrylist">
+                                <option value="{{country.dial_code}}">{{country.name}}</option>
+                            </ng-container>
+                        </select>
+                        <label *ngIf="errorcountcode1" style="color: red">* Enter Country Code</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Primary Mobile Number</label>
+                        <input type="number" placeholder="Primary Mobile Number" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="primarynumber" name="primarynumber" value="" />
+                        <label *ngIf="errorprimarynum" style="color: red">* Enter Primary Mobile Number</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Country Code</label>
+                        <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="countrycode2"
+                            name="countrycode2" value="">
+                            <option value="" disabled>Select Country Code</option>
+                            <ng-container *ngFor="let country of countrylist">
+                                <option value="{{country.dial_code}}">{{country.name}}</option>
+                            </ng-container>
+                        </select>
+                        <label *ngIf="errorcountrycode2" style="color: red">* Enter Country Code</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Secondary Mobile Number</label>
+                        <input type="number" placeholder="Secondary Mobile Number" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="secondarynumber" name="secondarynumber"
+                            value="" />
+                        <label *ngIf="errorsecondarynumber" style="color: red">* Enter Secondary Mobile Number</label>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Geo Loaction</label>
+                        <input type="text" placeholder="Geo Loaction" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="geolocation" name="geolocation" value="" />
+                        <label *ngIf="errorgeoloc" style="color: red">* Enter Geo Loaction</label>
+                        <label *ngIf="errorgeoloc1" style="color: red">* Please enter AlphaNumeric Characters
+                            only</label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Academic Year</label>
+                        <select class="form-control col-md-12" [(ngModel)]="academicyear" name="academicyear"
+                            value="{{academicyear}}" name="academicyear">
+                            <ng-container *ngFor="let y of years">
+                                <option value="{{y.year}}">{{y.year}}</option>
+                            </ng-container>
+                        </select>
+                        <label *ngIf="erroracadmicyear" style="color: red">* Enter Academic Year</label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Class</label>
+                        <select class="form-control col-md-12" [(ngModel)]="grade" name="grade" value=""
+                            id="exampleFormControlSelect1">
+                            <ng-container *ngFor="let data of listgrade">
+                                <option value="{{data.title}}">{{data.title}}</option>
+                            </ng-container>
+                        </select>
+                        <label *ngIf="errorgrade" style="color: red">* Enter Class</label>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Address</label>
+                        <textarea maxlength="500" style="height:139px!important;" placeholder="Address"
+                            class="form-control col-md-12" [(ngModel)]="addresss" name="addresss" value=""></textarea>
+                        <label *ngIf="erroraddress" style="color: red">* Enter Address</label>
+                        <label *ngIf="erroraddressnamespeical" style="color: red">* Please enter AlphaNumeric Characters
+                            only</label>
+                        <label *ngIf="erroraddressnamelength" style="color: red">* Enter maximum of 250 characters
+                        </label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Select Routes</label>
+                        <select class="form-control col-md-12" [(ngModel)]="routes" name="routes" value=""
+                            id="exampleFormControlSelect1">
+                            <ng-container *ngFor="let data of routeslist">
+                                <option value="{{data.RouteId}}">{{data.RouteName}}</option>
+                            </ng-container>
+                        </select>
+                        <label *ngIf="errorgrade" style="color: red">* Select Routes</label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted"
+                            style="width: 30%;" (click)="add()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showdisplay === false">
+    <h3>! You Don't Have the Access</h3>
+</div>

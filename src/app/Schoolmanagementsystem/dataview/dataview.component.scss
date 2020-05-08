@@ -1,0 +1,29 @@
+.data{
+    background-color: #fff;
+    padding: 30px;
+    border-top: #5893c8  solid 10px;
+    box-shadow: 0px 3px 0 0 rgba(0, 0, 0, 0.1);
+}
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    line-height: 1.428571;
+    vertical-align: top;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    text-align: center;
+}
+td{
+    text-align: center!important;
+    color: #000;
+  }
+  h3.adsc{
+    width: 100%;
+    float: left;
+    margin-left: 0px;
+    background: #75a7d5;
+    padding: 10px;
+    margin-top: 0px !important;
+    color: #fff;
+}
+li{
+    color: #222;
+}

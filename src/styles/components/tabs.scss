@@ -1,0 +1,36 @@
+@import '../variables';
+
+.custom-tabs {
+  .nav-pills .nav-link.active,
+  .show > .nav-pills .nav-link {
+    color: inherit;
+    background: transparent;
+  }
+  .nav-item {
+    margin-left: -16px;
+    .nav-link {
+      color: inherit;
+      position: relative;
+      &:before {
+        position: absolute;
+        content: '';
+        left: 50%;
+        right: 50%;
+        bottom: 3px;
+        height: 2px;
+        transition: left 0.3s ease, right 0.3s ease;
+        background-color: $primary-color;
+      }
+      &.active {
+        &:before {
+          left: 16px;
+          right: 16px;
+        }
+      }
+    }
+  }
+  .tab-pane {
+    padding-top: 25px;
+  }
+
+}

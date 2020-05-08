@@ -1,0 +1,103 @@
+<div class="card">
+    <div class="row">
+        <div _ngcontent-c6="" class="col">
+            <h3 _ngcontent-c6="" class="adsc"><i class="material-icons ng-star-inserted">business</i> &nbsp;View Student
+                Routes</h3>
+        </div>
+    </div>
+    <form [formGroup]="studentrouteForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="col-mb-12">
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <label>Route Name</label>
+                        <input type="text" placeholder="Route Name" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="studentRoute.route_name" name="route_name"
+                            formControlName="routenames"
+                            [ngClass]="{ 'is-invalid': submitted && f.routenames.errors }" />
+                        <div *ngIf="submitted && f.routenames.errors" class="invalid-feedback">
+                            <div *ngIf="f.routenames.errors.required">Route Name is required</div>
+                            <div *ngIf="f.routenames.errors.pattern">Enter Valid Route Name</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Student</label>
+                        <input type="text" placeholder="Student" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="studentRoute.student" name="student" value=""
+                            formControlName="students" [ngClass]="{ 'is-invalid': submitted && f.students.errors }" />
+                        <div *ngIf="submitted && f.students.errors" class="invalid-feedback">
+                            <div *ngIf="f.students.errors.required">Student is required</div>
+                            <div *ngIf="f.students.errors.pattern">Enter Valid Student</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Start Location</label>
+                        <input type="text" placeholder="Start Location" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="studentRoute.start_location"
+                            name="start_location" value="" formControlName="startlocations"
+                            [ngClass]="{ 'is-invalid': submitted && f.startlocations.errors }" />
+                        <div *ngIf="submitted && f.startlocations.errors" class="invalid-feedback">
+                            <div *ngIf="f.startlocations.errors.required">Start Location is required</div>
+                            <div *ngIf="f.startlocations.errors.pattern">Enter Valid Start Location</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Stop Location</label>
+                        <input type="text" placeholder="Stop Location" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="studentRoute.stop_location" name="stop_location"
+                            value="" formControlName="stoplocations"
+                            [ngClass]="{ 'is-invalid': submitted && f.stoplocations.errors }" />
+                        <div *ngIf="submitted && f.stoplocations.errors" class="invalid-feedback">
+                            <div *ngIf="f.stoplocations.errors.required">Stop Location is required</div>
+                            <div *ngIf="f.stoplocations.errors.pattern">Enter Valid Stop Location</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Start time</label>
+                        <input type="text" placeholder="Start time" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="studentRoute.start_time" name="start_time"
+                            value="" formControlName="startTimes"
+                            [ngClass]="{ 'is-invalid': submitted && f.startTimes.errors }" />
+                        <div *ngIf="submitted && f.startTimes.errors" class="invalid-feedback">
+                            <div *ngIf="f.startTimes.errors.required">Start time is required</div>
+                            <div *ngIf="f.startTimes.errors.pattern">Enter Valid Start time</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>End Time</label>
+                        <input type="text" placeholder="End Time" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="studentRoute.end_time" name="end_time" value=""
+                            formControlName="endTimes" [ngClass]="{ 'is-invalid': submitted && f.endTimes.errors }" />
+                        <div *ngIf="submitted && f.endTimes.errors" class="invalid-feedback">
+                            <div *ngIf="f.endTimes.errors.required">End Time is required</div>
+                            <div *ngIf="f.endTimes.errors.pattern">Enter Valid End Time</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Status</label>
+                        <input type="text" placeholder="Status" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="studentRoute.status" name="status" value=""
+                            formControlName="statues" [ngClass]="{ 'is-invalid': submitted && f.statues.errors }" />
+                        <div *ngIf="submitted && f.statues.errors" class="invalid-feedback">
+                            <div *ngIf="f.statues.errors.required">Status is required</div>
+                            <div *ngIf="f.statues.errors.pattern">Enter Valid Status</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6"></div>
+
+                    <div class="col-md-3">
+                        <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted"
+                            name="singlebutton" style="margin-top: 2em;">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

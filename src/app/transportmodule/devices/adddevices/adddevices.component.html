@@ -1,0 +1,95 @@
+
+<div *ngIf="showdisplay === true">
+
+<div class="card">
+  <div class="row">
+    <div _ngcontent-c6="" class="col">
+      <h3 _ngcontent-c6="" class="adsc"><i class="material-icons ng-star-inserted">business</i> &nbsp;Add Devices
+        Details</h3>
+    </div>
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="col-mb-12">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <label>IMEI</label>
+            <input type="text" placeholder="IMEI" style="margin-bottom: 5px;" class="form-control col-md-12"
+              [(ngModel)]="adddriver.imei" name="imei" value="" formControlName="imeis"
+              [ngClass]="{ 'is-invalid': submitted && f.imeis.errors }" />
+            <div *ngIf="submitted && f.imeis.errors" class="invalid-feedback">
+              <div *ngIf="f.imeis.errors.required">IMEI is required</div>
+              <div *ngIf="f.imeis.errors.pattern">Enter Valid IMEI</div>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <label>Admin No</label>
+            <input type="text" placeholder="Admin No" style="margin-bottom: 5px;" class="form-control col-md-12"
+              [(ngModel)]="adddriver.adminNo" name="adminNo" value="" formControlName="adminNos"
+              [ngClass]="{ 'is-invalid': submitted && f.adminNos.errors }" />
+            <div *ngIf="submitted && f.adminNos.errors" class="invalid-feedback">
+              <div *ngIf="f.adminNos.errors.required">Admin No is required</div>
+              <div *ngIf="f.adminNos.errors.pattern">Enter Valid Admin No</div>
+            </div>
+
+          </div>
+
+          <div class="col-md-6">
+            <label>Make</label>
+            <input type="text" placeholder="Make" style="margin-bottom: 5px;" class="form-control col-md-12"
+              [(ngModel)]="adddriver.make" name="make" value="" formControlName="makes"
+              [ngClass]="{ 'is-invalid': submitted && f.makes.errors }" />
+            <div *ngIf="submitted && f.makes.errors" class="invalid-feedback">
+              <div *ngIf="f.makes.errors.required">Make is required</div>
+              <div *ngIf="f.makes.errors.pattern">Enter Valid Make</div>
+            </div>
+
+          </div>
+
+          <div class="col-md-6">
+            <label>Model</label>
+            <input type="text" placeholder="Model" style="margin-bottom: 5px;" class="form-control col-md-12"
+              [(ngModel)]="adddriver.model" name="model" value="" formControlName="models"
+              [ngClass]="{ 'is-invalid': submitted && f.models.errors }" />
+            <div *ngIf="submitted && f.models.errors" class="invalid-feedback">
+              <div *ngIf="f.models.errors.required">Model is required</div>
+              <div *ngIf="f.models.errors.pattern">Enter Valid Model</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Type</label>
+            <input type="text" placeholder="Type" style="margin-bottom: 5px;" class="form-control col-md-12"
+              [(ngModel)]="adddriver.type" name="type" value="" formControlName="types"
+              [ngClass]="{ 'is-invalid': submitted && f.types.errors }" />
+            <div *ngIf="submitted && f.types.errors" class="invalid-feedback">
+              <div *ngIf="f.types.errors.required">Type is required</div>
+              <div *ngIf="f.types.errors.pattern">Enter Valid Type</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Tracking Device ID</label>
+            <input type="text" placeholder="Type" style="margin-bottom: 5px;" class="form-control col-md-12"
+              [(ngModel)]="adddriver.id" name="id" value="" formControlName="TdeviceIds"
+              [ngClass]="{ 'is-invalid': submitted && f.TdeviceIds.errors }" />
+            <div *ngIf="submitted && f.TdeviceIds.errors" class="invalid-feedback">
+              <div *ngIf="f.TdeviceIds.errors.required">Tracking Device ID is required</div>
+              <div *ngIf="f.TdeviceIds.errors.pattern">Enter Valid Tracking Device ID</div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted" name="singlebutton"
+              style="margin-top: 2em;">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

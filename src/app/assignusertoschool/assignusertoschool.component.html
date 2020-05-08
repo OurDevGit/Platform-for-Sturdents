@@ -1,0 +1,91 @@
+<div *ngIf="showdisplay === true">
+    <form>
+        <!-- service-form -->
+        <div class="service-form" style="margin-top: 0em!important;">
+
+            <div class="rows">
+                <div class="header">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb10 ">
+
+                        <div class="col-md-6">
+                            <h3 class="adsc"><i class="fa fa-user"></i> &nbsp;Assign User to School</h3>
+                        </div>
+                    </div><br>
+                </div>
+                <div class="card">
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label>Select School List</label>
+                                    <label class="control-label sr-only" for="State">Select School List</label>
+
+                                    <select id="select" name="schoolID" class="form-control col-md-12"
+                                        [(ngModel)]="model.schoolID" (change)="refreshUserList($event.target.value)"
+                                        value="" id="exampleFormControlSelect1">
+                                        <option value="">Select School List</option>
+                                        <ng-container *ngFor="let school of schoollist">
+                                            <option value="{{school.id}}">{{school.schoolID}} - {{school.schoolName}}
+                                            </option>
+                                        </ng-container>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label>Select User List</label>
+                                    <label class="control-label sr-only" for="Country">Select User List</label>
+                                    <div class="select">
+                                        <select id="select" name="userID" class="form-control col-md-12"
+                                            [(ngModel)]="model.userID" id="exampleFormControlSelect1">
+                                            <option value="">{{userdropdowntext}}</option>
+                                            <ng-container *ngFor="let user of userlist">
+                                                <option value="{{user.id}}">{{user.first_name}} - {{user.email_address}}
+                                                </option>
+                                            </ng-container>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12"><br><br>
+                        <div class="col-md-12">
+
+                            <div *ngIf="issyncstarted;then content else other_content">here is ignored</div>
+                            <ng-template #content>
+                                <button class="btn btn-info btn-lg px-gdn-btn" name="singlebutton" type="submit"
+                                    style="    padding: 10px 10px 10px 10px!important;">Assigning user</button>
+                            </ng-template>
+                            <ng-template #other_content>
+                                <button class="btn btn-info btn-lg px-gdn-btn" name="singlebutton" type="submit"
+                                    (click)="check()" style="    padding: 10px 10px 10px 10px!important;">Assign
+                                    user</button>
+                            </ng-template>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+    <style>
+        .card[_ngcontent-c4] {
+            max-width: 100% !important;
+            margin-top: 5px !important;
+            height: 214px;
+        }
+    </style>
+
+</div>
+<div *ngIf="showdisplay === false">
+    <h3>! You Don't Have the Access</h3>
+</div>

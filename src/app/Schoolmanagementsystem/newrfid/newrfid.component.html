@@ -1,0 +1,178 @@
+<div *ngIf="showdisplay === true">
+    <!-- Steps form -->
+    <div class="card">
+        <div _ngcontent-c6="" class="">
+            <div _ngcontent-c6="" class="row">
+                <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style="padding-right: 0px;padding-left: 0px;">
+                    <h3 _ngcontent-c6="" class="adsc">
+                        <i _ngcontent-c18="" style="color: #fff" class="material-icons ng-star-inserted">business</i>
+                        &nbsp;&nbsp;RFID</h3>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a class="btn btn-secondary excel   pull-right" href="http://protrology.com/cynosurefiles/rfid.csv"> <i
+                        class="material-icons ng-star-inserted"
+                        style="color: #fff !important;font-size: 12px;">get_app</i>Sample Document</a>
+                <button (click)='uploadbulk()' type="button" class="btn btn-secondary excel   pull-right">
+                    <i class="fa fa-upload" aria-hidden="true"></i> &nbsp; Bulkupload
+                </button>
+                <!-- (click)='accbulup()' -->
+            </div>
+        </div>
+
+        <div class="card-body mb-4">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <!-- First Step -->
+                <div class="col-md-12 newrfid-page">
+                    <!--endrow-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Student</h3>
+                            <div class="form-group service-form-group col-md-5" style="margin: 0px 0px 14px">
+                                <label>School Student ID</label>
+                                <ng-select class="form-control" [items]="schoolstudentid" bindLabel="schoolStudentID"
+                                    (change)="onchage(value)" name="SchoolStudentID" formControlName="SchoolStudentIDs"
+                                    [ngClass]="{'is-invalid': submitted && f.SchoolStudentIDs.errors}"
+                                    bindValue="schoolStudentID" placeholder="School Student ID" value="addrfid.id"
+                                    [(ngModel)]="addrfid.SchoolStudentID" #SchoolStudentID>
+                                    <ng-template ng-header-tmp>
+                                    </ng-template>
+                                    <ng-template ng-label-tmp let-item="item">
+                                        <b style="font-weight: normal;
+                             font-size: 10px;
+                             color: #555;">{{item.schoolStudentID}}</b>
+                                    </ng-template>
+                                </ng-select>
+                                <div *ngIf="submitted && f.SchoolStudentIDs.errors" class="invalid-feedback">
+                                    <div *ngIf="f.SchoolStudentIDs.errors.required">School Student ID is required</div>
+                                    <!-- <div *ngIf="f.SchoolStudentIDs.errors.pattern">Enter Valid School Student id </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Student Name, RFID </h3>
+                        </div>
+                        <div class="form-group service-form-group col-md-3">
+
+                            <label>Unique Number</label>
+
+                            <input type="text" placeholder="Unique Number" formControlName="uniquenumbers"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.uniquenumbers.errors }"
+                                [(ngModel)]="addrfid.uniquenumber" name="uniquenumber" value="" #uniquenumber />
+                            <div *ngIf="submitted && f.uniquenumbers.errors" class="invalid-feedback">
+                                <div *ngIf="f.uniquenumbers.errors.required">Unique Number is required</div>
+                                <div *ngIf="f.uniquenumbers.errors.pattern">Enter Valid Unique Number</div>
+
+                            </div>
+                        </div>
+                        <div class="form-group service-form-group col-md-3">
+
+                            <label>Frequency</label>
+                            <input type="text" placeholder="Frequency" formControlName="freequencys"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.freequencys.errors }"
+                                [(ngModel)]="addrfid.freequency" name="freequency" value="" #freequency />
+                            <div *ngIf="submitted && f.freequencys.errors" class="invalid-feedback">
+                                <div *ngIf="f.freequencys.errors.required">Frequency is required</div>
+                                <div *ngIf="f.freequencys.errors.pattern">Enter Valid Frequency </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group service-form-group col-md-3">
+                            <label>RFID</label>
+                            <input type="text" maxlength="15" placeholder="RFID " formControlName="rfiddatas"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.rfiddatas.errors }"
+                                [(ngModel)]="addrfid.rfiddata" name="rfiddata" value="" #rfiddatas />
+                            <div *ngIf="submitted && f.rfiddatas.errors" class="invalid-feedback">
+                                <div *ngIf="f.rfiddatas.errors.required">RFID is required</div>
+                                <div *ngIf="f.rfiddatas.errors.pattern">Enter Valid RFID</div>
+                            </div>
+                        </div>
+                        <div class="form-group service-form-group col-md-3">
+                            <label>Type</label>
+                            <input type="text" placeholder="Type " formControlName="types" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.types.errors }" [(ngModel)]="addrfid.type"
+                                name="type" value="" #type />
+                            <div *ngIf="submitted && f.types.errors" class="invalid-feedback">
+                                <div *ngIf="f.types.errors.required">Type is required</div>
+                                <div *ngIf="f.types.errors.pattern">Enter Valid Type</div>
+
+                            </div>
+                        </div>
+                        <div class="form-group service-form-group col-md-3">
+                            <label>Capacity</label>
+                            <input type="text" placeholder="Capacity " formControlName="capacitys" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.capacitys.errors }"
+                                [(ngModel)]="addrfid.capacity" name="capacity" value="" #capacity />
+                            <div *ngIf="submitted && f.capacitys.errors" class="invalid-feedback">
+                                <div *ngIf="f.capacitys.errors.required">Capacity is required</div>
+                                <div *ngIf="f.capacitys.errors.pattern">Enter Valid Capacity </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group service-form-group col-md-3">
+                            <label> Driver ID</label>
+                            <input type="text" placeholder="Driver ID " formControlName="driver_ids"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f.driver_ids.errors }"
+                                [(ngModel)]="addrfid.driver_id" name="driver_id" value="" #driver_id />
+                            <div *ngIf="submitted && f.driver_ids.errors" class="invalid-feedback">
+                                <div *ngIf="f.driver_ids.errors.required">Driver ID is required</div>
+                                <div *ngIf="f.driver_ids.errors.pattern">Enter Valid Driver ID </div>
+                            </div>
+                        </div>
+                        <div class="form-group service-form-group col-md-3">
+                            <div class="input-group">
+                                <label>RFID Date</label>
+                                <input class="form-control ng-untouched ng-pristine ng-valid" dateformat="dd-mm-yyyy"
+                                    name="dp" ngbdatepicker="" placeholder="dd-mm-yyyy" style="margin-bottom: 0px;"
+                                    ng-reflect-name="dp" ng-reflect-model="[object Object]">
+                                <button class="btn px-gdn-btn px-gdn-btn-icon px-4 input-group-addon" type="button"><i
+                                        class="material-icons">date_range</i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Status</h3>
+                        </div>
+                        <div class="form-group service-form-group col-md-3">
+                            <label>Status</label>
+                            <select placeholder="Status" formControlName="statuss" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.statuss.errors }" [(ngModel)]="addrfid.status"
+                                name="status" value="" #status>
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                                <option value="Damaged">Damaged</option>
+                                <option value="Lost">Lost</option>
+                            </select>
+                            <div *ngIf="submitted && f.statuss.errors" class="invalid-feedback">
+                                <div *ngIf="f.statuss.errors.required">Status is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--endrow-->
+
+                    <div class="row">
+                        <div class="col-md-12 newrfid-btn">
+                            <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted"
+                                name="singlebutton">Add</button>
+                        </div>
+                    </div>
+                    <!--endrow-->
+                </div>
+                <!-- fourth Step -->
+            </form>
+        </div>
+    </div>
+    <!-- Steps form -->
+    <Br><br>
+</div>
+<div *ngIf="showdisplay === false">
+    <h3>! You Don't Have the Access</h3>
+</div>

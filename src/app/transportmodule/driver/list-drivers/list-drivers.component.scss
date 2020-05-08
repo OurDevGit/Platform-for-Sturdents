@@ -1,0 +1,234 @@
+h3.adsc {
+    margin-left: 0px;
+    background: #75a7d5;
+    padding: 10px;
+    margin-top: 0px !important;
+    color: #fff;
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+  }
+  
+  label {
+    display: block;
+    font-size: 14px;
+    color: #222;
+    margin-top: 0px;
+    font-family: OpenSans !important;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .frms {
+    padding: 10px;
+    margin-top: 0px;
+  }
+  .btn-danger:hover{
+    border: 1px #c3c1c1 solid!important;
+  
+  }
+  th{
+    padding: 3px 2px 4px 2px !important;
+  }
+  .btn{
+    border-radius: 0px!important;
+  }
+  table tr.highlight 
+  {
+    background-color: #fff !important;
+    color: #ffffff;
+  }
+  .form-group 
+  {
+    margin-bottom: 0px;
+  }
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0px solid transparent;
+    border-radius: 2px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .mail-option {
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .mail-option .chk-all, .mail-option .btn-group a.btn {
+    background: none repeat scroll 0 0 #fcfcfc;
+    border: 1px solid #e7e7e7;
+    border-radius: 3px !important;
+    color: #afafaf;
+    display: inline-block;
+    padding: 5px 10px;
+  }
+  .btn-group{
+    margin: 1px 5px 0px 4px;
+  
+  }
+  .updea{
+    margin: 0px 5px 0px 1px;
+    background: transparent;
+    border: 1px #ffffff solid;
+    width: 47px;
+    border-radius: 100px;
+    padding: 0px;
+    cursor: pointer;
+  }
+  button:focus {
+  
+    outline: 0px auto -webkit-focus-ring-color;
+  
+  }
+  .updea i{
+    font-size: 20px;
+    color: #747575;
+  }
+  .btn-group, .btn-group-vertical {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .mail-option a {
+    color: #2e75b6;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+  }
+  .m-1 {
+    margin: 10px !important;
+  }
+  .form-check-input {
+    position: absolute;
+    margin-top: 0.3rem;
+    margin-left: -0.25rem;
+  }
+  .form-control {
+    display: block;
+    width: 100%;
+  }
+  .material-icons {
+    font-size: 18px;
+  }
+  .excel {
+    margin: 0px 5px 5px 0px;
+    background: #2e75b6 !important;
+    padding: 5px;
+    float: right;
+    padding: 8px 15px 8px 8px;
+    color: #fff!important;
+  }
+  .delet a{
+    color:#2e75b6;
+  }
+  
+  .delet {
+    border: 1px #eee solid;
+    padding: 4px;
+   
+  }
+  
+   .application, .search, .form-control {
+    border: none!important;
+    background-color: transparent;
+    line-height: 40px;
+    box-shadow: none!important;
+  }
+  .input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+  }
+   .application, .search i {
+    color: rgba(0,0,0,.18);
+    cursor: pointer;
+    line-height: 38px;
+  }
+  .form-control {
+    display: block;
+    width: 100%;
+    height: calc(3.4125rem + 2px);
+  }
+  .form-control {
+    padding: .8rem 20px;
+  }
+   .search {
+    max-width: 200px;
+    height: 40px;
+    border: 1px solid rgba(0,0,0,.12)!important;
+    z-index: 0;
+  }
+  .input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+  }
+  .headers{
+    margin-bottom: 1em;
+  }
+  .table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
+    border-top: 0;
+    border: 1px #eee solid;
+    text-align: center;
+  }
+  .updea i {
+    font-size: 20px;
+    color: #2e75b6;
+  }
+  td{
+    text-align: center!important;
+    color: #000;
+  }
+  .tabl {
+    max-width: 100%!important;
+   
+  }
+
+  .table > thead:first-child > tr:first-child > th {
+    color: #6d6d6d;
+    padding: 10px 4px !important;
+    border: none !important;
+    font-size: 12px;
+}
+.red-color
+{
+  color: #ed1f24 !important;
+}
+.table tbody tr td {
+  border: none !important;
+  color: #6d6d6d;
+  font-family: opensans;
+  text-align: center !important;
+  padding: 8px 12px;
+  font-size: 13px;
+}

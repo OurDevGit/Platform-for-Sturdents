@@ -1,0 +1,49 @@
+app-register-page {
+  height: auto;
+  padding: 16px 16px 70px;
+  overflow-x: hidden;
+  .card {
+    max-width: 630px;
+    margin-top: 100px;
+    .card-body {
+      padding: 50px 130px 80px 130px;
+    }
+  }
+  footer {
+    position: absolute;
+    left: 50%;
+    bottom: 25px;
+    transform: translateX(-50%);
+  }
+  img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  @media screen and (max-width: 1024px){
+    padding-bottom: 290px;
+  }
+  @media screen and (max-width: 768px) {
+    .card {
+      margin-top: 50px;
+      .card-body {
+        padding-left: 80px;
+        padding-right: 80px;
+      }
+    }
+    footer {
+      bottom: 235px;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    .card {
+      margin-top: 0;
+      .card-body {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+    }
+  }
+
+}

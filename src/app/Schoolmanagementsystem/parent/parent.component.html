@@ -1,0 +1,278 @@
+<div *ngIf="showdisplay === true">
+
+  <div _ngcontent-c6="" class="">
+    <h3 _ngcontent-c6="" class="adsc">
+      <i class="material-icons ng-star-inserted" style="color:#fff">people</i> &nbsp; PARENT</h3>
+  </div>
+
+  <div class="card"><Br>
+    <div class="container headers">
+      <div class="col-md-12">
+        <div class="row col-md-12">
+          <div class="col-md-1">
+            <div ngbDropdown class="dropdown-no-toggle btn-group hidden-phone delet" style="height: 40px;">
+              <a ngbDropdownToggle class="btn mini blue" aria-expanded="false">
+                Action
+                <i class="fa fa-angle-down "></i>
+              </a>
+              <ul ngbDropdownMenu class="dropdown-menu">
+
+                <li *ngIf='disablebutton==="true"'><a data-toggle="modal" data-target="#disable" data-uid="1"><i
+                      class="fa fa-ban"></i> Disable</a></li>
+                <li *ngIf='disablebutton==="false"'><a data-toggle="modal" data-target="#alert" data-uid="1"><i
+                      class="fa fa-ban"></i> Disable</a></li>
+                <li class="divider"></li>
+                <li *ngIf='enablebutton==="true"'><a data-toggle="modal" data-target="#Enable" data-uid="1"><i
+                      class="fa fa-check-circle-o"></i> Enable</a></li>
+                <li *ngIf='enablebutton==="false"'><a data-toggle="modal" data-target="#alert" data-uid="1"><i
+                      class="fa fa-check-circle-o"></i> Enable</a></li>
+                <li class="divider"></li>
+                <li *ngIf='deletebutton==="true" && showDelete'><a data-toggle="modal" data-target="#delete" data-uid="1"><i
+                      class="fa fa-trash-o"></i> Delete</a></li>
+                <li *ngIf='deletebutton==="false" && showDelete'><a data-toggle="modal" data-target="#alert" data-uid="1"><i
+                      class="fa fa-trash-o"></i> Delete</a></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="col-md-5">
+            <div class="search input-group">
+              <input style="height:auto!important;" class="form-control" type="text" placeholder="Search" name="search"
+                [(ngModel)]="filter">
+              <div class="input-group-append">
+                <i class="material-icons pr-2">search</i>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-md-6">
+            <button type="button" class="btn btn-secondary excel pull-right" (click)='exportasExcell()'> <i
+                class="material-icons ng-star-inserted" style="color: #fff !important;">get_app</i> Excel</button>
+
+            <!--  (click)='accbulup()'  -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <form class="col-md-12">
+
+      <table class="table table-striped parent-table" [mfData]="datas | filter:filter" #mf="mfDataTable"
+        [mfRowsOnPage]="5">
+        <thead>
+          <tr>
+            <th style="width: 6%"><input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1"
+                (change)="checkUncheckAll()" class="form-check-input" style="text-align: center;"
+                [(ngModel)]="masterSelected">
+
+            </th>
+            <th style="width: 6%">
+              # <mfDefaultSorter by="fullName"><i class="fa fa-sort" style="color:#fff!important;"></i>
+              </mfDefaultSorter>
+            </th>
+            <th style="width: 20%">
+              Full Name <mfDefaultSorter by="fullName"><i class="fa fa-sort" style="color:#fff!important;"></i>
+              </mfDefaultSorter>
+            </th>
+            <th style="width: 15%">
+              Short Name <mfDefaultSorter by="shortName"><i class="fa fa-sort" style="color:#fff!important;"></i>
+              </mfDefaultSorter>
+            </th>
+            <th style="width: 30%">
+              Email <mfDefaultSorter by="email"><i class="fa fa-sort" style="color:#fff!important;"></i>
+              </mfDefaultSorter>
+            </th>
+
+            <th style="width: 10%">
+              View
+            </th>
+            <th style="width: 10%" >
+              Edit
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let item of mf.data ">
+            <tr [ngClass]="{'highlight' : item.isActive == false}" colspan="6" data-toggle="collapse"
+              [attr.data-target]="item.dispid" class="accordion-toggle">
+              <td><input type="checkbox" id="inline-checkbox1" name="inline-checkbox1" value="option1"
+                  (change)="isAllSelected()" class="form-check-input" style="text-align: center;"
+                  [(ngModel)]="item.isSelected"></td>
+              <td>1</td>
+              <td>{{item.fullName | uppercase}}</td>
+              <td>{{item.shortName}}</td>
+              <td class="text-right">{{item.email}}</td>
+              <td> <button class="updea"> <i class="m-1 icon-screen-desktop" (click)='view($event, item)'></i></button>
+              </td>
+              <td ><button type="button" class="updea" (click)="update($event, item)"><i
+                    class="m-1 icon-note"></i></button></td>
+            </tr>
+          </ng-container>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="7">
+              <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <!-- service-form -->
+      <!-- <div class="service-form col-md-12"style="margin-top: 0em!important;">
+
+        <div class="rows">
+
+           <div class="col">
+
+            <div class="col-md-12">
+              <div class="row">
+
+                <div class="tabl" >
+
+                  <table class="table table-bordered table-responsive" style="border-collapse:collapse;">
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th (click)="sort('fullName')">Full Name
+                                    <span class="glyphicon sort-icon" *ngIf="key =='fullName'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                  </th>
+                                <th (click)="sort('shortName')">Short Name
+                                    <span class="glyphicon sort-icon" *ngIf="key =='shortName'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                  </th>
+                                <th (click)="sort('email')">Email
+                                    <span class="glyphicon sort-icon" *ngIf="key =='email'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                  </th>
+                                <th>View</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <ng-container  *ngFor="let data of pagedata | orderBy: key : reverse | filter:filter">
+                                <tr [ngClass] = "{'highlight' : data.isActive == false}" colspan="6" data-toggle="collapse" [attr.data-target]="data.dispid"  class="accordion-toggle">
+                                        <td><input type="checkbox"  id="inline-checkbox1" name="inline-checkbox1" value="option1" (change)="onChange(data.id, $event.target.checked)" class="form-check-input" style="text-align: center;"></td>
+                                        <td>{{data.fullName}}</td>
+                                        <td>{{data.shortName}}</td>
+                                        <td>{{data.email}}</td>
+                                        <td> <button class="updea"> <i class="m-1 icon-screen-desktop" (click)='view($event, data)'></i></button></td>
+                                      <td><button type="button" class="updea" (click)="update($event, data)"><i class="m-1 icon-note"></i></button></td>
+                                    </tr>
+                                    </ng-container>
+                        </tbody>
+                    </table>
+                    <ngb-pagination [collectionSize]="collsize" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" [(page)]="advancedPage" (pageChange)="newsync()" [boundaryLinks]="true" ></ngb-pagination>
+                        <div *ngIf="loading" ><div class="loader text-center"></div></div>
+              </div>
+              </div>
+            </div>
+            </div>
+          </div>
+          </div> -->
+    </form>
+  </div>
+
+  <div id="delete" class="modal modal3 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Delete Data</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Are you sure you want to remove </strong>
+
+        </div>
+        <div class="modal-footer">
+
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+            class="btn btn-danger" data-dismiss="modal" (click)="deletelist()">Yes</button>
+
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+            class="btn btn-default" data-dismiss="modal">No</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="disable" class="modal modal4 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Disbale Data</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Are you sure you want to Disbale </strong>
+
+        </div>
+        <div class="modal-footer">
+
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+            class="btn btn-danger" data-dismiss="modal" (click)="disablelist()">Yes</button>
+
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+            class="btn btn-default" data-dismiss="modal">No</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="Enable" class="modal modal4 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Enable Data</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Are you sure you want to Enable </strong>
+
+        </div>
+        <div class="modal-footer">
+
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+            class="btn btn-danger" data-dismiss="modal" (click)="enablelist()">Yes</button>
+
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+            class="btn btn-default" data-dismiss="modal">No</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="alert" class="modal modal4 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Alert</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Please select any item for the list</strong>
+
+        </div>
+        <div class="modal-footer">
+
+          <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+            class="btn btn-default" data-dismiss="modal">OK</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

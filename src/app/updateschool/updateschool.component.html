@@ -1,0 +1,477 @@
+<div *ngIf="showdisplay === true">
+<div class="card">
+    <div class="card-body mb-4">
+
+        <form class="frms" role="form" action="" method="post" novalidate>
+
+            <!-- First Step -->
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="form-group service-form-group col-md-6">
+                        <label>School ID</label>
+                        <input required type="text" placeholder="School ID" class="form-control col-md-12"
+                            [(ngModel)]="model.schoolID" name="schoolID" pattern="^[a-zA-Z0-9_-\s]{1,150}$"
+                            #schoolID="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="schoolID.errors?.pattern" style="color:red">enter valid School ID</p>
+                        <p *ngIf="(!schoolID.errors?.pattern) && schoolID.invalid && (schoolID.dirty || schoolID.touched)"
+                            style="color:red">Enter School ID</p>
+
+                    </div>
+
+                    <div class="form-group service-form-group col-md-6">
+
+                        <label>School Name</label>
+                        <input required type="text" placeholder="SchoolName" class="form-control col-md-12"
+                            [(ngModel)]="model.schoolName" name="schoolName" pattern="^[a-zA-Z0-9_-\s]{2,150}$"
+                            #schoolName="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="schoolName.errors?.pattern" style="color:red">enter valid SchoolName</p>
+                        <p *ngIf="(!schoolName.errors?.pattern) && schoolName.invalid && (schoolName.dirty || schoolName.touched)"
+                            style="color:red">Enter SchoolName</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Second Step -->
+            <div class="col-md-12">
+                <h3 class="font-weight-bold pl-0 my-4 col-md-12"><strong>School Address</strong></h3>
+            </div>
+            <div class="">
+                <div class="row">
+
+                    <div class="form-group service-form-group col-md-6">
+                        <label>Area</label>
+                        <input required type="text" placeholder="Area" class="form-control col-md-12" required=""
+                            [(ngModel)]="model.schoolAddress_Area" name="schoolAddress_Area"
+                            pattern="^[a-zA-Z0-9_-\s]{2,150}$" #schoolAddress_Area="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="schoolAddress_Area.errors?.pattern" style="color:red">enter valid School Address</p>
+                        <p *ngIf="(!schoolAddress_Area.errors?.pattern) && schoolAddress_Area.invalid && (schoolAddress_Area.dirty || schoolAddress_Area.touched)"
+                            style="color:red">Enter School Address</p>
+                        <label> City</label>
+                        <input required type="text" placeholder="City" class="form-control col-md-12" required=""
+                            [(ngModel)]="model.schoolAddress_City" name="schoolAddress_City"
+                            pattern="^[a-zA-Z0-9_-\s]{2,150}$" #schoolAddress_City="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="schoolAddress_City.errors?.pattern" style="color:red">enter valid City</p>
+                        <p *ngIf="(!schoolAddress_City.errors?.pattern) && schoolAddress_City.invalid && (schoolAddress_City.dirty || schoolAddress_City.touched)"
+                            style="color:red">Enter City</p>
+                        <label>State</label>
+                        <input required type="text" placeholder="State" class="form-control col-md-12" required=""
+                            [(ngModel)]="model.schoolAddress_State" name="schoolAddress_State"
+                            pattern="^[a-zA-Z0-9_-\s]{2,150}$" #schoolAddress_State="ngModel">
+                        <p *ngIf="schoolAddress_State.errors?.pattern" style="color:red">enter valid State</p>
+                        <p *ngIf="(!schoolAddress_State.errors?.pattern) && schoolAddress_State.invalid && (schoolAddress_State.dirty || schoolAddress_State.touched)"
+                            style="color:red">Enter State</p>
+                        <label>Primary Contact Number</label>
+                        <input required id="phone" type="phone" placeholder="Primary Contact Number"
+                            class="form-control col-md-12" required="" [(ngModel)]="model.primary_Contact_Number"
+                            name="primary_Contact_Number" pattern="^\+(?:[0-9]●?){6,14}[0-9]$"
+                            #primary_Contact_Number="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="primary_Contact_Number.errors?.pattern" style="color:red">enter valid Contact Number
+                            (90...)</p>
+                        <p *ngIf="(!primary_Contact_Number.errors?.pattern) && primary_Contact_Number.invalid && (primary_Contact_Number.dirty || primary_Contact_Number.touched)"
+                            style="color:red">Enter Contact Number</p>
+                        <label>Primary Email Address</label>
+                        <input type="email" placeholder="Primary Email Address" class="form-control col-md-12"
+                            required="" [(ngModel)]="model.primary_Email_Address" name="primary_Email_Address"
+                            pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #primary_Email_Address="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="primary_Email_Address.errors?.pattern" style="color:red">enter valid Email Address</p>
+                        <p *ngIf="(!primary_Email_Address.errors?.pattern) && primary_Email_Address.invalid && (primary_Email_Address.dirty || primary_Email_Address.touched)"
+                            style="color:red">Enter Email Address</p>
+                        <label> TimeZone</label>
+                        <select class="form-control col-md-12" id="exampleFormControlSelect1" name="timezone"
+                            [(ngModel)]="model.timeZone">
+                            <option value="Select Country Code1">Select TimeZone</option>
+                            <ng-container *ngFor="let time of timezoneList">
+                                <option value="{{time.value}}">{{time.value}}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+
+                    <div class="form-group service-form-group col-md-6">
+                        <label>Lane / Street</label>
+                        <input required type="text" placeholder="Lane / Street" class="form-control col-md-12"
+                            required="" [(ngModel)]="model.schoolAddress_Lane" name="schoolAddress_Lane"
+                            pattern="^[a-zA-Z0-9_-\s]{2,150}$" #schoolAddress_Lane="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="schoolAddress_Lane.errors?.pattern" style="color:red">enter valid Lane / Street</p>
+                        <p *ngIf="(!schoolAddress_Lane.errors?.pattern) && schoolAddress_Lane.invalid && (schoolAddress_Lane.dirty || schoolAddress_Lane.touched)"
+                            style="color:red">Enter Lane / Street</p>
+                        <label>Pin Code</label>
+                        <input required type="number" placeholder="Pin Code" class="form-control col-md-12" required=""
+                            [(ngModel)]="model.schoolAddress_Pincode" name="schoolAddress_Pincode"
+                            pattern="^[0-9_-]{2,10}$" #schoolAddress_Pincode="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="schoolAddress_Pincode.errors?.pattern" style="color:red">enter valid Pin Code</p>
+                        <p *ngIf="(!schoolAddress_Pincode.errors?.pattern) && schoolAddress_Pincode.invalid && (schoolAddress_Pincode.dirty || schoolAddress_Pincode.touched)"
+                            style="color:red">Enter Pin Code</p>
+                        <label>Country</label>
+                        <input required type="text" placeholder="Country" class="form-control col-md-12" required=""
+                            [(ngModel)]="model.schoolAddress_Country" name="schoolAddress_Country"
+                            pattern="^[a-zA-Z0-9_-\s]{2,150}$" #schoolAddress_Country="ngModel">
+                        <p *ngIf="schoolAddress_Country.errors?.pattern" style="color:red">enter valid Country</p>
+                        <p *ngIf="(!schoolAddress_Country.errors?.pattern) && schoolAddress_Country.invalid && (schoolAddress_Country.dirty || schoolAddress_Country.touched)"
+                            style="color:red">Enter Country</p>
+                        <label>Alternate Contact Number</label>
+                        <input id="phone" required type="phone" placeholder="Alternate Contact Number"
+                            class="form-control col-md-12" required="" [(ngModel)]="model.alternate_Contact_Number"
+                            name="alternate_Contact_Number" pattern="^\+(?:[0-9]●?){6,14}[0-9]$"
+                            #alternate_Contact_Number="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="alternate_Contact_Number.errors?.pattern" style="color:red">enter valid Contact Number
+                        </p>
+                        <p *ngIf="(!alternate_Contact_Number.errors?.pattern) && alternate_Contact_Number.invalid && (alternate_Contact_Number.dirty || alternate_Contact_Number.touched)"
+                            style="color:red">Enter Contact Number</p>
+                        <label>Alternate Email Address</label>
+                        <input required type="email" placeholder="Alternate Email Address"
+                            class="form-control col-md-12" required="" [(ngModel)]="model.alternate_Email_Address"
+                            name="alternate_Email_Address" pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            #alternate_Email_Address="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="alternate_Email_Address.errors?.pattern" style="color:red">enter valid Alternate Email
+                        </p>
+                        <p *ngIf="(!alternate_Email_Address.errors?.pattern) && alternate_Email_Address.invalid && (alternate_Email_Address.dirty || alternate_Email_Address.touched)"
+                            style="color:red">Enter Alternate Email</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Third Step -->
+            <div class="col-md-12">
+                <h3 class="font-weight-bold pl-0 my-4 col-md-12"><strong>Primary Contact Person</strong></h3>
+            </div>
+            <div class="">
+                <div class="row">
+
+                    <div class="form-group service-form-group col-md-6">
+                        <label> Full Name</label>
+                        <input required type="text" placeholder="Full Name" class="form-control col-md-12" required=""
+                            [(ngModel)]="model.primary_Contact_Person_Name" name="primary_Contact_Person_Name"
+                            pattern="^[a-zA-Z0-9_-\s]{2,150}$" #primary_Contact_Person_Name="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="primary_Contact_Person_Name.errors?.pattern" style="color:red">enter valid Full Name
+                        </p>
+                        <p *ngIf="(!primary_Contact_Person_Name.errors?.pattern) && primary_Contact_Person_Name.invalid && (primary_Contact_Person_Name.dirty || primary_Contact_Person_Name.touched)"
+                            style="color:red">Enter Full Name</p>
+                        <label>Mobile Number</label>
+                        <input type="text" placeholder=" Mobile Number" class="form-control col-md-12" required=""
+                            [(ngModel)]="model.primary_Contact_Person_mobile_number"
+                            name="primary_Contact_Person_mobile_number" pattern="^\+(?:[0-9]●?){6,14}[0-9]$"
+                            #primary_Contact_Person_mobile_number="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="primary_Contact_Person_mobile_number.errors?.pattern" style="color:red">enter valid
+                            Mobile Number</p>
+                        <p *ngIf="(!primary_Contact_Person_mobile_number.errors?.pattern) && primary_Contact_Person_mobile_number.invalid && (primary_Contact_Person_mobile_number.dirty || primary_Contact_Person_mobile_number.touched)"
+                            style="color:red">Enter Mobile Number</p>
+                    </div>
+
+                    <div class="form-group service-form-group col-md-6">
+                        <label> Contact Number</label>
+                        <input type="text" placeholder=" Contact Number" class="form-control col-md-12" required=""
+                            [(ngModel)]="model.primary_Contact_Person_contact_number"
+                            name="primary_Contact_Person_contact_number" pattern="^\+(?:[0-9]●?){6,14}[0-9]$"
+                            #primary_Contact_Person_contact_number="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="primary_Contact_Person_contact_number.errors?.pattern" style="color:red">enter valid
+                            Contact Number</p>
+                        <p *ngIf="(!primary_Contact_Person_contact_number.errors?.pattern) && primary_Contact_Person_contact_number.invalid && (primary_Contact_Person_contact_number.dirty || primary_Contact_Person_contact_number.touched)"
+                            style="color:red">Enter Contact Number</p>
+                        <label>Alternate Email Address</label>
+                        <input type="email" placeholder="Alternate Email Address" class="form-control col-md-12"
+                            required="" [(ngModel)]="model.primary_Contact_Person_email_address"
+                            name="primary_Contact_Person_email_address"
+                            pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            #primary_Contact_Person_email_address="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="primary_Contact_Person_email_address.errors?.pattern" style="color:red">enter valid
+                            Email Address</p>
+                        <p *ngIf="(!primary_Contact_Person_email_address.errors?.pattern) && primary_Contact_Person_email_address.invalid && (primary_Contact_Person_email_address.dirty || primary_Contact_Person_email_address.touched)"
+                            style="color:red">Enter Email Address</p>
+                    </div>
+
+                </div>
+            </div>
+            <!-- fourth Step -->
+            <div class="col-md-12">
+                <h3 class="font-weight-bold pl-0 my-4 col-md-12"><strong>Alternate Contact Person</strong></h3>
+            </div>
+            <div class="">
+                <div class="row">
+
+                    <div class="form-group service-form-group col-md-6">
+                        <label> Full Name</label>
+                        <input type="text" placeholder="Full Name" class="form-control col-md-12" required=""
+                            [(ngModel)]="model.alternate_Contact_Person_Name" name="alternate_Contact_Person_Name"
+                            pattern="^[a-zA-Z0-9_-\s]{2,150}$" #alternate_Contact_Person_Name="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="alternate_Contact_Person_Name.errors?.pattern" style="color:red">enter valid Alternate
+                            Contact Person</p>
+                        <p *ngIf="(!alternate_Contact_Person_Name.errors?.pattern) && alternate_Contact_Person_Name.invalid && (alternate_Contact_Person_Name.dirty || alternate_Contact_Person_Name.touched)"
+                            style="color:red">Enter Alternate Contact Person</p>
+                        <label>Mobile Number</label>
+                        <input type="text" placeholder=" Mobile Number" class="form-control col-md-12" required=""
+                            [(ngModel)]="model.alternate_Contact_Person_mobile_number"
+                            name="alternate_Contact_Person_mobile_number" pattern="^\+(?:[0-9]●?){6,14}[0-9]$"
+                            #alternate_Contact_Person_mobile_number="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="alternate_Contact_Person_mobile_number.errors?.pattern" style="color:red">enter valid
+                            Mobile Number</p>
+                        <p *ngIf="(!alternate_Contact_Person_mobile_number.errors?.pattern) && alternate_Contact_Person_mobile_number.invalid && (alternate_Contact_Person_mobile_number.dirty || alternate_Contact_Person_mobile_number.touched)"
+                            style="color:red">Enter Mobile Number</p>
+
+                    </div>
+                    <div class="form-group service-form-group col-md-6">
+                        <label> Contact Number</label>
+                        <input type="text" placeholder=" Contact Number" class="form-control col-md-12" required=""
+                            [(ngModel)]="model.alternate_Contact_Person_contact_number"
+                            name="alternate_Contact_Person_contact_number" pattern="^\+(?:[0-9]●?){6,14}[0-9]$"
+                            #alternate_Contact_Person_contact_number="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="alternate_Contact_Person_contact_number.errors?.pattern" style="color:red">enter valid
+                            Contact Number</p>
+                        <p *ngIf="(!alternate_Contact_Person_contact_number.errors?.pattern) && alternate_Contact_Person_contact_number.invalid && (alternate_Contact_Person_contact_number.dirty || alternate_Contact_Person_contact_number.touched)"
+                            style="color:red">Enter Contact Number</p>
+                        <label>Alternate Email Address</label>
+                        <input type="email" placeholder="Alternate Email Address" class="form-control col-md-12"
+                            required="" [(ngModel)]="model.alternate_Contact_Person_email_address"
+                            name="alternate_Contact_Person_email_address"
+                            pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            #alternate_Contact_Person_email_address="ngModel">
+                        <div class="form-icon"></div>
+                        <p *ngIf="alternate_Contact_Person_email_address.errors?.pattern" style="color:red">enter valid
+                            Email Address</p>
+                        <p *ngIf="(!alternate_Contact_Person_email_address.errors?.pattern) && alternate_Contact_Person_email_address.invalid && (alternate_Contact_Person_email_address.dirty || alternate_Contact_Person_email_address.touched)"
+                            style="color:red">Enter Email Address</p>
+                    </div>
+
+                    <div *ngIf="alternate_Contact_Person_email_address.errors?.pattern ||
+                        alternate_Contact_Person_mobile_number.errors?.pattern ||
+                        alternate_Contact_Person_contact_number.errors?.pattern ||
+                        alternate_Contact_Person_Name.errors?.pattern ||
+                        primary_Contact_Person_email_address.errors?.pattern ||
+                        primary_Contact_Person_mobile_number.errors?.pattern ||
+                        primary_Contact_Person_contact_number.errors?.pattern ||
+                        primary_Contact_Person_Name.errors?.pattern ||
+                        alternate_Email_Address.errors?.pattern ||
+                        primary_Email_Address.errors?.pattern ||
+                        alternate_Contact_Number.errors?.pattern ||
+                        primary_Contact_Number.errors?.pattern ||
+                        schoolAddress_Country.errors?.pattern ||
+                        schoolAddress_State.errors?.pattern ||
+                        schoolAddress_Pincode.errors?.pattern ||
+                        schoolAddress_City.errors?.pattern ||
+                        schoolAddress_Area.errors?.pattern ||
+                        schoolAddress_Lane.errors?.pattern ||
+                        schoolName.errors?.pattern ||
+                        schoolID.errors?.pattern
+                        ;then content else other_content">here is ignored</div>
+
+                    <ng-template #content>
+                        <div class="col-md-12">
+                            <button class="btn px-gdn-btn btn-rounded float-left" type="submit" disabled>Enter Valid
+                                data to submit</button>
+                        </div>
+                    </ng-template>
+
+                    <ng-template #other_content>
+                        <div class="col-md-12">
+                            <button class="btn px-gdn-btn btn-rounded float-left" type="submit" (click)='check()'>Update
+                                school</button>
+                        </div>
+                    </ng-template>
+
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+</div>
+
+<div *ngIf="showdisplay === false">
+    <h3>! You Don't Have the Access</h3>
+  </div>
+
+
+<!-- Steps form
+<div class="card">
+    <div class="card-body mb-4">
+
+        <!-- <h2 class="text-center font-weight-bold pt-4 pb-5"><strong>Steps form example</strong></h2> - -  >
+
+        <form role="form" action="" method="post">
+
+            <!-- First Step - ->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>Step 1</strong></h3>
+                    <div class="form-group service-form-group">
+                            <label>School ID</label>
+                        <label class="control-label sr-only" for="name"></label>
+                        <input  type="text" placeholder="School ID" class="form-control" [(ngModel)]="model.schoolID" name="schoolID" >
+                        <div class="form-icon"></div>
+                    </div>
+                    <div class="form-group service-form-group">
+                            <label>School Name</label>
+                        <label class="control-label sr-only" for="name"></label>
+                        <input  type="text" placeholder="SchoolName" class="form-control" [(ngModel)]="model.schoolName" name="schoolName" >
+                        <div class="form-icon"></div>
+                    </div>
+                   </div>
+            </div>
+
+            <!-- Second Step - ->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>School Address</strong></h3>
+                    <div class="form-group service-form-group">
+                            <label>Lane / Street</label>
+                        <label class="control-label sr-only" for="name"></label>
+                        <input  type="text" placeholder="Lane / Street" class="form-control" required="" [(ngModel)]="model.schoolAddress_Lane" name="schoolAddress_Lane" >
+                        <div class="form-icon"></div>
+                    </div>
+                    <div class="form-group service-form-group">
+                            <label>Area</label>
+                        <label class="control-label sr-only" for="name"></label>
+                        <input   type="text" placeholder="Area" class="form-control" required="" [(ngModel)]="model.schoolAddress_Area" name="schoolAddress_Area" >
+                        <div class="form-icon"></div>
+                    </div>
+                    <div class="form-group service-form-group">
+                            <label> City</label>
+                        <label class="control-label sr-only" for="name"></label>
+                        <input  type="text" placeholder="City" class="form-control" required="" [(ngModel)]="model.schoolAddress_City" name="schoolAddress_City" >
+                        <div class="form-icon"></div>
+                    </div>
+                    <div class="form-group service-form-group">
+                            <label>Pin Code</label>
+                        <label class="control-label sr-only" for="name"></label>
+                        <input  type="text" placeholder="Pin Code" class="form-control" required="" [(ngModel)]="model.schoolAddress_Pincode" name="schoolAddress_Pincode" >
+                        <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>State</label>
+                        <label class="control-label sr-only" for="State"></label>
+                        <input  type="text" placeholder="State" class="form-control" required="" [(ngModel)]="model.schoolAddress_State" name="schoolAddress_State" >
+                    </div>
+
+                    <div class="form-group">
+                            <label>Country</label>
+                        <label class="control-label sr-only" for="Country"></label>
+                        <input  type="text" placeholder="Country" class="form-control" required="" [(ngModel)]="model.schoolAddress_Country" name="schoolAddress_Country" >
+                    </div>
+
+                    <div class="form-group service-form-group">
+                            <label>Primary Contact Number</label>
+                        <label class="control-label sr-only" for="phone"></label>
+                        <input id="phone" type="text" placeholder="Primary Contact Number" class="form-control" required="" [(ngModel)]="model.primary_Contact_Number" name="primary_Contact_Number"  >
+                        <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                            <label>Alternate Contact Number</label>
+                        <label class="control-label sr-only" for="phone"></label>
+                        <input id="phone" type="text" placeholder="Alternate Contact Number" class="form-control" required="" [(ngModel)]="model.alternate_Contact_Number" name="alternate_Contact_Number"  >
+                        <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                            <label>Primary Email Address</label>
+                        <label class="control-label sr-only" for="email"></label>
+                        <input type="email" placeholder="Primary Email Address" class="form-control" required="" [(ngModel)]="model.primary_Email_Address" name="primary_Email_Address" >
+                        <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                            <label>Alternate Email Address</label>
+                        <label class="control-label sr-only" for="email"></label>
+                        <input  type="email" placeholder="Alternate Email Address" class="form-control" required="" [(ngModel)]="model.alternate_Email_Address" name="alternate_Email_Address" >
+                        <div class="form-icon"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Step - ->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="font-weight-bold pl-0 my-4"><strong>Primary Contact Person</strong></h3>
+
+                    <div class="form-group service-form-group">
+                            <label> Full Name</label>
+                        <label class="control-label sr-only" for="name"></label>
+                        <input  type="text" placeholder="Full Name" class="form-control" required=""  [(ngModel)]="model.primary_Contact_Person_Name" name="primary_Contact_Person_Name">
+                        <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                            <label> Contact Number</label>
+                        <label class="control-label sr-only" for="phone"></label>
+                        <input  type="text" placeholder=" Contact Number" class="form-control" required="" [(ngModel)]="model.primary_Contact_Person_contact_number" name="primary_Contact_Person_contact_number">
+                        <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                            <label>Mobile Number</label>
+                        <label class="control-label sr-only" for="phone"></label>
+                        <input  type="text" placeholder=" Mobile Number" class="form-control" required="" [(ngModel)]="model.primary_Contact_Person_mobile_number" name="primary_Contact_Person_mobile_number">
+                        <div class="form-icon"></div>
+                    </div>
+
+                    <div class="form-group service-form-group">
+                            <label>Alternate Email Address</label>
+                        <label class="control-label sr-only" for="Email Address"></label>
+                        <input  type="email" placeholder="Alternate Email Address" class="form-control" required="" [(ngModel)]="model.primary_Contact_Person_email_address" name="primary_Contact_Person_email_address">
+                        <div class="form-icon"></div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- fourth Step - ->
+             <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="font-weight-bold pl-0 my-4"><strong>Alternate Contact Person</strong></h3>
+
+                        <div class="form-group service-form-group">
+                                <label> Full Name</label>
+                            <label class="control-label sr-only" for="name"></label>
+                            <input  type="text" placeholder="Full Name" class="form-control" required="" [(ngModel)]="model.alternate_Contact_Person_Name" name="alternate_Contact_Person_Name">
+                            <div class="form-icon"></div>
+                        </div>
+
+                        <div class="form-group service-form-group">
+                                <label> Contact Number</label>
+                            <label class="control-label sr-only" for="phone"></label>
+                            <input  type="text" placeholder=" Contact Number" class="form-control" required="" [(ngModel)]="model.alternate_Contact_Person_contact_number" name="alternate_Contact_Person_contact_number">
+                            <div class="form-icon"></div>
+                        </div>
+
+                        <div class="form-group service-form-group">
+                                <label>Mobile Number</label>
+                            <label class="control-label sr-only" for="phone"></label>
+                            <input  type="text" placeholder=" Mobile Number" class="form-control" required="" [(ngModel)]="model.alternate_Contact_Person_mobile_number" name="alternate_Contact_Person_mobile_number">
+                            <div class="form-icon"></div>
+                        </div>
+
+                        <div class="form-group service-form-group">
+                                <label>Alternate Email Address</label>
+                            <label class="control-label sr-only" for="Email Address"></label>
+                            <input  type="email" placeholder="Alternate Email Address" class="form-control" required="" [(ngModel)]="model.alternate_Contact_Person_email_address" name="alternate_Contact_Person_email_address">
+                            <div class="form-icon"></div>
+                        </div>
+
+                        <button class="btn px-gdn-btn btn-rounded float-right" type="submit"  (click) = "check()" >Submit</button>
+                    </div>
+                </div>
+
+        </form>
+
+    </div>
+  </div> -->
+<!-- Steps form -->

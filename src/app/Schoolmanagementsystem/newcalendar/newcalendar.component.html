@@ -1,0 +1,156 @@
+<div *ngIf="showdisplay === true">
+  <div style='display: block' *ngIf="is_submitting" id="vishnuoverlay">
+    <div class="myloader-wrap">
+      <div class="myloader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <div _ngcontent-c6="" class="col">
+        <h3 _ngcontent-c6="" class="adsc">
+          <i _ngcontent-c6="" class="fa fa-calendar"></i> Calendar</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <a class="btn btn-secondary excel pull-right" href="http://protrology.com/cynosurefiles/Calender.csv">
+          <i class="material-icons ng-star-inserted">get_app</i>Sample Document</a>
+        <button (click)='uploadbulk()' type="button" class="btn btn-secondary excel   pull-right">
+          <i class="fa fa-upload" aria-hidden="true"></i>Bulkupload
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="col-mb-12 newcalendar-page">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Calendar Title</h3>
+          </div>
+          <div class="col-md-5">
+            <label>Name</label>
+            <input type="text" placeholder="Title" style="margin-bottom: 5px;" class="form-control col-md-12"
+              [(ngModel)]="groupname" name="groupname" value="" />
+            <label *ngIf="errorgroupname" style="color: red">* Enter Title</label>
+            <label *ngIf="validtitle" style="color: red">* Please enter AlphaNumeric Characters only and Max of
+              50-characters</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Applicable Academics</h3>
+          </div>
+          <div class="col-md-3">
+            <label>Applicable Start Class</label>
+            <select (change)="endclasschangealert()" class="form-control" style="margin-bottom: 5px;" name="startclass"
+              value="" [(ngModel)]="startclass" id="exampleFormControlSelect2">
+              <option value="Select Start Class">Select Start Class</option>
+              <ng-container *ngFor="let data of sclistgrade">
+                <option value="{{data.title}}">{{data.title}}</option>
+              </ng-container>
+            </select>
+            <label *ngIf="errorstartclass" style="color: red">* Enter Applicable Start Class</label>
+            <label *ngIf="validstartclass" style="color: red">* Enter valid Applicable Start Class</label>
+          </div>
+          <div class="col-md-3">
+            <label>Applicable End Class</label>
+            <select class="form-control" style="margin-bottom: 5px;" [(ngModel)]="endclass" name="endclass" value=""
+              id="exampleFormControlSelect1">
+              <option value="Select End Class">Select End Class</option>
+              <ng-container *ngFor="let data of eclistgrade">
+                <option value="{{data.title}}">{{data.title}}</option>
+              </ng-container>
+            </select>
+            <label *ngIf="errorendclass" style="color: red">* Enter Applicable End Class</label>
+            <label *ngIf="validendclass" style="color: red">* Enter valid Applicable End Class</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Applicable Period</h3>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <div class="input-group field-padding">
+                <label>Applicable Start Date</label>
+                <input class="form-control" style="margin-bottom: 5px;" placeholder="yyyy-mm-dd" name="dp"
+                  [(ngModel)]="popupModel" ngbDatepicker #b="ngbDatepicker">
+                <button class="btn px-gdn-btn px-gdn-btn-icon px-4 input-group-addon" style="height: 50%;" type="button"
+                  (click)="b.toggle()">
+                  <i class="material-icons">date_range</i>
+                </button>
+                <label *ngIf="errorstartdate" style="color: red">* {{errormsgdate}}</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="overflow-x-auto">
+              <label>Applicable Start Time</label>
+              <ngb-timepicker [(ngModel)]="meridianTime" style="margin-bottom: 5px;" [meridian]="meridian">
+              </ngb-timepicker>
+            </div>
+            <label *ngIf="errorstarttime" style="color: red">* {{errormsgtime}}</label>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+
+              <div class="input-group field-padding">
+                <label>Applicable End Date</label>
+                <input class="form-control" style="margin-bottom: 5px;" placeholder="yyyy-mm-dd" name="dp"
+                  [(ngModel)]="popupModel1" ngbDatepicker #a="ngbDatepicker">
+                <button class="btn px-gdn-btn px-gdn-btn-icon px-4 input-group-addon" style="height: 50%;" type="button"
+                  (click)="a.toggle()">
+                  <i class="material-icons">date_range</i>
+                </button>
+                <label *ngIf="errorenddate" style="color: red">* {{errormsgdate}}</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="overflow-x-auto">
+              <label>Applicable End Time</label>
+              <ngb-timepicker [(ngModel)]="meridianTime1" style="margin-bottom: 5px;" [meridian]="meridian1">
+              </ngb-timepicker>
+            </div>
+            <label *ngIf="errorendtime" style="color: red">* {{errormsgtime}}</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <label> Holiday</label>
+            <label class="switch">
+              <input type="checkbox" name="Holiday" [(ngModel)]="addcalender.isHoliday" value="true" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col-md-12 ">
+            <!-- <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted" (click)="add()">Add</button> -->
+          </div>
+          <div class="col-md-12 newcalendar-btn">
+            <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted"
+              style="width: 30%;margin-top: 30px;" (click)="add()">Add</button>
+            <!-- <button _ngcontent-c7=""   *ngIf="buttondisable == false"  class="btn px-gdn-btn btn-block mb10 ng-star-inserted" style="width: 30%;margin-top: 30px;" disabled >Add</button> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showdisplay === false">
+    <h3>! You Don't Have the Access</h3>
+  </div>

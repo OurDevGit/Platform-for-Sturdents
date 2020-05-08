@@ -1,0 +1,174 @@
+<div class="card">
+  <div class="row">
+    <div _ngcontent-c6="" class="col">
+      <h3 _ngcontent-c6="" class="adsc"><i class="material-icons ng-star-inserted">business</i>
+        &nbsp; View/Manage Trips</h3>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-3">
+        <label>Route Name</label>
+        <input type="text" placeholder="Route Name" style="margin-bottom: 5px;" class="form-control col-md-12"
+          name="routeName" value="" [(ngModel)]="currentTrip.RouteName" disabled />
+      </div>
+      <div class="col-md-3">
+        <label>Driver</label>
+        <input type="text" placeholder="Driver Name" style="margin-bottom: 5px;" class="form-control col-md-12"
+          name="driverName" value="" [(ngModel)]="currentTrip.Driver" disabled />
+      </div>
+      <div class="col-md-3">
+        <label>Vehicle Number</label>
+        <input type="text" placeholder="Vehicle Number" style="margin-bottom: 5px;" class="form-control col-md-12"
+          name="vehicleNo" value="" [(ngModel)]="currentTrip.VehicleID" disabled />
+      </div>
+      <div class="col-md-3">
+        <label>Direction</label>
+        <input type="text" placeholder="Direction" style="margin-bottom: 5px;" class="form-control col-md-12"
+          name="direction" value="" [(ngModel)]="currentTrip.direction" disabled />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label>Students</label>
+        <input type="text" placeholder="Student Number" style="margin-bottom: 5px;" class="form-control col-md-12"
+          name="studentNo" value="" [(ngModel)]="currentTrip.IdealStudentsCount" disabled />
+      </div>
+      <div class="col-md-6">
+        <label>Areas Covered</label>
+        <input type="text" placeholder="Areas Covered" style="margin-bottom: 5px;" class="form-control col-md-12"
+          name="studentNo" value="" [(ngModel)]="AreasCovered" disabled />
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 50px;">
+      <div class="col-md-6">
+        <div _ngcontent-c6="" class="row">
+          <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style=" padding-right: 1px;padding-left: 1px;">
+            <h3 _ngcontent-c6="" class="adsc">
+              <i class="material-icons ng-star-inserted">business</i> &nbsp;Students List</h3>
+          </div>
+        </div>
+        <div class="card"><Br>
+          <div class="headers">
+            <div class="col-md-12">
+              <div class="row col-md-12">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+
+                <div class="tabl">
+                  <form>
+                    <table class="table table-bordered table-responsive" style="border-collapse:collapse;"
+                      [mfData]="engagedStudents" #mf="mfDataTable" [mfRowsOnPage]="10">
+                      <thead>
+                        <tr>
+                          <th>
+                            Student Id <mfDefaultSorter by="studentId"> <i class="fa fa-sort"
+                                style="color:#fff!important;"></i>
+                            </mfDefaultSorter>
+                          </th>
+                          <th>
+                            Student Name<mfDefaultSorter by="studentName"><i class="fa fa-sort"
+                                style="color:#fff!important;"></i>
+                            </mfDefaultSorter>
+                          </th>
+                          <th>
+                            Status<mfDefaultSorter by="studentStatus"><i class="fa fa-sort"
+                                style="color:#fff!important;"></i>
+                            </mfDefaultSorter>
+                          </th>
+                          <th>
+                            Stop Name<mfDefaultSorter by="stopName"><i class="fa fa-sort"
+                                style="color:#fff!important;"></i>
+                            </mfDefaultSorter>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngFor="let item of engagedStudents">
+                          <tr [ngClass]="{'highlight' : item.isSelected == false}" colspan="10" data-toggle="collapse"
+                            [attr.data-target]="item.dispid" class="accordion-toggle">
+                            <td>{{ item.StudentId }}</td>
+                            <td>{{ item.Student }}</td>
+                            <td>{{ item.Status }}</td>
+                            <td>{{ item.WayPoint }}</td>
+                          </tr>
+                        </ng-container>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td colspan="13">
+                            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="row">
+          <div class="col-md-12">
+            <agm-map [latitude]="lat" [longitude]="lng" [streetViewControl]="false">
+              <agm-marker *ngFor="let sp of markerData" [latitude]="sp.latitude" [longitude]="sp.longitude"
+                [label]="{color: 'white', text: sp.WayPoint.WayPointSeq}">
+                <agm-direction [origin]="origin" [destination]="destination" [waypoints]="waypoints"
+                  [renderOptions]="renderOptions" [markerOptions]="markerOptions">>
+                </agm-direction>
+              </agm-marker>
+            </agm-map>
+          </div>
+        </div>
+
+        <label style="margin-top: 20px; margin-left: 10px;">Stops</label>
+        <div class="row">
+          <div class="col-md-12">
+            <div _ngcontent-c6="" class="row">
+              <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style=" padding-right: 1px;padding-left: 1px;">
+                <h3 _ngcontent-c6="" class="adsc">
+                  <i class="material-icons ng-star-inserted">business</i> &nbsp;WayPoints List</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 addtrip-table">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"> Stop Id</th>
+                  <th scope="col">Stop Name</th>
+                  <th scope="col"> Stop Seq</th>
+                  <th scope="col">Geo Location</th>
+                  <th scope="col">Time Reached</th>
+                  <th scope="col">Time Left</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of tripDetails; let i = index;">
+                  <td>{{item.WayPoint.WayPointId}}</td>
+                  <td>{{item.WayPoint.WayPointName}}</td>
+                  <td>{{item.WayPoint.WayPointSeq}}</td>
+                  <td>{{item.WayPoint.GeoPointText}}</td>
+                  <td>{{item.ReachedAt}}</td>
+                  <td>{{item.LeftAt}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

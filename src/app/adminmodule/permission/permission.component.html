@@ -1,0 +1,121 @@
+<!-- Steps form -->
+<div class="card">
+  <div _ngcontent-c6="" class="">
+    <div _ngcontent-c6="" class="row">
+      <div _ngcontent-c6="" class="col-12 col-md-12 mb-3">
+        <h3 _ngcontent-c6="" class="adsc">
+          <i class="material-icons ng-star-inserted" style="color: #fff">content_paste</i> &nbsp;&nbsp;Permission</h3>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="card-body mb-4">
+    <form>
+      <!-- First Step -->
+      <div class="col-md-12">
+        <!--endrow-->
+        <div class="row">
+          <div class="form-group service-form-group col-md-6">
+            <div class="row">
+              <label>Title</label>
+              <input type="text" placeholder="Title" class="form-control" [(ngModel)]="addpermission.title" name="title"
+                value="" #title />
+            </div>
+          </div>
+
+          <div class="form-group service-form-group col-md-6">
+            <div class="row">
+              <label>Code</label>
+              <input type="text" placeholder="Code" class="form-control" [(ngModel)]="addpermission.code" name="code"
+                value="" #code />
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group service-form-group col-md-6">
+            <div class="row">
+              <div class="col-md-4">
+                <button _ngcontent-c7="" *ngIf="isActive === true"
+                  class="btn px-gdn-btn btn-block mb10 ng-star-inserted"
+                  (click)="addpermissions(title.value,code.value)">Add</button>
+                <button _ngcontent-c7="" *ngIf="isActive === false"
+                  class="btn px-gdn-btn btn-block mb10 ng-star-inserted"
+                  (click)="updatepermission(title.value,code.value)"> Update</button>
+                <button _ngcontent-c7="" *ngIf="isActive === false"
+                  class="btn px-gdn-btn btn-block mb10 ng-star-inserted" (click)="reset1()">Reset</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- fourth Step -->
+    </form>
+  </div>
+</div>
+<!-- Steps form -->
+<Br><br>
+<div _ngcontent-c6="" class="row">
+  <div _ngcontent-c6="" class="col-12 col-md-12 mb-3">
+    <h3 _ngcontent-c6="" class="adsc">
+      <i class="material-icons ng-star-inserted" style="color: #fff">content_paste</i>&nbsp;Permission List</h3>
+  </div>
+
+</div>
+<div _ngcontent-c6="" class="row">
+
+  <div class="card"><Br>
+
+    <form>
+      <!-- service-form -->
+      <div class="service-form col-md-12" style="margin-top: 0em!important;">
+
+        <div class="rows">
+
+          <div class="col">
+
+            <div class="col-md-12">
+              <div class="row">
+
+                <div class="tabl">
+
+                  <table class="table table-bordered table-responsive" style="border-collapse:collapse;">
+                    <thead>
+                      <tr>
+                        <th>S.No</th>
+                        <th>Roll</th>
+                        <th style="width:20px">Delete</th>
+                        <th style="width:20px">edit</th>
+
+                      </tr>
+                    </thead>
+                    <!-- <li *ngIf="(datas | filterBy: userFilter).length === 0">No matching elements</li> -->
+                    <tbody>
+
+                      <ng-container *ngFor="let data of datas ; let i = index">
+                        <tr colspan="6" data-toggle="collapse" [attr.data-target]="data.dispid"
+                          class="accordion-toggle">
+                          <td>{{i+1}}</td>
+                          <td>{{data.title}}</td>
+                          <td style="text-align: center; "> <button class="updea"> <i
+                                class="m-1 icon-trash ng-star-inserted" (click)='delete($event, data)'></i></button>
+                          </td>
+                          <td style="text-align: center; "> <button class="updea"> <i
+                                class="m-1 icon-trash ng-star-inserted" (click)='update($event, data)'></i></button>
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>

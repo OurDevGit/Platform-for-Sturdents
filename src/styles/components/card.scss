@@ -1,0 +1,20 @@
+@import '../utils/utils';
+@import '../variables';
+@import '../elevation';
+.card {
+  &.primary-border {
+    border: 2px solid $primary-color;
+  }
+  &.shadow-hover {
+    transition: mat-elevation-transition-property-value();
+    &:hover {
+      @include mat-elevation(18);
+    }
+  }
+  .card-img-vertical {
+    height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

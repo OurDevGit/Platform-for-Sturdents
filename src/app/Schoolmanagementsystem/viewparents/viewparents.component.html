@@ -1,0 +1,142 @@
+<!-- Steps form -->
+<div class="card">
+  <div _ngcontent-c6="" class="row">
+    <div _ngcontent-c6="" class="col">
+      <h3 style="color:#fff!important;margin-top: 1px !important;" _ngcontent-c6="" class="adsc"> <i
+          class="material-icons ng-star-inserted" style="color:#fff!important;">people</i> &nbsp;&nbsp;Parents</h3>
+    </div>
+  </div>
+  <div class="card-body mb-4" style="padding: 0px;">
+    <form class="" role="form" action="" method="post" novalidate>
+      <!-- First Step -->
+      <div class="col-md-12">
+        <!--endrow-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <label>Full Name</label>
+              <input required type="text" placeholder="Full Name" class="form-control col-md-12"
+                [(ngModel)]="updateparent.fullName" name="FullName" value="" #FullName disabled>
+              <label>Email</label>
+              <input required type="text" placeholder="Email" class="form-control col-md-12"
+                [(ngModel)]="updateparent.email" name="Email" value="" #Email disabled>
+            </div>
+            <label>Primary Mobile Number</label>
+            <div class="row">
+              <div class="col-md-6" style="padding-right: 10px;padding-left: 0px;">
+                <input required type="text" placeholder="country code" class="form-control col-md-12"
+                  [(ngModel)]="updateparent.pcountrycode" name="pcountrycode" value="" #pcountrycode disabled>
+              </div>
+              <div class="col-md-6" style="padding-right: 0px;padding-left: 0px;">
+                <input required type="text" placeholder="Primary Mobile Number " class="form-control col-md-12"
+                  [(ngModel)]="updateparent.primaryMobile" name="primaryMobile" value="" #primaryMobile disabled>
+              </div>
+
+            </div>
+            <label>Updated by</label>
+            <input required type="text" placeholder="" class="form-control col-md-12"
+              [(ngModel)]="updateparent.updateName" name="updateName" value="" #updateName disabled>
+
+          </div>
+
+          <div class="col-md-6">
+            <div class="row">
+              <label>Short Name</label>
+              <input required type="text" placeholder="Short Name" class="form-control col-md-12"
+                [(ngModel)]="updateparent.shortName" name="ShortName" value="" #ShortName disabled>
+              <label>Alternate Email </label>
+              <input required type="text" placeholder="Alternate Email" class="form-control col-md-12"
+                [(ngModel)]="updateparent.altEmailId" name="altEmailId" value="" #altEmailId disabled>
+              <label>Secondary Mobile Number</label>
+            </div>
+            <div class="row">
+              <div class="col-md-6" style="padding-right: 10px;padding-left: 0px;">
+                <input required type="text" placeholder="country code" class="form-control col-md-12"
+                  [(ngModel)]="updateparent.altcountrycode" name="altcountrycode" value="" #altcountrycode disabled>
+              </div>
+              <div class="col-md-6" style="padding-right: 0px;padding-left: 0px;">
+                <input required type="text" placeholder="Secondary Mobile Number" class="form-control col-md-12"
+                  [(ngModel)]="updateparent.altMobile" name="altMobile" value="" #altMobile disabled>
+              </div>
+
+            </div>
+            <div class="row">
+              <label>Last update date & time</label>
+              <input required type="text" placeholder="Grade" class="form-control col-md-12" name="updateDate"
+                value='{{updateparent.updateDate | cynosureDateTimeZone:"YYYY-MM-DD HH:mm:ss"}}' #updateDate disabled>
+            </div>
+          </div>
+
+        </div>
+        <!--endrow-->
+
+        <div class="row">
+
+          <div class="form-group service-form-group col-md-12">
+            <div class="row">
+              <div class="col-md-2">
+                <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted" name="singlebutton"
+                  type="submit" data-toggle="modal" data-target="#disable" *ngIf="updateparent.isActive === true">
+                  Disable</button>
+                <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted" name="singlebutton"
+                  type="submit" data-toggle="modal" data-target="#disable" *ngIf="updateparent.isActive === false">
+                  Enable</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!--endrow-->
+      </div>
+      <!-- fourth Step -->
+    </form>
+  </div>
+</div>
+<!-- Steps form -->
+<Br><br>
+
+<div id="disable" class="modal modal4 fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Disbale Data</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+
+      </div>
+      <div class="modal-body">
+        <strong>Are you sure you want to Disbale these Data </strong>
+
+      </div>
+      <div class="modal-footer">
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+          class="btn btn-default" data-dismiss="modal">No</button>
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+          class="btn btn-danger" data-dismiss="modal" (click)="Disable()">Yes</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="disable1" class="modal modal4 fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Enable Data</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+
+      </div>
+      <div class="modal-body">
+        <strong>Are you sure you want to Enable thiese Data </strong>
+
+      </div>
+      <div class="modal-footer">
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button"
+          class="btn btn-default" data-dismiss="modal">No</button>
+        <button style="background-color: #eee!important;border: 1px #c3c1c1 solid;" type="button" id="del"
+          class="btn btn-danger" data-dismiss="modal" (click)="Disable()">Yes</button>
+
+      </div>
+    </div>
+  </div>
+</div>

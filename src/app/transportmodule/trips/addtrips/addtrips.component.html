@@ -1,0 +1,185 @@
+<div class="card">
+  <div class="row">
+    <div _ngcontent-c6="" class="col">
+      <h3 _ngcontent-c6="" class="adsc"><i class="material-icons ng-star-inserted">business</i>
+        &nbsp;Create Trips</h3>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-4">
+              <label>Select Route</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="pcountrycode" value="">
+                <option value="" disabled>Select Route</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-4">
+              <label>Vehicle Number</label>
+
+              <input type="text" placeholder="Vehicle Number" style="margin-bottom: 5px;" class="form-control col-md-12"
+                name="groupname" value="" />
+
+            </div>
+            <div class="col-md-4">
+              <label>Driver Name</label>
+
+              <input type="text" placeholder="Driver Name" style="margin-bottom: 5px;" class="form-control col-md-12"
+                name="groupname" value="" />
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="input-group field-padding">
+                <label>Trip Start Date</label>
+                <input class="form-control" style="margin-bottom: 0px;" placeholder="dd-mm-yyyy" name="dp" ngbDatepicker
+                  dateFormat="dd-mm-yyyy" #b="ngbDatepicker">
+                <button class="btn px-gdn-btn px-gdn-btn-icon px-4 input-group-addon" type="button"
+                  (click)="b.toggle()">
+                  <i class="material-icons">date_range</i>
+                </button>
+
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="overflow-x-auto">
+                <label>Trip Start Time</label>
+                <ngb-timepicker style="margin-bottom: 5px;">
+                </ngb-timepicker>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="mapp col-md-12">
+          <div class="col-md-12 mt-4">
+            <agm-map [latitude]="lat" [longitude]="lng">
+              <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+          </div>
+        </div>
+
+        <div class="col-md-12 plus-icon">
+          <a href="#"> <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        </div>
+
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-3">
+              <input type="text" placeholder="WayPoint Id" style="margin-bottom: 5px;" class="form-control col-md-12"
+                name="groupname" value="" />
+            </div>
+            <div class="col-md-3">
+              <input type="text" placeholder="WayPoint Name" style="margin-bottom: 5px;" class="form-control col-md-12"
+                name="groupname" value="" />
+            </div>
+            <div class="col-md-3">
+              <input type="text" placeholder="WayPoint Seq" style="margin-bottom: 5px;" class="form-control col-md-12"
+                name="groupname" value="" />
+            </div>
+            <div class="col-md-3">
+              <input type="text" placeholder="geoPoint Text" style="margin-bottom: 5px;" class="form-control col-md-12"
+                name="groupname" value="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12 addtrip-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Bus Stop Id</th>
+                <th scope="col">Bus Stop Seq</th>
+                <th scope="col">Bus Stop Name</th>
+                <th scope="col">Geo Location</th>
+                <th scope="col">Time Reached</th>
+                <th scope="col">Time Left</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>01</td>
+                <td>011</td>
+                <td>vadapalani</td>
+                <td>gsssfssdd</td>
+                <td>9.00 AM</td>
+                <td>3.30 PM</td>
+                <td><button type="button" mdbBtn class="success" mdbWavesEffect>Starting</button> </td>
+              </tr>
+              <tr>
+                <td>02</td>
+                <td>011</td>
+                <td>kodambakkam</td>
+                <td>ffsgdgdgg</td>
+                <td>8.45 AM</td>
+                <td>1.30 PM</td>
+                <td><button type="button" mdbBtn class="info" mdbWavesEffect>Reach</button>
+                  <button type="button" mdbBtn class="warning" mdbWavesEffect>left</button></td>
+              </tr>
+              <tr>
+                <td>03</td>
+                <td>011</td>
+                <td>koyambedu</td>
+                <td>ffffg</td>
+                <td>9.00 AM</td>
+                <td>1.30 PM</td>
+                <td><button type="button" mdbBtn class="info" mdbWavesEffect>Reach</button>
+                  <button type="button" mdbBtn class="warning" mdbWavesEffect>left</button></td>
+              </tr>
+              <tr>
+                <td>03</td>
+                <td>011</td>
+                <td>broadway</td>
+                <td>dggdg</td>
+                <td>9.15 AM</td>
+                <td>3.30 PM</td>
+                <td><button type="button" mdbBtn class="info" mdbWavesEffect>Reach</button>
+                  <button type="button" mdbBtn class="warning" mdbWavesEffect>left</button>
+                </td>
+              </tr>
+              <tr>
+                <td>03</td>
+                <td>011</td>
+                <td>anna nagar</td>
+                <td>fgggd</td>
+                <td>9.00 AM</td>
+                <td>1.30 PM</td>
+                <td><button type="button" mdbBtn class="danger" mdbWavesEffect>End</button> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-6">
+          <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10" style="width: 30%;">Add</button>
+          <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10" style="width: 30%;">Add</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $("#accordion").accordion({
+    active: 2,
+    animate: 200,
+    collapsible: true,
+    header: "h3",
+    icons: { "header": "ui-icon-triangle-1-s", "activeHeader": "ui-icon-triangle-1-n" },//icons https://api.jqueryui.com/theming/icons/
+    heightStyle: "content"
+  });
+</script>

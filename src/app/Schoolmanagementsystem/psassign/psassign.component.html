@@ -1,0 +1,212 @@
+
+    <div _ngcontent-c6="" class="row">
+    <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style=" padding-right: 1px;padding-left: 1px;">
+        <h3 _ngcontent-c6="" class="adsc">
+            <i class="material-icons ng-star-inserted">business</i> &nbsp;ASSIGN STUDENTS TO PARENT</h3>
+    </div>
+  </div>
+
+<div class="card" *ngIf = "showdisplayAssign">
+    <div class="row" style="padding: 5px;">
+        <div class="col-md-5">
+            <div class="select-student">
+                <label>SELECT STUDENT</label>
+                <select class="form-control" style="background: #eaedef;" [(ngModel)]="studentID"
+                    name="studentID" value="" (change)="getStudentDetail($event.target.value)">
+                    <ng-container *ngFor="let data of allStudents">
+                        <option value="{{data.StudentId}}">{{data.FullName}}</option>
+                    </ng-container>
+                </select>
+            </div>
+            <div class="student-detail-card">
+                <div class="card-body">
+                    <div class="item_student-detail">
+                        <label>STUDENT NAME</label>
+                        <input disabled type="text" placeholder="STUDENT NAME" [(ngModel)] = "selectedStudent.fullName" style="" class="form-control" name="student_name" value="" />    
+                    </div> 
+                    <div class="item_student-detail">
+                        <label>GRADE </label>
+                        <input disabled type="text" placeholder="GRADE" [(ngModel)] = "selectedStudent.gradeName" style="" class="form-control" name="student_grade" value="" />    
+                    </div>
+                    <div class="item_student-detail">
+                        <label>GEO LOCATION</label>
+                        <input disabled type="text" placeholder="LOCATION" [(ngModel)] = "selectedStudent.geoLocation" style="" class="form-control" name="student_location" value="" />    
+                    </div>       
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <div class="select-parent">
+                <label>SELECT PARENT</label>
+                <select class="form-control" style="background: #eaedef;" [(ngModel)]="parentId" name="parentId"
+                    value="" (change)="getParentDetails($event.target.value)">
+                    <ng-container *ngFor="let data of allParents">
+                        <option value="{{data.id}}">{{data.fullName}}</option>
+                    </ng-container>
+                </select>
+            </div>
+            <div class="parent-detail-card">
+                <div class="card-body">
+                    <div class="item_parent-detail">
+                        <label>PARENT NAME</label>
+                        <input disabled type="text" placeholder="PARENT NAME" [(ngModel)] = "selectedParent.fullName" style="" class="form-control" name="selectedParent_fullName" value="" />    
+                    </div> 
+                    <div class="item_parent-detail">
+                        <label>EMAIL </label>
+                        <input disabled type="text" placeholder="EMAIL" [(ngModel)] = "selectedParent.email" style="" class="form-control" name="selectedParent_email" value="" />    
+                    </div>
+                    <div class="item_parent-detail">
+                        <label>MOBILE</label>
+                        <input disabled type="text" placeholder="MOBILE" [(ngModel)] = "selectedParent.altMobile" style="" class="form-control" name="selectedParent_mobile" value="" />    
+                    </div>       
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-secondary excel" (click)="assignStudentParent()"> <i
+                class="material-icons ng-star-inserted" style="color: #fff !important;">add</i> Assign</button>
+        </div>
+    </div>
+</div>
+
+<div _ngcontent-c6="" class="row">
+    <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style=" padding-right: 1px;padding-left: 1px;">
+        <h3 _ngcontent-c6="" class="adsc">
+            <i class="material-icons ng-star-inserted">business</i> &nbsp; STUDENTS AND PARENT ASSIGNMENT LIST</h3>
+    </div>
+</div>
+
+<div class="card" *ngIf="showdisplay === true"><Br>
+    <!-- <div *ngIf="deleteLoading" id="snackbar" class="show"> {{loadingmsg}}</div> -->
+    <div class="headers">
+      <div class="col-md-12">
+        <div class="row col-md-12">
+          <div class="col-md-6">
+            <div class="search input-group">
+              <input style="height:auto!important;border:none;" class="form-control" type="text" placeholder="Search"
+                name="search" [(ngModel)]="filter">
+              <div class="input-group-append">
+                <i class="material-icons pr-2">search</i>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-md-6">
+            <button type="button" class="btn btn-secondary excel" (click)='exportasExcell()'> <i
+                class="material-icons ng-star-inserted" style="color: #fff !important;">get_app</i> Export</button>
+  
+          </div>
+          <div class="col-md-6">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+  
+          <div class="tabl">
+            <form>
+              <table class="table table-bordered table-responsive" style="border-collapse:collapse;"
+                [mfData]="datas | filter:filter" #mf="mfDataTable" [mfRowsOnPage]="10">
+                <thead>
+                  <tr>
+                   
+                    <th>
+                      #<mfDefaultSorter by="imei"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+                      </mfDefaultSorter>
+                    </th>
+                    <th>
+                      ID<mfDefaultSorter by="id"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+                      </mfDefaultSorter>
+                    </th>
+                    <th>
+                      STUDENT ID<mfDefaultSorter by="student_id"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+                      </mfDefaultSorter>
+                    </th>
+                    <th>
+                      STUDENT NAME<mfDefaultSorter by="student_name"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+                      </mfDefaultSorter>
+                    </th>
+                    <th>
+                      PARENT ID<mfDefaultSorter by="parent_id"> <i class="fa fa-sort"
+                          style="color:#fff!important;"></i>
+                      </mfDefaultSorter>
+                    </th>
+                    <th>
+                      PARENT NAME <mfDefaultSorter by="parent_name"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+                      </mfDefaultSorter>
+                    </th>
+                    <th>
+                        PARENT MOBILE <mfDefaultSorter by="parent_mobile"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+                        </mfDefaultSorter>
+                      </th> 
+                      <th>
+                        PARENT EMAIL <mfDefaultSorter by="parent_email"> <i class="fa fa-sort" style="color:#fff!important;"></i>
+                        </mfDefaultSorter>
+                      </th> 
+                    <th *ngIf = "showdisplayDelete">
+                      Remove<mfDefaultSorter by="stop_location"><i class="fa fa-sort"
+                          style="color:#fff!important;"></i>
+                      </mfDefaultSorter>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let item of mf.data | filter:filter; let i = index">
+                    <tr [ngClass]="{'highlight' : item.isSelected == false}" colspan="10" data-toggle="collapse"
+                      [attr.data-target]="item.dispid" class="accordion-toggle">
+                      <td>{{i + 1}}</td>
+                      <td>{{ item.id }}</td>
+                      <td>{{ item.studentID }}</td>
+                      <td>{{ item.studentName}}</td>
+                      <td> {{ item.parentID }} </td>
+                      <td> {{ item.parentName }} </td>
+                      <td> {{ item.parentMobile }}</td>
+                      <td>{{ item.parentEmail }}</td>
+                      <td *ngIf = "showdisplayDelete">
+                        <!-- <button type="button" class="updea" (click)="deleteStudentParent(item.id)"><i
+                          class="m-1 icon-close"></i></button> -->
+                          <button type="button" class="updea" (click)="openVerticallyCentered(content)"><i
+                            class="m-1 icon-close"></i></button>
+                      </td>
+                    </tr>
+
+                    <ng-template #content let-modal>
+                      <div class="modal-header">
+                        <h5 class="modal-title">Are you sure you want to delete?</h5>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <button type="button" class="btn btn-secondary" (click)="confirmDelete(item.id)">Yes</button>
+                  
+                        <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">No</button>
+                  
+                      </div>
+                    
+                    </ng-template>
+                  </ng-container>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="13">
+                      <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="showdisplay === false">
+    <h3>! You Don't Have the Access</h3>
+  </div>
+

@@ -1,0 +1,42 @@
+<h2 class="text-center">Grid table</h2>
+<div class="text-center">
+  <nav class="breadcrumb mx-auto d-inline-block">
+    <a class="breadcrumb-item text-body" routerLink="/">Home</a>
+    <a class="breadcrumb-item text-body" routerLink="/">Extra</a>
+    <span class="breadcrumb-item active">Grid table</span>
+  </nav>
+</div>
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">10k rows</h5>
+    <ngx-datatable class="material" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="0" [rowHeight]="50"
+      [scrollbarV]="true" [scrollbarH]="true" [rows]="rows">
+      <ngx-datatable-column name="Id" [width]="80"></ngx-datatable-column>
+      <ngx-datatable-column name="Name" [width]="300"></ngx-datatable-column>
+      <ngx-datatable-column name="Gender"></ngx-datatable-column>
+      <ngx-datatable-column name="Age"></ngx-datatable-column>
+      <ngx-datatable-column name="City" [width]="300" prop="address.city"></ngx-datatable-column>
+      <ngx-datatable-column name="State" [width]="300" prop="address.state"></ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">Search</h5>
+    <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='Type to filter the name column...'
+      (keyup)='updateFilter($event)' />
+    <ngx-datatable #table class='material' [columns]="columns" [columnMode]="'force'" [headerHeight]="50"
+      [footerHeight]="50" [rowHeight]="'auto'" [limit]="10" [rows]='filterRows'>
+    </ngx-datatable>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">Multiselect</h5>
+    <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'" [columns]="columns" [headerHeight]="50"
+      [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" [selected]="selected" [selectionType]="'multiClick'"
+      (select)='onSelect($event)'>
+    </ngx-datatable>
+  </div>
+</div>

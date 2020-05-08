@@ -1,0 +1,287 @@
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+h3.adsc {
+  margin-left: 0px;
+  background: #75a7d5;
+  padding: 10px;
+  margin-top: 0px !important;
+  color: #fff;
+}
+label {
+  display: block;
+  font-size: 14px;
+  margin-top: 0px;
+  font-family: OpenSans !important;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.frms {
+  padding: 10px;
+  margin-top: 0px;
+}
+.form-group {
+  margin-bottom: 0px;
+}
+.card {
+  position: relative;
+  display: inline-table;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0px solid transparent;
+  border-radius: 2px;
+  width: 100%;
+  max-width: 100%;
+}
+.mail-option {
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.mail-option .chk-all, .mail-option .btn-group a.btn {
+  background: none repeat scroll 0 0 #fcfcfc;
+  border: 1px solid #e7e7e7;
+  border-radius: 3px !important;
+  color: #afafaf;
+  display: inline-block;
+  padding: 5px 10px;
+}
+.btn-group{
+  margin: 1px 5px 0px 4px;
+}
+
+.btn-group, .btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.mail-option a {
+  color: #2e75b6;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+.form-check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -0.25rem;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(2.4125rem + 2px);
+}
+.px-gdn-btn {
+  background: linear-gradient(60deg, #2e75b6 0%, #9dc3e6 100%) !important;
+  color: #fff !important;
+
+}
+h3.adsc {
+  margin-left: 0px;
+  background: #75a7d5;
+  padding: 10px;
+  margin-top: 0px !important;
+  color: #fff;
+}
+label {
+  display: block;
+  font-size: 14px;
+  color: #222;
+  margin-top: 0px;
+  font-family: OpenSans !important;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.frms {
+  padding: 10px;
+  margin-top: 0px;
+}
+.form-group {
+  margin-bottom: 0px;
+}
+.card {
+  position: relative;
+  display: inline-table;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0px solid transparent;
+  border-radius: 2px;
+  width: 100%;
+  max-width: 100%;
+}
+.mail-option {
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.mail-option .chk-all, .mail-option .btn-group a.btn {
+  background: none repeat scroll 0 0 #fcfcfc;
+  border: 1px solid #e7e7e7;
+  border-radius: 3px !important;
+  color: #afafaf;
+  display: inline-block;
+  padding: 5px 10px;
+}
+.btn-group{
+  margin: 1px 5px 0px 4px;
+}
+
+.btn-group, .btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.mail-option a {
+  color: #2e75b6;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+.form-check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -0.25rem;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(2.4125rem + 2px);
+  text-align: left;
+}
+.dropdown-toggle::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+  float: right;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.59);
+  margin-top: 4px;
+}
+.form-control[_ngcontent-c4] {
+  display: block;
+  width: 100%;
+  height: calc(2.4125rem + 2px);
+  text-align: left;
+}
+.bg-primary {
+  border-color: #2e75b6 !important;
+}
+h3.adsc {
+  margin-left: 0px;
+  background: #75a7d5;
+  padding: 10px;
+  margin-top: 0px !important;
+  color: #fff;
+}
+label {
+  display: block;
+  font-size: 14px;
+  color: #222;
+  margin-top: 0px;
+  font-family: OpenSans !important;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.frms {
+  padding: 10px;
+  margin-top: 0px;
+}
+.form-group {
+  margin-bottom: 0px;
+}
+.card {
+  position: relative;
+  display: inline-table;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0px solid transparent;
+  border-radius: 2px;
+  width: 100%;
+  max-width: 100%;
+}
+.mail-option {
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.mail-option .chk-all, .mail-option .btn-group a.btn {
+  background: none repeat scroll 0 0 #fcfcfc;
+  border: 1px solid #e7e7e7;
+  border-radius: 3px !important;
+  color: #afafaf;
+  display: inline-block;
+  padding: 5px 10px;
+}
+.btn-group{
+  margin: 1px 5px 0px 4px;
+}
+
+.btn-group, .btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+.mail-option a {
+  color: #2e75b6;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+.form-check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: -0.25rem;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(2.4125rem + 2px);
+  text-align: left;
+  padding-top: 11px;
+}
+.dropdown-toggle::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+  float: right;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.59);
+  margin-top: 4px;
+}
+.form-control[_ngcontent-c4] {
+  display: block;
+  width: 100%;
+  height: calc(2.4125rem + 2px);
+  text-align: left;
+}
+.bg-primary {
+  border-color: #2e75b6 !important;
+}
+.px-gdn-btn {
+  background: linear-gradient(60deg, #2e75b6 0%, #9dc3e6 100%) !important;
+  color: #fff !important;
+ 
+}

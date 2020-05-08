@@ -1,0 +1,21 @@
+
+    {
+        "Server": "https://h08710oq3k.execute-api.ap-south-1.amazonaws.com/Prod/",
+        "ApiUrl": "api/",
+        "region": "AP_SOUTH_1",
+        "userPoolId": "ap-south-1_jFRb8RRjy",
+        "userPoolWebClientId": "aqf2ao2rdd8tf41l0ebc0hc8p",
+        "domain": "cynosure-admin.auth.ap-south-1.amazoncognito.com",
+        "scope": ["email", "openid"],
+        "redirectSignIn": "http://schoolmangement.s3-website.ap-south-1.amazonaws.com/",
+        "redirectSignOut": "http://schoolmangement.s3-website.ap-south-1.amazonaws.com/",
+        "bucket": "cynosurebulkupload",
+        "accessKeyId": "AKIAJFHAJSQJIC2BLY2Q",
+        "secretAccessKey": "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",
+        "Server1": "https://6suarwep8j.execute-api.ap-south-1.amazonaws.com/Prod/",
+        "ApiUrl1": "api/",
+        "responseType": "code",
+        "identityPoolId": "ap-south-1:778a3804-5bb0-42bf-b9c7-5873d19df640"
+        
+    }
+   

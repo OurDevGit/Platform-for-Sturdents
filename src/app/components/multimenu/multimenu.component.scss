@@ -1,0 +1,126 @@
+@import '~bootstrap/scss/mixins';
+@import '../../../styles/variables';
+
+px-gdn-multimenu {
+  display: block;
+  .menu-scroll {
+    height: 100%;
+    ul {
+      list-style-type: none;
+      color: rgba(#ffffff, 0.87);
+      padding: 0;
+      li {
+        a {
+          position: relative;
+          height: 50px;
+          width: 100%;
+          padding-left: 90px;
+          padding-right: 30px;
+          line-height: 50px;
+          color: inherit;
+          text-decoration: inherit;
+          transition: all 0.1s ease;
+          &:hover {
+            transform: scale(1.1);
+            color: #ffffff;
+            font-weight: 600;
+            i {
+              color: #ffffff;
+            }
+          }
+          i {
+            position: absolute;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(#ffffff, 0.54);
+          }
+          span {
+            width: 100%;
+            display: inline-block;
+            @include text-truncate();
+          }
+          div {
+            min-width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            text-align: center;
+            font-size: 10px;
+            line-height: 20px;
+            color: #19c9b4;
+            transition: all 0.3s ease;
+          }
+        }
+        li {
+          a {
+            padding-left: 100px;
+          }
+          li {
+            a {
+              padding-left: 110px;
+            }
+          }
+        }
+        > ul {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.35s ease-out;
+          li {
+            transform: scale(0);
+            transition: transform 0s linear 0.4s;
+          }
+        }
+        &.opened > ul {
+          transition: max-height 0.35s ease-in;
+          max-height: 1000px;
+          li {
+            transform: scale(1);
+            @for $i from 1 through 20 {
+              &:nth-child(#{$i}) {
+                transition: transform 0.3s cubic-bezier(0.24, 1.13, 0.4, 1.39) #{0.01*$i + $i*0.01*$i}s;
+              }
+            }
+          }
+        }
+        &.selected {
+          color: #ffffff;
+          a i {
+            color: #ffffff;
+          }
+        }
+        &.pointer {
+          background-color: bisque;
+        }
+      }
+      &.menu-collapse {
+        li {
+          a {
+            div {
+              opacity: 0;
+            }
+          }
+        }
+      }
+    }
+    .pointer {
+      position: absolute;
+      right: 0;
+      top: 25px;
+      width: 0;
+      height: 0;
+      transform: translateY(15px);
+      border-style: solid;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent $body-bg transparent transparent;
+      transition: top 0.4s cubic-bezier(0.41, 1.18, 0.69, 1.08);
+    }
+    .ps__rail-y {
+      background-color: transparent !important;
+    }
+    .ps-content {
+      position: relative;
+    }
+  }
+}
+

@@ -1,0 +1,156 @@
+<div *ngIf="showdisplay === true">
+
+<div id="vishnuoverlay" style='display: block' *ngIf='loader'>
+  <div class="myloader-wrap">
+    <div class="myloader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</div>
+<!-- Steps form -->
+<div class="card">
+  <div _ngcontent-c6="" class="">
+    <div _ngcontent-c6="" class="row">
+      <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style="padding-right: 1px;padding-left: 1px;">
+        <h3 _ngcontent-c6="" class="adsc">
+          <i class="material-icons ng-star-inserted" style="color: #fff">content_paste</i> &nbsp;&nbsp;Class</h3>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="card-body mb-4">
+    <form>
+      <!-- First Step -->
+      <div class="col-md-12">
+        <!--endrow-->
+        <div class="row">
+          <div class="form-group service-form-group col-md-4">
+            <label>Class Name</label>
+            <input type="text" placeholder="Class name" class="form-control" [(ngModel)]="addgrades.title" name="title"
+              value="" #title />
+            <p *ngIf="errorip" style="color:red">{{erroripm}}</p>
+          </div>
+          <div class="form-group service-form-group col-md-2">
+            <button style="margin-top: 2em;" *ngIf="disablebutton === false"
+              class="btn px-gdn-btn btn-block mb10 ng-star-inserted" (click)="addgrade(title.value)"> Add</button>
+            <button style="margin-top: 2em;" *ngIf="disablebutton === true" disabled
+              class="btn px-gdn-btn btn-block mb10 ng-star-inserted"> Add</button>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="form-group service-form-group col-md-6">
+            <div class="row">
+
+              <div class="col-md-12">
+                <label *ngIf="message" style="color:red;">Enter the Class</label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- fourth Step -->
+    </form>
+  </div>
+</div>
+<!-- Steps form -->
+<Br><br>
+<div _ngcontent-c6="" class="row">
+  <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style="padding-right: 1px;padding-left: 1px;">
+    <h3 _ngcontent-c6="" class="adsc">
+      <i class="material-icons ng-star-inserted" style="color: #fff">content_paste</i>&nbsp;Class List</h3>
+  </div>
+
+</div>
+<div _ngcontent-c6="" class="row">
+
+  <div class="card"><Br>
+
+    <form>
+      <!-- service-form -->
+      <div class="service-form col-md-12" style="margin-top: 0em!important;">
+
+        <div class="rows">
+
+          <div class="col">
+
+            <div class="col-md-12">
+              <div class="row">
+
+                <div class="tabl">
+
+                  <table class="table table-bordered table-responsive" style="border-collapse:collapse;">
+                    <thead>
+                      <tr>
+
+                        <th>Class Name</th>
+                        <th style="width:20px">Delete</th>
+                        <th style="width:20px">Position Up</th>
+                        <th style="width:20px">Position Down</th>
+
+                      </tr>
+                    </thead>
+                    <!-- <li *ngIf="(datas | filterBy: userFilter).length === 0">No matching elements</li> -->
+                    <tbody>
+
+                      <ng-container *ngFor="let data of datas  ; let i = index">
+                        <tr colspan="6" data-toggle="collapse" [attr.data-target]="data.dispid"
+                          class="accordion-toggle">
+                          <td>{{data.title}}</td>
+                          <td style="text-align: center; "> <button class="updea" data-toggle="modal"
+                              data-target="#removeschooltodelete" data-uid="1" class="delete btn btn-danger btn-sm"
+                              (click)='delete($event, data)'> <i class="m-1 icon-close"></i></button></td>
+                          <td style="text-align: center;font-size: 24px;"> <button class="updea" [disabled]="i === 0">
+                              <i class="fa m-1 fa-sort-up ng-star-inserted" (click)="onClick1(i)"></i></button></td>
+                          <td style="text-align: center;font-size: 24px;"> <button class="updea" [disabled]="i === j">
+                              <i class="fa m-1 fa-sort-down ng-star-inserted" (click)="onClick2(i)"></i></button></td>
+
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="removeschooltodelete" class="modal modal3 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Delete Class</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Are you sure you want to delete Class {{classname}} ? </strong>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="del" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="button" id="del" class="btn btn-danger" data-dismiss="modal"
+            (click)="deleteclass()">Yes</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div *ngIf="showdisplay === false">
+    <h3>! You Don't Have the Access</h3>
+  </div>
+  

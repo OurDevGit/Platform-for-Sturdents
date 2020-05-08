@@ -1,0 +1,165 @@
+<div class="card">
+  <div class="row">
+    <div _ngcontent-c6="" class="col">
+      <h3 _ngcontent-c6="" class="adsc"><i class="material-icons ng-star-inserted">business</i> &nbsp;Update
+        Driver Details</h3>
+    </div>
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="col-mb-12">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <label>First Name</label>
+            <input type="text" placeholder="First Name" style="margin-bottom: 5px;" class="form-control col-md-12"
+              [(ngModel)]="adddriver.firstName" name="firstName" value="" formControlName="firstNames"
+              [ngClass]="{ 'is-invalid': submitted && f.firstNames.errors }" />
+            <div *ngIf="submitted && f.firstNames.errors" class="invalid-feedback">
+              <div *ngIf="f.firstNames.errors.required">First Name is required</div>
+              <div *ngIf="f.firstNames.errors.pattern">Enter Valid First Name</div>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last Name" style="margin-bottom: 5px;" class="form-control col-md-12"
+              [(ngModel)]="adddriver.lastName" name="lastName" value="" formControlName="lastNames"
+              [ngClass]="{ 'is-invalid': submitted && f.lastNames.errors }" />
+            <div *ngIf="submitted && f.lastNames.errors" class="invalid-feedback">
+              <div *ngIf="f.lastNames.errors.required">Last Name is required</div>
+              <div *ngIf="f.lastNames.errors.pattern">Enter Valid Last Name</div>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div class="input-group">
+              <label>Date of Birth</label>
+              <input class="form-control" style="margin-bottom: 0px;" placeholder="dd-mm-yyyy" name="dp"
+                [(ngModel)]="popupModel" ngbDatepicker dateFormat="dd-mm-yyyy" #a="ngbDatepicker" formControlName="dobs"
+                [ngClass]="{ 'is-invalid': submitted && f.dobs.errors }">
+              <button class="btn px-gdn-btn px-gdn-btn-icon px-4 input-group-addon" type="button" (click)="a.toggle()">
+                <i class="material-icons">date_range</i>
+              </button>
+              <div *ngIf="submitted && f.dobs.errors" class="invalid-feedback">
+                <div *ngIf="f.dobs.errors.required">Date of Birth is required</div>
+                <div *ngIf="f.dobs.errors.pattern">Enter Valid Date of Birth</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Gender</label>
+            <input type="text" placeholder="Gender" style="margin-bottom: 5px;" class="form-control col-md-12"
+              [(ngModel)]="adddriver.gender" name="gender" value="" formControlName="genders"
+              [ngClass]="{ 'is-invalid': submitted && f.genders.errors }" />
+            <div *ngIf="submitted && f.genders.errors" class="invalid-feedback">
+              <div *ngIf="f.genders.errors.required">Gender is required</div>
+              <div *ngIf="f.genders.errors.pattern">Enter Valid Genders</div>
+            </div>
+          </div>
+
+
+          <div class="col-md-6" style="display: flex; padding: 0px;">
+            <div class="col-md-6">
+              <label style="width: 60%;">Country Code</label>
+              <select class="form-control" style="margin-bottom: 5px;" [(ngModel)]="adddriver.countyCode"
+                name="countyCode" value="" formControlName="countyCodes"
+                [ngClass]="{ 'is-invalid': submitted && f.countyCodes.errors }">
+                <option value="adddriver.countyCode" [selected]="adddriver.countyCode">{{adddriver.countyCode}}</option>
+                <ng-container *ngFor="let data of contactLists">
+                  <option value="{{data}}">{{data}}</option>
+                </ng-container>
+              </select>
+              <div *ngIf="submitted && f.countyCodes.errors" class="invalid-feedback">
+                <div *ngIf="f.countyCodes.errors.required">Country Code is required</div>
+                <div *ngIf="f.countyCodes.errors.pattern">Enter Valid Country Code</div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label style="width: 60%;">Contact Number</label>
+              <input type="text" placeholder="Contact Number" style="margin-bottom: 5px;" class="form-control col-md-12"
+                [(ngModel)]="adddriver.contactNumber" name="address" value="" formControlName="contactNumbers"
+                [ngClass]="{ 'is-invalid': submitted && f.contactNumbers.errors }" />
+              <div *ngIf="submitted && f.contactNumbers.errors" class="invalid-feedback">
+                <div *ngIf="f.contactNumbers.errors.required">Contact Number is required</div>
+                <div *ngIf="f.contactNumbers.errors.pattern">Enter Valid Contact Number</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label>Address</label>
+            <input type="text" placeholder="Address" style="margin-bottom: 5px;" class="form-control col-md-12"
+              [(ngModel)]="adddriver.address" name="address" value="" formControlName="addresss"
+              [ngClass]="{ 'is-invalid': submitted && f.addresss.errors }" />
+            <div *ngIf="submitted && f.addresss.errors" class="invalid-feedback">
+              <div *ngIf="f.addresss.errors.required">Address is required</div>
+              <div *ngIf="f.addresss.errors.pattern">Enter Valid Address</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Nationality</label>
+            <select class="form-control" style="margin-bottom: 5px;" [(ngModel)]="adddriver.nationality"
+              name="nationality" formControlName="nationalitys"
+              [ngClass]="{ 'is-invalid': submitted && f.nationalitys.errors }" >
+              <option value="adddriver.nationality" [selected]="adddriver.nationality">{{adddriver.nationality}}</option>
+              <ng-container *ngFor="let data of countrylist" >
+                <option value="{{data}}" >{{data}}</option>
+              </ng-container>
+            </select>
+            <div *ngIf="submitted && f.nationalitys.errors" class="invalid-feedback">
+              <div *ngIf="f.nationalitys.errors.required">Nationality is required</div>
+              <div *ngIf="f.nationalitys.errors.pattern">Enter Valid Nationality</div>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <label> Email ID</label>
+            <input type="text" placeholder="  email ID" style="margin-bottom: 5px;"
+              class="form-control col-md-12" [(ngModel)]="adddriver.nameInVernacular" name="nameInVernacular" value=""
+              formControlName="nameInVernaculars"
+              [ngClass]="{ 'is-invalid': submitted && f.nameInVernaculars.errors }" />
+            <div *ngIf="submitted && f.nameInVernaculars.errors" class="invalid-feedback">
+              <div *ngIf="f.nameInVernaculars.errors.required">Email ID is required</div>
+              <div *ngIf="f.nameInVernaculars.errors.pattern">Enter Valid Email ID</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>Licenese Number</label>
+            <input type="text" placeholder="Licenese Number" style="margin-bottom: 5px;" class="form-control col-md-12"
+              [(ngModel)]="adddriver.licenseNumber" name="licenseNumber" value="" formControlName="licenseNumbers"
+              [ngClass]="{ 'is-invalid': submitted && f.licenseNumbers.errors }" />
+            <div *ngIf="submitted && f.licenseNumbers.errors" class="invalid-feedback">
+              <div *ngIf="f.licenseNumbers.errors.required">Licenese Number is required</div>
+              <div *ngIf="f.licenseNumbers.errors.pattern">Enter Valid Licenese Number</div>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div class="input-group">
+              <label>License Expiry</label>
+              <input class="form-control" style="margin-bottom: 0px;" placeholder="dd-mm-yyyy" name="dp"
+                [(ngModel)]="popupModel1" ngbDatepicker dateFormat="dd-mm-yyyy" #b="ngbDatepicker"
+                formControlName="licenseExpirys" [ngClass]="{ 'is-invalid': submitted && f.licenseExpirys.errors }">
+              <button class="btn px-gdn-btn px-gdn-btn-icon px-4 input-group-addon" type="button" (click)="b.toggle()">
+                <i class="material-icons">date_range</i>
+              </button>
+              <div *ngIf="submitted && f.licenseExpirys.errors" class="invalid-feedback">
+                <div *ngIf="f.licenseExpirys.errors.required">License Expiry is required</div>
+                <div *ngIf="f.licenseExpirys.errors.pattern">Enter Valid License Expiry</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted" name="singlebutton"
+              style="margin-top: 2em;">Update</button>
+            <!-- <button _ngcontent-c7="" *ngIf="disablebutton === false"  class="btn px-gdn-btn btn-block mb10 ng-star-inserted" style="width: 30%;" (click)="add()"   >Add</button>
+                    <button _ngcontent-c7=""  *ngIf="disablebutton === true" disabled class="btn px-gdn-btn btn-block mb10 ng-star-inserted" style="width: 30%;">Add</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

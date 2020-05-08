@@ -1,0 +1,121 @@
+<!-- Steps form -->
+<div *ngIf="showdisplay === true">
+<div class="card">
+  <div _ngcontent-c6="" class="">
+    <div _ngcontent-c6="" class="row">
+      <div _ngcontent-c6="" class="cols">
+        <h3 _ngcontent-c6="" class="adsc">
+          <i class="material-icons ng-star-inserted" style="color: #fff">content_paste</i> &nbsp;&nbsp;User Roles</h3>
+      </div>
+    </div>
+
+  </div>
+  <div class="card-body mb-4">
+    <form>
+      <!-- First Step -->
+      <div class="col-md-12">
+        <!--endrow-->
+        <div class="row" *ngIf = "showAddRoles">
+          <div class="form-group service-form-group col-md-4">
+            <div class="row">
+              <label>User Roles</label>
+              <input type="text" placeholder="User Roles" class="form-control" [(ngModel)]="addroll.title" name="title"
+                value="" #title />
+            </div>
+          </div>
+          <div class="form-group service-form-group col-md-6">
+            <div class="row">
+
+              <button style="margin-top: 3em;" *ngIf="isActive === true"
+                class=" col-md-3 btn px-gdn-btn btn-block mb10 ng-star-inserted"
+                (click)="addrolls(title.value)">Add</button>
+              <button style="float: left;     margin-top: 3em;" *ngIf="isActive === false"
+                class="col-md-3 btn px-gdn-btn btn-block mb10 ng-star-inserted"
+                (click)="update1(title.value)">Update</button>
+              <button style="margin-top: 3em; float: left;" *ngIf="isActive === false"
+                class="col-md-3 btn px-gdn-btn btn-block mb10 ng-star-inserted" (click)="reset1()">Back</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- fourth Step -->
+    </form>
+  </div>
+</div>
+<!-- Steps form -->
+<Br><br>
+<div _ngcontent-c6="" class="row">
+  <div _ngcontent-c6="" class="col-12 col-md-12 mb-3 userrole-card">
+    <h3 _ngcontent-c6="" class="adsc">
+      <i class="material-icons ng-star-inserted" style="color: #fff">content_paste</i>&nbsp;User Roles List</h3>
+  </div>
+
+</div>
+<div _ngcontent-c6="" class="row">
+
+  <div class="card"><Br>
+
+    <form>
+      <!-- service-form -->
+      <div class="service-form col-md-12" style="margin-top: 0em!important;">
+
+        <div class="rows">
+
+          <div class="col">
+
+            <div class="col-md-12">
+              <div class="row">
+
+                <div class="tabl">
+
+                  <table class="table table-bordered table-responsive" style="border-collapse:collapse;">
+                    <thead>
+                      <tr>
+                        <th style="width:70px">S.No</th>
+                        <th style="width: 175px;">User Roles</th>
+                        <th style="width: 200px;">Updated Date</th>
+                        <th style="width: 220px;">Update Name</th>
+                        <th style="width: 110px;" *ngIf = "showDeleteRoles">Delete</th>
+                        <th style="width: 110px;" *ngIf = "showEditRoles">Edit</th>
+                        <th style="width: 110px;" *ngIf = "showPermissions">Permission</th>
+                      </tr>
+                    </thead>
+                    <!-- <li *ngIf="(datas | filterBy: userFilter).length === 0">No matching elements</li> -->
+                    <tbody>
+
+                      <ng-container *ngFor="let data of datas  ; let i = index">
+                        <tr colspan="6" data-toggle="collapse" [attr.data-target]="data.dispid"
+                          class="accordion-toggle">
+                          <td style="text-align: center">{{i+1}}</td>
+                          <td>{{data.title}}</td>
+                          <td>{{data.updateDate | cynosureDateTimeZone:"YYYY-MM-DD HH:mm:ss"}}</td>
+                          <td>{{data.updateName}}</td>
+                          <td *ngIf = "showDeleteRoles" style="text-align: center;line-height: 18px;padding: 6px 4px 3px 5px; "> <button
+                              class="updea"> <i class="m-1 icon-close ng-star-inserted"
+                                (click)='delete($event, data)'></i></button></td>
+                          <td *ngIf = "showEditRoles" style="text-align: center;line-height: 18px;padding: 6px 4px 3px 5px; "> <button
+                              class="updea"> <i class="m-1 icon-note ng-star-inserted"
+                                (click)='update($event, data)'></i></button></td>
+
+                          <td *ngIf = "showPermissions" style="text-align: center;font-size: 24px;line-height: 18px;padding: 6px 4px 3px 5px;">
+                            <button class="updea"> <i class="m-1 icon-check ng-star-inserted"
+                                (click)='permission($event, data)'></i></button></td>
+
+                        </tr>
+                      </ng-container>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

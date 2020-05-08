@@ -1,0 +1,54 @@
+<form>
+  <!-- service-form -->
+  <div class="service-form col-md-12" style="margin-top: 0em!important;">
+
+    <div class="rows">
+
+      <div class="col">
+
+        <div class="col-md-12">
+          <div class="row">
+
+            <div class="tabl">
+
+              <table class="table table-bordered table-responsive" style="border-collapse:collapse;">
+                <thead>
+                  <tr>
+                    <th>StudentID</th>
+                    <th>ParentEmail</th>
+                    <th>UpdateDate</th>
+                    <th>Edit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of datas">
+                    <tr colspan="6" data-toggle="collapse" [attr.data-target]="data.dispid" class="accordion-toggle">
+                      <td>{{data.studentID}}</td>
+                      <td>{{data.parentEmail}}</td>
+                      <td>{{data.updateDate}}</td>
+                      <td><button type="button" class="updea" (click)="update($event, data)"><i
+                            class="m-1 icon-note"></i></button><button class="updea"> <i class="m-1 icon-screen-desktop"
+                            (click)='view($event, data)'></i></button><button type="button" data-toggle="modal"
+                          data-target="#delete" data-uid="1" class="delete btn btn-danger btn-sm"
+                          (click)="deleteacadamic($event, data)"><i _ngcontent-c6=""
+                            class="m-1 icon-close"></i></button>
+                      </td>
+                    </tr>
+
+                  </ng-container>
+
+                </tbody>
+              </table>
+              <!-- <div *ngIf="loading" ><div class="loader text-center"></div></div> -->
+
+              <div class="card-footer p-0">
+                <!-- <ngb-pagination [collectionSize]="collsize" [(page)]="advancedPage" (pageChange)="newsync()" [boundaryLinks]="true" ></ngb-pagination> -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

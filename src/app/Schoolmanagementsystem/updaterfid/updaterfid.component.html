@@ -1,0 +1,143 @@
+<div *ngIf="showdisplay === true">
+<!-- Steps form -->
+<div class="card">
+    <div _ngcontent-c6="" class="">
+        <div _ngcontent-c6="" class="row">
+            <div _ngcontent-c6="" class="col-12 col-md-12 mb-3" style="padding-right: 0px;padding-left: 0px;">
+                <h3 _ngcontent-c6="" class="adsc">
+                    <i _ngcontent-c18="" style="color: #fff" class="material-icons ng-star-inserted">business</i>
+                    &nbsp;&nbsp;RFID</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body mb-4">
+        <form [formGroup]="registerForm">
+            <!-- First Step -->
+            <div class="col-md-12">
+                <!--endrow-->
+                <div class="row">
+                    <div class="form-group service-form-group col-md-6">
+                        <label>School Student ID</label>
+                        <ng-select class="form-control" [items]="schoolstudentid" bindLabel="schoolStudentID"
+                            name="SchoolStudentID" formControlName="SchoolStudentIDs"
+                            [ngClass]="{'is-invalid': submitted && f.SchoolStudentIDs.errors}"
+                            bindValue="schoolStudentID" placeholder="{{updaterfid.schoolStudentID}}"
+                            value="updaterfid.id" [(ngModel)]="updaterfid.schoolStudentID" #SchoolStudentID>
+
+                            <ng-template ng-header-tmp>
+                            </ng-template>
+                            <ng-template ng-label-tmp let-item="item" style="border: none!important">
+                                <p>{{item.schoolStudentID}}</p>
+                            </ng-template>
+                        </ng-select>
+                        <div *ngIf="submitted && f.SchoolStudentIDs.errors" class="invalid-feedback">
+                            <div *ngIf="f.SchoolStudentIDs.errors.required">School Student ID is required</div>
+                            <!-- <div *ngIf="f.SchoolStudentIDs.errors.pattern">Enter Valid School Student id </div> -->
+                        </div>
+                    </div>
+                    <div class="form-group service-form-group col-md-6">
+
+                        <label>Unique Number</label>
+
+                        <input type="text" placeholder="Unique Number" formControlName="uniquenumbers"
+                            class="form-control" [ngClass]="{ 'is-invalid': submitted && f.uniquenumbers.errors }"
+                            [(ngModel)]="updaterfid.uniquenumber" name="uniquenumber" value="" #uniquenumber />
+                        <div *ngIf="submitted && f.uniquenumbers.errors" class="invalid-feedback">
+                            <div *ngIf="f.uniquenumbers.errors.required">Unique Number is required</div>
+                            <div *ngIf="f.uniquenumbers.errors.pattern">Enter Valid Unique Number</div>
+
+                        </div>
+                    </div>
+                    <div class="form-group service-form-group col-md-6">
+
+                        <label>Frequency</label>
+                        <input type="text" placeholder="Frequency" formControlName="freequencys" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.freequencys.errors }"
+                            [(ngModel)]="updaterfid.freequency" name="freequency" value="" #freequency />
+                        <div *ngIf="submitted && f.freequencys.errors" class="invalid-feedback">
+                            <div *ngIf="f.freequencys.errors.required">Frequency is required</div>
+                            <div *ngIf="f.freequencys.errors.pattern">Enter Valid Frequency </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group service-form-group col-md-6">
+                        <label>Status</label>
+                        <select placeholder="Status" formControlName="statuss" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.statuss.errors }" [(ngModel)]="updaterfid.status"
+                            name="status" value="" #status>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                            <option value="Damaged">Damaged</option>
+                            <option value="Lost">Lost</option>
+                        </select>
+                        <div *ngIf="submitted && f.statuss.errors" class="invalid-feedback">
+                            <div *ngIf="f.statuss.errors.required">Status is required</div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group service-form-group col-md-6">
+                        <label>RFID</label>
+                        <input disabled type="text" maxlength="15" placeholder="RFID " formControlName="rfiddatas"
+                            class="form-control" [ngClass]="{ 'is-invalid': submitted && f.rfiddatas.errors }"
+                            [(ngModel)]="updaterfid.rfiddata" name="rfiddata" value="" #rfiddatas />
+                        <div *ngIf="submitted && f.rfiddatas.errors" class="invalid-feedback">
+                            <div *ngIf="f.rfiddatas.errors.required">RFID is required</div>
+                            <div *ngIf="f.rfiddatas.errors.pattern">Enter Valid RFID</div>
+
+                        </div>
+                    </div>
+                    <div class="form-group service-form-group col-md-6">
+                        <label>Type</label>
+                        <input type="text" placeholder="Type " formControlName="types" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.types.errors }" [(ngModel)]="updaterfid.type"
+                            name="type" value="" #type />
+                        <div *ngIf="submitted && f.types.errors" class="invalid-feedback">
+                            <div *ngIf="f.types.errors.required">Type is required</div>
+                            <div *ngIf="f.types.errors.pattern">Enter Valid Type</div>
+
+                        </div>
+                    </div>
+                    <div class="form-group service-form-group col-md-6">
+                        <label>Capacity</label>
+                        <input type="text" placeholder="Capacity " formControlName="capacitys" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.capacitys.errors }"
+                            [(ngModel)]="updaterfid.capacity" name="capacity" value="" #capacity />
+                        <div *ngIf="submitted && f.capacitys.errors" class="invalid-feedback">
+                            <div *ngIf="f.capacitys.errors.required">Capacity is required</div>
+                            <div *ngIf="f.capacitys.errors.pattern">Enter Valid Capacity </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group service-form-group col-md-6">
+                        <label> Driver ID</label>
+                        <input type="text" placeholder="Driver ID " formControlName="driver_ids" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.driver_ids.errors }"
+                            [(ngModel)]="updaterfid.driver_id" name="driver_id" value="" #driver_id />
+                        <div *ngIf="submitted && f.driver_ids.errors" class="invalid-feedback">
+                            <div *ngIf="f.driver_ids.errors.required">Driver ID is required</div>
+                            <div *ngIf="f.driver_ids.errors.pattern">Enter Valid Driver ID </div>
+                        </div>
+                    </div>
+                </div>
+                <!--endrow-->
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted"
+                            (click)="onSubmit()"> Update</button>
+                    </div>
+                </div>
+                <!--endrow-->
+            </div>
+            <!-- fourth Step -->
+        </form>
+    </div>
+</div>
+</div>
+<!-- Steps form -->
+
+<div *ngIf="showdisplay === false">
+    <h3>! You Don't Have the Access</h3>
+  </div>

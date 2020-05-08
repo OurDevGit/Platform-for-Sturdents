@@ -1,0 +1,230 @@
+
+<div *ngIf="showdisplay === true">
+<div class="alertmsg">
+  <div *ngIf="deleteLoading" id="snackbar" class="show">Deleting... Please Wait!</div>
+</div>
+<div *ngIf="showdisplay === true">
+  <div class="service-form col-md-12">
+
+    <div class="rows">
+      <div class="header">
+
+        <div class="row">
+          <div class="col-12 col-md-6 mb-3">
+            <h3 class="adsc"> <i class="fa fa-university"></i> &nbsp;View School User</h3>
+          </div>
+
+          <div class="col-12 col-md-6 mb-3">
+
+            <!-- <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#myModal">Add school</button> -->
+          </div>
+        </div>
+
+        <br>
+      </div><br>
+      <div class="">
+        <select id="select" name="schoolID" class="form-control col-md-4" [(ngModel)]="model.schoolID"
+          (change)="getuserschool_new($event.target.value)" value="" id="exampleFormControlSelect1">
+          <option value="{{0}}">All</option>
+          <ng-container *ngFor="let school of schoollist">
+            <option value="{{school.id}}">{{school.schoolID}} - {{school.schoolName}}</option>
+          </ng-container>
+        </select>
+
+        <button type="button" class="btn btn-secondary excel pull-right" (click)='exportasExcell()'> <i
+            class="material-icons ng-star-inserted" style="color: #fff !important;">get_app</i> Excel</button>
+        <!-- <button type="button" class="btn btn-secondary excel">PDF</button> -->
+
+        <input class="Search  pull-left" style="border:none;width: 20%;margin: 0px 0px 2em 0px;" type="text"
+          placeholder="Search" name="search" [(ngModel)]="filter">
+        <br>
+      </div>
+      <div class="cols">
+
+        <div class="">
+
+          <div class="row">
+            <div class="tabl">
+
+              <table class="table table-bordered table-responsive" style="border-collapse:collapse;"
+                [mfData]="noncynosureuser | filter:filter" #mf="mfDataTable" [mfRowsOnPage]="10">
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>First Name <mfDefaultSorter by="first_name"> <i class="fa fa-sort"
+                          style="color:#fff!important;"></i></mfDefaultSorter>
+                    </th>
+                    <th>Last Name <mfDefaultSorter by="first_name"> <i class="fa fa-sort"
+                          style="color:#fff!important;"></i></mfDefaultSorter>
+                    </th>
+                    <th>Phone Number <mfDefaultSorter by="phone_number"> <i class="fa fa-sort"
+                          style="color:#fff!important;"></i></mfDefaultSorter>
+                    </th>
+                    <!-- <th>Address  <mfDefaultSorter by="street"> <i class="fa fa-sort" style="color:#fff!important;"></i></mfDefaultSorter></th> -->
+                    <th>Email Address <mfDefaultSorter by="email_address"> <i class="fa fa-sort"
+                          style="color:#fff!important;"></i></mfDefaultSorter>
+                    </th>
+
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let data of mf.data ; let i = index">
+                    <tr colspan="6" data-toggle="collapse" [attr.data-target]="data.dispid" class="accordion-toggle">
+                      <td id="f1">{{i+1}}</td>
+                      <td id="f1">{{data.first_name}}</td>
+                      <td id="f1">{{data.first_name}}</td>
+                      <td id="m1">{{data.phone_number}}</td>
+                      <!-- <td id="a1">{{data.street}}, {{data.city}} {{data.pincode}},{{data.state}}, {{data.country}}.  </td> -->
+                      <td id="e1">{{data.email_address}}</td>
+
+                      <td class="dlt" style="text-align:center;"><button type="button" data-toggle="modal"
+                          data-target="#delete" data-uid="1" class="delete btn btn-danger btn-sm"
+                          (click)="open($event, data)"><i _ngcontent-c4="" _ngcontent-c6=""
+                            class="m-1 icon-close"></i></button></td>
+                    </tr>
+                    <tr class="p">
+                      <td colspan="12" class="hiddenRow well">
+                        <div class="accordian-body collapse p-3" [attr.id]="data.dispid2">
+                          <!--start-->
+                          <!--start-->
+                          <div class="row">
+                            <div class="col-12 col-md-4 mb-3">
+                              <div class="card cards">
+                                <div class="card-body">
+                                  <ul class="list-unstyled" style="line-height: 2">
+                                    <li><span class="fa fa-check text-success"></span><b>Title</b> : {{data.title}}</li>
+                                    <li><span class="fa fa-check text-success"></span><b>First Name</b> :
+                                      {{data.first_name}}</li>
+                                    <li><span class="fa fa-check text-success"></span><b>Middle Name</b> :
+                                      {{data.middle_name}}</li>
+                                    <li><span class="fa fa-check text-success"></span><b>Last Name </b>:
+                                      {{data.last_name}} </li>
+                                    <!--  </ul>
+                                                <ul class="list-unstyled" style="line-height: 2"> -->
+                                    <li *ngFor="let school of data.schools">
+                                      <span class="fa fa-check text-success"></span>
+                                      <b>schoolID</b> : {{school.schoolID}} -- {{school.schoolName}}
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-12 col-md-4 mb-3">
+                              <div class="card cards">
+                                <div class="card-body">
+                                  <ul class="list-unstyled" style="line-height: 2">
+
+                                    <li><span class="fa fa-check text-success"></span><b>Phone Number</b> :
+                                      {{data.phone_number}} </li>
+                                    <li><span class="fa fa-check text-success"></span><b>Mobile Number </b>:
+                                      {{data.mobile_number}} </li>
+                                    <li><span class="fa fa-check text-success"></span><b>Email Address</b> :
+                                      {{data.email_address}} </li>
+                                    <li><span class="fa fa-check text-success"></span><b>Lane / Street</b>
+                                      :{{data.street}} </li>
+
+                                    <br>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-12 col-md-4 mb-3">
+                              <div class="card cards">
+                                <div class="card-body">
+                                  <ul class="list-unstyled" style="line-height: 2">
+
+                                    <li><span class="fa fa-check text-success"></span><b>City</b> : {{data.city}} </li>
+                                    <li><span class="fa fa-check text-success"></span><b>State</b> : {{data.state}}
+                                    </li>
+                                    <li><span class="fa fa-check text-success"></span><b>Country</b> : {{data.country}}
+                                    </li>
+                                    <li><span class="fa fa-check text-success"></span><b>Pin Code</b> : {{data.pincode}}
+                                    </li>
+                                    <li><span class="fa fa-check text-success"></span><b>Updated date </b>:
+                                      {{data.updated_date | cynosureDateTimeZone:"YYYY-MM-DD HH:mm:ss"}}</li>
+                                    <li><span class="fa fa-check text-success"></span><b>Updated Name </b>:
+                                      {{data.updated_by}}</li>
+
+                                    <br> <br>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!--end-->
+                        </div>
+                      </td>
+                    </tr>
+
+                  </ng-container>
+
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="11">
+                      <mfBootstrapPaginator [rowsOnPageSet]="[5,50,100]"></mfBootstrapPaginator>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="delete" class="modal modal3 fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Delete Data</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+
+        </div>
+        <div class="modal-body">
+          <strong>Are you sure you want to remove Access for {{delid.users.first_name}} from {{delid.school.schoolID}}
+            -- {{delid.school.schoolName}} ?</strong>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+          <button type="button" id="del" class="btn btn-danger" data-dismiss="modal"
+            (click)="deleteschol()">Yes</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .table>caption+thead>tr:first-child>td,
+    .table>caption+thead>tr:first-child>th,
+    .table>colgroup+thead>tr:first-child>td,
+    .table>colgroup+thead>tr:first-child>th,
+    .table>thead:first-child>tr:first-child>td,
+    .table>thead:first-child>tr:first-child>th {
+      border-top: 0;
+      border: 1px #eee solid;
+      text-align: left !important;
+    }
+
+    .th {
+      text-align: center !important;
+    }
+
+    td.viewschool button {
+      text-align: center !important;
+    }
+  </style>
+</div>
+
+</div>
+
+<div *ngIf="showdisplay === false">
+  <h3>! You Don't Have the Access</h3>
+</div>

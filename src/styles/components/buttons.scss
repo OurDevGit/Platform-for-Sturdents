@@ -1,0 +1,77 @@
+@import '../elevation';
+@import '../variables';
+
+$btn-border-width: 2px;
+
+.btn {
+  border-width: $btn-border-width;
+  &:hover {
+    @include mat-elevation(7);
+  }
+  &.btn-link:hover {
+    box-shadow: none;
+  }
+}
+
+.px-gdn-btn-icon {
+  padding-top: 13px !important;
+  padding-bottom: 13px !important;
+}
+
+.px-gdn-btn-outline {
+  position: relative;
+  background: transparent;
+  color: $primary-color;
+  z-index: 1;
+  &:before {
+    background: linear-gradient(56deg, $primary-color 0%, $primary-color-2 100%);
+    content: '';
+    position: absolute;
+    left: -$btn-border-width;
+    right: -$btn-border-width;
+    top: -$btn-border-width;
+    bottom: -$btn-border-width;
+    border-radius: inherit;
+    z-index: -1;
+  }
+  &:after {
+    background: $body-bg;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 1px;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+  &.card-bg {
+    &:after {
+      background-color: $card-bg;
+    }
+  }
+  &:hover {
+    color: #ffffff;
+    &:after {
+      opacity: 0;
+    }
+  }
+}
+
+.btn-outline-light:hover {
+  color: $primary-color;
+}
+
+
+
+.btn-group,
+.btn-group-vertical {
+  // Prevent double borders when buttons are next to each other
+  .btn + .btn,
+  .btn + .btn-group,
+  .btn-group + .btn,
+  .btn-group + .btn-group {
+    margin-left: -$btn-border-width;
+  }
+}

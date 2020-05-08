@@ -1,0 +1,26 @@
+app-line-chart-page {
+    .multi-axis-line-chart,
+    .area-chart,
+    .stacked-area-chart,
+    .gradient-area-chart,
+    .points-line-chart,
+    .trend-line-chart,
+    .simple-line-chart {
+      height: 300px;
+    }
+  }
+  app-barchart-page {
+    .trend-bar-chart,
+    .group-bar-chart,
+    .horizontal-bar-chart,
+    .simple-bar-chart,
+    .animated-bar-chart {
+      height: 300px;
+    }
+  }
+  px-gdn-echarts {
+    display: block;
+  }
+  .card{
+    width:100%;
+  }

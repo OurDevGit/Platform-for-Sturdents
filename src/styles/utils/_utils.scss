@@ -1,0 +1,46 @@
+@mixin hover-color() {
+  transition: color 0.2s ease;
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+@mixin all-utils() {
+  .hover-color {
+    @include hover-color();
+  }
+
+  .no-underline {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .font-weight-semi-bold {
+    font-weight: 600 !important;
+  }
+  .color-inherit {
+    color: inherit;
+  }
+  .line-height-1 {
+    line-height: 1rem;
+  }
+  .line-height-2 {
+    line-height: 1.8rem;
+  }
+  .line-height-3 {
+    line-height: 3rem;
+  }
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .border-right-transparent {
+    border-right-color: transparent;
+  }
+  .border-left-transparent {
+    border-left-color: transparent;
+  }
+  .overflow-x-auto {
+    overflow-x: auto;
+  }
+}

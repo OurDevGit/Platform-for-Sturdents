@@ -1,0 +1,200 @@
+<div class="card">
+    <div class="row">
+        <div _ngcontent-c6="" class="col">
+            <h3 _ngcontent-c6="" class="adsc"><i class="material-icons ng-star-inserted">business</i> &nbsp;View Vehicle
+                Details</h3>
+        </div>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="col-mb-12">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Owner</label>
+                        <input disabled type="text" placeholder="Owner" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="addvehicle.owner" name="owner" value=""
+                            formControlName="owners" [ngClass]="{ 'is-invalid': submitted && f.owners.errors }" />
+                        <div *ngIf="submitted && f.owners.errors" class="invalid-feedback">
+                            <div *ngIf="f.owners.errors.required">Owner is required</div>
+                            <div *ngIf="f.owners.errors.pattern">Enter Valid Owner</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Registration Number</label>
+                        <input disabled type="text" placeholder="Registration Number" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="addvehicle.registrationNumber"
+                            name="registrationNumber" value="" formControlName="registrationNumbers"
+                            [ngClass]="{ 'is-invalid': submitted && f.registrationNumbers.errors }" />
+                        <div *ngIf="submitted && f.registrationNumbers.errors" class="invalid-feedback">
+                            <div *ngIf="f.registrationNumbers.errors.required">Registration Number is required</div>
+                            <div *ngIf="f.registrationNumbers.errors.pattern">Enter Valid Registration Number</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <label>Registration Expiry</label>
+                            <input disabled class="form-control" style="margin-bottom: 0px;" placeholder="dd-mm-yyyy"
+                                name="dp" [(ngModel)]="popupModel" ngbDatepicker dateFormat="dd-mm-yyyy"
+                                #a="ngbDatepicker" formControlName="registrationExpirys"
+                                [ngClass]="{ 'is-invalid': submitted && f.registrationExpirys.errors }">
+                            <button disabled class="btn px-gdn-btn px-gdn-btn-icon px-4 input-group-addon" type="button"
+                                (click)="a.toggle()">
+                                <i class="material-icons">date_range</i>
+                            </button>
+                            <div *ngIf="submitted && f.registrationExpirys.errors" class="invalid-feedback">
+                                <div *ngIf="f.registrationExpirys.errors.required">Registration Expiry is required</div>
+                                <div *ngIf="f.registrationExpirys.errors.pattern">Enter Valid Registration Expiry</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Insurance Number</label>
+                        <input disabled type="text" placeholder="Insurance Number" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="addvehicle.insuranceNumber"
+                            name="insuranceNumber" value="" formControlName="insuranceNumbers"
+                            [ngClass]="{ 'is-invalid': submitted && f.insuranceNumbers.errors }" />
+                        <div *ngIf="submitted && f.insuranceNumbers.errors" class="invalid-feedback">
+                            <div *ngIf="f.insuranceNumbers.errors.required">Insurance Number is required</div>
+                            <div *ngIf="f.insuranceNumbers.errors.pattern">Enter Valid Insurance Number</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Insurer</label>
+                        <input disabled type="text" placeholder="Insurer" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="addvehicle.insurer" name="insurer" value=""
+                            formControlName="insurers" [ngClass]="{ 'is-invalid': submitted && f.insurers.errors }" />
+                        <div *ngIf="submitted && f.insurers.errors" class="invalid-feedback">
+                            <div *ngIf="f.insurers.errors.required">Insurer is required</div>
+                            <div *ngIf="f.insurers.errors.pattern">Enter Valid Insurer</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <label>Insurance Expiry</label>
+                            <input disabled class="form-control" style="margin-bottom: 0px;" placeholder="dd-mm-yyyy"
+                                name="dp" [(ngModel)]="popupModel" ngbDatepicker dateFormat="dd-mm-yyyy"
+                                #b="ngbDatepicker" formControlName="insuranceExpirys"
+                                [ngClass]="{ 'is-invalid': submitted && f.insuranceExpirys.errors }">
+                            <button disabled class="btn px-gdn-btn px-gdn-btn-icon px-4 input-group-addon" type="button"
+                                (click)="b.toggle()">
+                                <i class="material-icons">date_range</i>
+                            </button>
+                            <div *ngIf="submitted && f.insuranceExpirys.errors" class="invalid-feedback">
+                                <div *ngIf="f.insuranceExpirys.errors.required">Insurance Expiry is required</div>
+                                <div *ngIf="f.insuranceExpirys.errors.pattern">Enter Valid Insurance Expiry</div>
+                            </div>
+                        </div>
+                    </div>  
+
+                    <div class="col-md-6">
+                        <label>Cap</label>
+                        <input disabled type="text" placeholder="Cap" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="addvehicle.cap" name="cap" value=""
+                            formControlName="caps" [ngClass]="{ 'is-invalid': submitted && f.caps.errors }" />
+                        <div *ngIf="submitted && f.caps.errors" class="invalid-feedback">
+                            <div *ngIf="f.caps.errors.required">Cap is required</div>
+                            <div *ngIf="f.caps.errors.pattern">Enter Valid Cap</div>
+                        </div>
+                    </div>  
+
+                    <div class="col-md-6">
+                        <label>CapX</label>
+                        <input disabled type="text" placeholder="CapX" style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="addvehicle.capX" name="capX" value=""
+                            formControlName="capXs" [ngClass]="{ 'is-invalid': submitted && f.capXs.errors }" />
+                        <div *ngIf="submitted && f.capXs.errors" class="invalid-feedback">
+                            <div *ngIf="f.capXs.errors.required">CapXs is required</div>
+                            <div *ngIf="f.capXs.errors.pattern">Enter Valid CapXs</div>
+                        </div>
+                    </div>  
+
+                    <div class="col-md-6">
+                        <label>Gps Device</label>
+                        <select class="form-control" style="margin-bottom: 5px;" [(ngModel)]="addvehicle.gpsDevice"
+                            disabled (change)="devicedetails($event.target.value)" name="gpsDevice" value=""
+                            formControlName="gpsDevices" [ngClass]="{ 'is-invalid': submitted && f.gpsDevices.errors }"
+                            id="exampleFormControlSelect1">
+                            <option value="Select Gps Device">Select Gps Device</option>
+                            <ng-container *ngFor="let data of deviceslistss">
+                                <option value="{{data.Id}}">{{data.IMEI}}</option>
+                            </ng-container>
+                        </select>
+                        <div *ngIf="submitted && f.gpsDevices.errors" class="invalid-feedback">
+                            <div *ngIf="f.gpsDevices.errors.required">Gps Device is required</div>
+                            <div *ngIf="f.gpsDevices.errors.pattern">Enter Valid Gps Device</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Gps DeviceId</label>
+                        <input type="text" placeholder="Gps DeviceId" disabled style="margin-bottom: 5px;" disabled
+                            class="form-control col-md-12" [(ngModel)]="addvehicle.gpsDeviceId" name="gpsDeviceId"
+                            value="" formControlName="gpsids"
+                            [ngClass]="{ 'is-invalid': submitted && f.gpsids.errors }" />
+                        <div *ngIf="submitted && f.gpsids.errors" class="invalid-feedback">
+                            <div *ngIf="f.gpsids.errors.required">Gps DeviceId is required</div>
+                            <div *ngIf="f.gpsids.errors.pattern">Enter Valid Gps DeviceId</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Driver</label>
+                        <select class="form-control" style="margin-bottom: 5px;" [(ngModel)]="addvehicle.driver"
+                            disabled (change)="driverdetails($event.target.value)" name="driver" value=""
+                            formControlName="drivers" [ngClass]="{ 'is-invalid': submitted && f.drivers.errors }"
+                            id="exampleFormControlSelect1">
+                            <option value="Select driver">Select driver</option>
+                            <ng-container *ngFor="let data of driverslistss">
+                                <option value="{{data.Id}}">{{data.FirstName}}</option>
+                            </ng-container>
+                        </select>
+                        <div *ngIf="submitted && f.drivers.errors" class="invalid-feedback">
+                            <div *ngIf="f.drivers.errors.required">Driver is required</div>
+                            <div *ngIf="f.drivers.errors.pattern">Enter Valid Driver</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>driver ID</label>
+                        <input type="text" placeholder="driver ID" disabled style="margin-bottom: 5px;" disabled
+                            class="form-control col-md-12" [(ngModel)]="addvehicle.driverId" name="driverId" value=""
+                            formControlName="driverIds" [ngClass]="{ 'is-invalid': submitted && f.driverIds.errors }" />
+                        <div *ngIf="submitted && f.driverIds.errors" class="invalid-feedback">
+                            <div *ngIf="f.driverIds.errors.required">driver ID is required</div>
+                            <div *ngIf="f.driverIds.errors.pattern">Enter Valid driver ID</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Route</label>
+                        <select class="form-control" style="margin-bottom: 5px;" disabled
+                            (change)="routedetails($event.target.value)" [(ngModel)]="addvehicle.route" name="route"
+                            value="" formControlName="routes" [ngClass]="{ 'is-invalid': submitted && f.routes.errors }"
+                            id="exampleFormControlSelect1">
+                            <option value="Select Route">Select Route</option>
+                            <ng-container *ngFor="let data of routess">
+                                <option value="{{data.RouteId}}">{{data.RouteName}}</option>
+                            </ng-container>
+                        </select>
+                        <div *ngIf="submitted && f.routes.errors" class="invalid-feedback">
+                            <div *ngIf="f.routes.errors.required">Route is required</div>
+                            <div *ngIf="f.routes.errors.pattern">Enter Valid Route</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Route ID</label>
+                        <input type="text" placeholder="Route ID" disabled style="margin-bottom: 5px;"
+                            class="form-control col-md-12" [(ngModel)]="addvehicle.routeId" name="routeId" value=""
+                            formControlName="routeIds" [ngClass]="{ 'is-invalid': submitted && f.routeIds.errors }" />
+                        <div *ngIf="submitted && f.routeIds.errors" class="invalid-feedback">
+                            <div *ngIf="f.routeIds.errors.required">Route ID is required</div>
+                            <div *ngIf="f.routeIds.errors.pattern">Enter Valid Route ID</div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

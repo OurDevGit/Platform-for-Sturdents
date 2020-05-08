@@ -1,0 +1,78 @@
+<div class="card">
+  <div _ngcontent-c6="" class="">
+    <div _ngcontent-c6="" class="row">
+      <div _ngcontent-c6="" class="col-12 col-md-12 mb-3">
+        <h3 _ngcontent-c6="" class="adsc">
+          <i class="fa fa-envelope-open" style="color:#fff!important;"></i> &nbsp;&nbsp;Send Mail</h3>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="card-body mb-4">
+    <form>
+      <!-- First Step -->
+      <div class="col-md-12">
+        <!--endrow-->
+        <div class="row">
+
+          <div class="form-group service-form-group col-md-6">
+            <div class="row">
+              <div class="col-md-4">
+                <label>Email-id</label>
+              </div>
+              <div class="col-md-7">
+                <input required type="text" placeholder="Email" class="form-control col-md-12" name="email"
+                  value="{{emaillist}}" #email disabled>
+                <div class="form-icon"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group service-form-group col-md-6">
+            <div class="row">
+              <div class="col-md-4">
+                <label>Subject </label>
+              </div>
+              <div class="col-md-8">
+
+                <input required type="text" placeholder="subject" class="form-control col-md-12"
+                  [(ngModel)]="sendmail.subject" name="subject" value="" #subject>
+                <div class="form-icon"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="form-group service-form-group col-md-12">
+            <div class="row">
+              <div class="col-md-2">
+                <label>Message</label>
+              </div>
+              <div class="col-md-10">
+                <textarea style="height:250px!important;" required type="text" placeholder="message"
+                  class="form-control col-md-12" [(ngModel)]="sendmail.message" name="message" value=""
+                  #message></textarea>
+
+                <div class="form-icon"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--endrow-->
+
+        <div class="row">
+
+          <div class="col-md-2">
+            <button _ngcontent-c7="" class="btn px-gdn-btn btn-block mb10 ng-star-inserted" (click)="send()"><i
+                _ngcontent-c6="" class="fa fa-send"></i> &nbsp; Send</button>
+          </div>
+        </div>
+        <!--endrow-->
+      </div>
+      <!-- fourth Step -->
+    </form>
+  </div>
+</div>
