@@ -114,7 +114,7 @@
         "st-date-range-select": "^0.1.1",
         "text-mask-addons": "^3.8.0",
         "web-animations-js": "^2.3.2",
-        "xlsx": "^0.14.0",
+        "xlsx": "^0.18.5",
         "zone.js": "^0.9.1"
     },
     "devDependencies": {
